@@ -23,5 +23,6 @@
 -I/opt/ros/humble/include/tf2
 -I/opt/ros/humble/include/tf2_ros
 -I/usr/include/c++/12
+-I/usr/include/opencv4
 -I./awviz/include
 -I./install/awviz/include

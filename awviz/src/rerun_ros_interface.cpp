@@ -1,5 +1,7 @@
 #include "awviz/rerun_ros_interface.hpp"
 
+#include "collection_adapters.hpp"
+
 #include <rclcpp/rclcpp.hpp>
 
 #include <cv_bridge/cv_bridge.h>
@@ -71,13 +73,6 @@ std::vector<rerun::Color> colormap(const std::vector<float> & values)
     colors.emplace_back(rerun::Color(TurboBytes[idx][0], TurboBytes[idx][1], TurboBytes[idx][2]));
   }
   return colors;
-}
-
-inline rerun::Collection<rerun::TensorDimension> tenorShape(const cv::Mat & img)
-{
-  return {
-    static_cast<size_t>(img.rows), static_cast<size_t>(img.cols),
-    static_cast<size_t>(img.channels())};
 }
 
 void logPointCloud(

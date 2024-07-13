@@ -3,6 +3,8 @@
 
 #include <rclcpp/rclcpp.hpp>
 
+#include <exception>
+#include <optional>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -42,7 +44,21 @@ public:
    * @param topic Name of topic.
    * @param type MsgType member representing ROS msg type.
    */
-  TopicOption(const std::string & topic, const MsgType & type) : topic_(topic), type_(type) {}
+  TopicOption(const std::string & topic, const MsgType & type)
+  : topic_(topic), type_(type), entity_("/topics" + topic)
+  {
+  }
+
+  /**
+   * @brief Construct a instance with rerun recodring entity.
+   * @param topic Name of topic.
+   * @param type MsgType member representing ROS msg type.
+   * @param entity Entity name of recodring.
+   */
+  TopicOption(const std::string & topic, const MsgType & type, const std::string & entity)
+  : topic_(topic), type_(type), entity_(entity)
+  {
+  }
 
   /**
    * @brief Construct vector of options from ROS parameters.
@@ -56,10 +72,17 @@ public:
 
     std::vector<TopicOption> options;
     for (const auto & topic : topic_names) {
-      std::string type_name = node->declare_parameter<std::string>("topic_info." + topic + "type");
+      std::string type_name =
+        node->declare_parameter<std::string>("topic_options." + topic + "type");
       auto type = nameToMsgType(type_name);
 
-      options.emplace_back(topic, type);
+      try {
+        std::string entity =
+          node->declare_parameter<std::string>("topic_options." + topic + "entity");
+        options.emplace_back(topic, type, entity);
+      } catch (std::exception & e) {
+        options.emplace_back(topic, type);
+      }
     }
 
     return options;
@@ -77,9 +100,16 @@ public:
    */
   const MsgType & type() const noexcept { return type_; }
 
+  /**
+   * @brief Return the recording entity.
+   * @return std::string Entity of recording.
+   */
+  const std::string & entity() const noexcept { return entity_; }
+
 private:
   std::string topic_;
   MsgType type_;
+  std::string entity_;
 };
 }  // namespace awviz
 #endif  // AWVIZ__TOPIC_OPTION_HPP_

@@ -2,7 +2,6 @@
 #define AWVIZ_RERUN_LOGGER_NODE_HPP_
 
 #include "awviz/topic_option.hpp"
-#include "rclcpp/node_options.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
@@ -26,24 +25,26 @@ public:
 
 private:
   /**
-   * @brief Craete subscribers.
+   * @brief Create subscribers.
    */
   void createSubscriptions();
 
   /**
    * @brief Create a subscriber for PointCloud2 msg.
    */
-  std::shared_ptr<rclcpp::Subscription<sensor_msgs::msg::PointCloud2>> createPointCloudSubscription(
+  rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr createPointCloudSubscription(
     const TopicOption & option);
 
   /**
    * @brief Craete subscriber for Image msg.
    * @param option Topic option.
    */
-  std::shared_ptr<rclcpp::Subscription<sensor_msgs::msg::Image>> createImageSubscription(
+  rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr createImageSubscription(
     const TopicOption & option);
 
 private:
+  const rerun::RecordingStream stream_;
+
   rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;
   std::map<std::string, std::shared_ptr<rclcpp::SubscriptionBase>> topic_to_subscription_;
   std::map<std::string, std::string> frame_id_to_entity_;
@@ -52,7 +53,6 @@ private:
   rclcpp::TimerBase::SharedPtr update_tf_timer_;
 
   std::vector<TopicOption> topic_options_;
-  const rerun::RecordingStream stream_{"rerun_logger_node"};
 };
 }  // namespace awviz
 

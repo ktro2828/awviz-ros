@@ -1,0 +1,9 @@
+/**:
+  ros__parameters:
+    topic_names:
+      - /sensing/lidar/concatenated/pointcloud
+
+    topic_options:
+      /sensing/lidar/concatenated/pointcloud:
+        type: PointCloud
+        entity: /topics/sensing/lidar/concatenated/pointcloud

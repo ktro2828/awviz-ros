@@ -1,15 +1,17 @@
-#include "awviz/rerun_logger_node.hpp"
+#include "rerun_logger_node.hpp"
 
 #include "awviz/rerun_ros_interface.hpp"
 #include "awviz/topic_option.hpp"
 #include "rclcpp/subscription.hpp"
+
+#include "sensor_msgs/msg/detail/point_cloud2__struct.hpp"
 
 #include <chrono>
 
 namespace awviz
 {
 RerunLoggerNode::RerunLoggerNode(const rclcpp::NodeOptions & node_options)
-: Node("rerun_logger_node", node_options)
+: Node("rerun_logger_node", node_options), stream_("rerun_logger_node")
 {
   using std::chrono_literals::operator""ms;
 
@@ -17,7 +19,7 @@ RerunLoggerNode::RerunLoggerNode(const rclcpp::NodeOptions & node_options)
 
   topic_options_ = TopicOption::fromRosParam(this);
 
-  parallel_callback_group_ = create_callback_group(rclcpp::CallbackGroupType::Reentrant);
+  parallel_callback_group_ = this->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
   callback_timer_ = create_wall_timer(
     100ms, [&]() -> void { createSubscriptions(); }, parallel_callback_group_);
 }
@@ -34,21 +36,27 @@ void RerunLoggerNode::createSubscriptions()
     } else if (option.type() == MsgType::Image) {
       topic_to_subscription_[option.topic()] = createImageSubscription(option);
     } else {
-      RCLCPP_WARN_STREAM(get_logger(), "Unknown msg type of topic: " << option.topic());
+      RCLCPP_WARN_STREAM(this->get_logger(), "Unknown msg type of topic: " << option.topic());
     }
   }
 }
 
-std::shared_ptr<rclcpp::Subscription<sensor_msgs::msg::PointCloud2>>
+rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr
 RerunLoggerNode::createPointCloudSubscription(const TopicOption & option)
 {
-  return create_subscription<sensor_msgs::msg::PointCloud2>(option.topic(), 1000, [&] {});
+  return this->create_subscription<sensor_msgs::msg::PointCloud2>(
+    option.topic(), 1000, [&](const sensor_msgs::msg::PointCloud2::SharedPtr msg) {
+      awviz::logPointCloud(stream_, option.entity(), msg);
+    });
 }
 
-std::shared_ptr<rclcpp::Subscription<sensor_msgs::msg::Image>>
-RerunLoggerNode::createImageSubscription(const TopicOption & option)
+rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr RerunLoggerNode::createImageSubscription(
+  const TopicOption & option)
 {
-  return create_subscription<sensor_msgs::msg::Image>(option.topic(), 1000, [&] {});
+  return this->create_subscription<sensor_msgs::msg::Image>(
+    option.topic(), 1000, [&](const sensor_msgs::msg::Image::SharedPtr msg) {
+      awviz::logImage(stream_, option.entity(), msg);
+    });
 }
 }  // namespace awviz
 

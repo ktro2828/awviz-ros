@@ -20,6 +20,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
 
+#include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 
@@ -55,6 +56,13 @@ private:
    */
   rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr createImageSubscription(
     const TopicOption & option);
+
+  /**
+   * @brief Create subscriber for CompressedImage msg.
+   * @param option Topic option.
+   */
+  rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr
+  createCompressedImageSubscription(const TopicOption & option);
 
 private:
   const rerun::RecordingStream stream_;

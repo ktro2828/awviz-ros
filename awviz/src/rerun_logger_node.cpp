@@ -18,8 +18,6 @@
 #include "awviz/topic_option.hpp"
 #include "rclcpp/subscription.hpp"
 
-#include "sensor_msgs/msg/detail/point_cloud2__struct.hpp"
-
 #include <chrono>
 
 namespace awviz
@@ -49,6 +47,8 @@ void RerunLoggerNode::createSubscriptions()
       topic_to_subscription_[option.topic()] = createPointCloudSubscription(option);
     } else if (option.type() == MsgType::Image) {
       topic_to_subscription_[option.topic()] = createImageSubscription(option);
+    } else if (option.type() == MsgType::CompressedImage) {
+      topic_to_subscription_[option.topic()] = createCompressedImageSubscription(option);
     } else {
       RCLCPP_WARN_STREAM(this->get_logger(), "Unknown msg type of topic: " << option.topic());
     }
@@ -70,6 +70,15 @@ rclcpp::Subscription<sensor_msgs::msg::Image>::SharedPtr RerunLoggerNode::create
   return this->create_subscription<sensor_msgs::msg::Image>(
     option.topic(), 1000, [&](const sensor_msgs::msg::Image::SharedPtr msg) {
       awviz::logImage(stream_, option.entity(), msg);
+    });
+}
+
+rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr
+RerunLoggerNode::createCompressedImageSubscription(const TopicOption & option)
+{
+  return this->create_subscription<sensor_msgs::msg::CompressedImage>(
+    option.topic(), 1000, [&](const sensor_msgs::msg::CompressedImage::SharedPtr msg) {
+      awviz::logCompressedImage(stream_, option.entity(), msg);
     });
 }
 }  // namespace awviz

@@ -17,13 +17,9 @@
 
 #include <rclcpp/rclcpp.hpp>
 
+#include <cstddef>
 #include <string>
 #include <vector>
-
-namespace
-{
-
-}  // namespace
 
 namespace awviz
 {
@@ -31,7 +27,7 @@ namespace awviz
 /**
  * @brief Represent ROS msg types.
  */
-enum MsgType { Unknown, PointCloud, Image };
+enum MsgType { Unknown, PointCloud, Image, CompressedImage };
 
 /**
  * @brief Convert string name of ROS msg into MsgType.
@@ -44,6 +40,8 @@ MsgType nameToMsgType(const std::string & name)
     return MsgType::PointCloud;
   } else if (name == "Image") {
     return MsgType::Image;
+  } else if (name == "CompressedImage") {
+    return MsgType::CompressedImage;
   } else {
     return MsgType::Unknown;
   }

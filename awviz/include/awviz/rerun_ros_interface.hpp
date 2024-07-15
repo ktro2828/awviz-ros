@@ -15,8 +15,11 @@
 #ifndef AWVIZ__RERUN_ROS_INTERFACE_HPP_
 #define AWVIZ__RERUN_ROS_INTERFACE_HPP_
 
+#include "rerun/recording_stream.hpp"
+
 #include <rerun.hpp>
 
+#include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 
@@ -43,6 +46,16 @@ void logPointCloud(
 void logImage(
   const rerun::RecordingStream & stream, const std::string & entity,
   const sensor_msgs::msg::Image::ConstSharedPtr & msg);
+
+/**
+ * @brief Log CompressedImage msg to rerun stream.
+ * @param stream Rerun recording stream.
+ * @param entity Entity path of the record.
+ * @param msg Image msg pointer.
+ */
+void logCompressedImage(
+  const rerun::RecordingStream & stream, const std::string & entity,
+  const sensor_msgs::msg::CompressedImage::ConstSharedPtr & msg);
 }  // namespace awviz
 
 #endif  // AWVIZ__RERUN_ROS_INTERFACE_HPP_

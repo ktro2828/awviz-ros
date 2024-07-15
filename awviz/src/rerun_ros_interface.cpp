@@ -16,6 +16,7 @@
 
 #include "collection_adapters.hpp"
 #include "color.hpp"
+#include "opencv2/imgproc.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 
@@ -120,6 +121,30 @@ void logImage(
   } else {
     auto img = cv_bridge::toCvCopy(msg, "rgb8")->image;
     stream.log(entity, rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
+  }
+}
+
+void logCompressedImage(
+  const rerun::RecordingStream & stream, const std::string & entity,
+  const sensor_msgs::msg::CompressedImage::ConstSharedPtr & msg)
+{
+  stream.set_time_seconds(
+    "timestamp", rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
+
+  if (msg->format.find("jpeg")) {
+    auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
+    cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
+    stream.log(entity, rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
+  } else {
+    auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
+    cv::Mat depth;
+    img.convertTo(depth, CV_32FC1);
+
+    stream.log(
+      entity, rerun::DepthImage(
+                {static_cast<size_t>(depth.rows), static_cast<size_t>(depth.cols)},
+                rerun::TensorBuffer::f32(depth))
+                .with_meter(1.0));
   }
 }
 

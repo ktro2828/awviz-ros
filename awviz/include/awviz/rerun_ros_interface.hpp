@@ -19,6 +19,8 @@
 
 #include <rerun.hpp>
 
+#include "autoware_perception_msgs/msg/detail/detected_objects__struct.hpp"
+#include <autoware_perception_msgs/msg/detected_objects.hpp>
 #include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
@@ -51,11 +53,21 @@ void logImage(
  * @brief Log CompressedImage msg to rerun stream.
  * @param stream Rerun recording stream.
  * @param entity Entity path of the record.
- * @param msg Image msg pointer.
+ * @param msg CompressedImage msg pointer.
  */
 void logCompressedImage(
   const rerun::RecordingStream & stream, const std::string & entity,
   const sensor_msgs::msg::CompressedImage::ConstSharedPtr & msg);
+
+/**
+ * @brief Log DetectedObjects msg to rerun stream.
+ * @param stream Rerun recodring stream.
+ * @param entity Entity path of the record.
+ * @param msg DetectedObjects msg pointer.
+ */
+void logDetectedObjects(
+  const rerun::RecordingStream & stream, const std::string & entity,
+  const autoware_perception_msgs::msg::DetectedObjects::ConstSharedPtr & msg);
 }  // namespace awviz
 
 #endif  // AWVIZ__RERUN_ROS_INTERFACE_HPP_

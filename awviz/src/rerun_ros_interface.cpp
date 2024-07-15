@@ -68,6 +68,11 @@ void logPointCloud(
   }
 
   std::vector<rerun::Position3D> points(msg->width * msg->height);
+  std::vector<float> values(msg->width * msg->height);
+
+  auto & colormap_field = *std::find_if(
+    msg->fields.cbegin(), msg->fields.cend(),
+    [&](const auto & field) { return field.name == "z"; });
 
   for (size_t i = 0; i < msg->height; ++i) {
     for (size_t j = 0; j < msg->width; ++j) {
@@ -77,10 +82,15 @@ void logPointCloud(
       std::memcpy(&position.xyz.xyz[1], &msg->data[offset + y_offset], sizeof(float));
       std::memcpy(&position.xyz.xyz[2], &msg->data[offset + z_offset], sizeof(float));
       points.emplace_back(std::move(position));
+
+      float value;
+      std::memcpy(
+        &value, &msg->data[i * msg->row_step + j * msg->point_step + colormap_field.offset],
+        sizeof(float));
+      values.emplace_back(value);
     }
   }
 
-  std::vector<float> values(msg->width * msg->height);
   auto colors = colormap(values);
   stream.log(entity, rerun::Points3D(points).with_colors(colors));
 }

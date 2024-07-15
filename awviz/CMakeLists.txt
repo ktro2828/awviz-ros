@@ -11,20 +11,20 @@ ament_auto_find_build_dependencies()
 
 # download rerun
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL
-    https://github.com/rerun-io/rerun/releases/latest/download/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/latest/download/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
-include_directories(
-  include
-  SYSTEM
-  ${rerun_sdk_SOURCE_DIR}/src
-)
+# Ensure rerun_sdk is compiled with -fPIC
+set_target_properties(rerun_sdk PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
+# setup targets
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 ament_auto_add_library(${PROJECT_NAME} SHARED ${SOURCES})
+
+# setup dependencies
 target_include_directories(${PROJECT_NAME} PUBLIC include)
-target_link_libraries(${PRJECT_NAME} rerun_sdk)
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} rerun_sdk)
+ament_target_dependencies(${PROJECT_NAME} rclcpp rclcpp_components sensor_msgs cv_bridge tf2_ros)
 
 rclcpp_components_register_node(${PROJECT_NAME}
   PLUGIN "awviz::RerunLoggerNode"

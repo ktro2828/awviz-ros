@@ -17,11 +17,13 @@
 
 #include <rclcpp/rclcpp.hpp>
 
-#include <exception>
-#include <optional>
-#include <stdexcept>
 #include <string>
 #include <vector>
+
+namespace
+{
+
+}  // namespace
 
 namespace awviz
 {
@@ -29,7 +31,7 @@ namespace awviz
 /**
  * @brief Represent ROS msg types.
  */
-enum MsgType { PointCloud, Image, Unknown };
+enum MsgType { Unknown, PointCloud, Image };
 
 /**
  * @brief Convert string name of ROS msg into MsgType.
@@ -87,12 +89,12 @@ public:
     std::vector<TopicOption> options;
     for (const auto & topic : topic_names) {
       std::string type_name =
-        node->declare_parameter<std::string>("topic_options." + topic + "type");
+        node->declare_parameter<std::string>("topic_options." + topic + ".type");
       auto type = nameToMsgType(type_name);
 
       try {
         std::string entity =
-          node->declare_parameter<std::string>("topic_options." + topic + "entity");
+          node->declare_parameter<std::string>("topic_options." + topic + ".entity");
         options.emplace_back(topic, type, entity);
       } catch (std::exception & e) {
         options.emplace_back(topic, type);

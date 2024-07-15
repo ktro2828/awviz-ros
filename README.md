@@ -2,7 +2,22 @@
 
 `awviz` offers a ROS viewer of [Autoware](https://github.com/autowarefoundation/autoware) powered by [rerun](https://github.com/rerun-io/rerun).
 
-## ROS msg Support
+## Build
+
+```shell
+git clone git@github.com:ktro2828/awviz-cpp
+cd awviz-cpp
+colon build --symlink-install
+source install/setup.bash
+```
+
+## Run
+
+```shell
+ros2 launch awviz awviz.launch.xml
+```
+
+## ROS msg support
 
 ### `common_interfaces`
 

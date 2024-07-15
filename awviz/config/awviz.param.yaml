@@ -8,6 +8,7 @@
       - /sensing/camera/camera3/image_rect_color/compressed
       - /sensing/camera/camera4/image_rect_color/compressed
       - /sensing/camera/camera5/image_rect_color/compressed
+      - /perception/object_recognition/detection/objects
 
     topic_options:
       /sensing/lidar/concatenated/pointcloud:
@@ -31,3 +32,6 @@
       /sensing/camera/camera5/image_rect_color/compressed:
         type: CompressedImage
         entity: /topics/sensing/camera/camera5/image_rect_color/compressed
+      /perception/object_recognition/detection/objects:
+        type: DetectedObjects
+        entity: /topics/perception/object_recognition/detected_objects

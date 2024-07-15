@@ -16,10 +16,12 @@
 #define AWVIZ_RERUN_LOGGER_NODE_HPP_
 
 #include "awviz/topic_option.hpp"
+#include "rclcpp/subscription.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
 
+#include <autoware_perception_msgs/msg/detected_objects.hpp>
 #include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
@@ -63,6 +65,9 @@ private:
    */
   rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr
   createCompressedImageSubscription(const TopicOption & option);
+
+  rclcpp::Subscription<autoware_perception_msgs::msg::DetectedObjects>::SharedPtr
+  createDetectedObjectsSubscription(const TopicOption & option);
 
 private:
   const rerun::RecordingStream stream_;

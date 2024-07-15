@@ -7,6 +7,8 @@
 ```shell
 git clone git@github.com:ktro2828/awviz-cpp
 cd awviz-cpp
+mkdir src && vcs import src < depends.repos
+rospde update && rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
 colon build --symlink-install
 source install/setup.bash
 ```
@@ -36,6 +38,6 @@ ros2 launch awviz awviz.launch.xml
 
 |        Type        | Support |
 | :----------------: | :-----: |
-| `DetectedObjects`  |         |
+| `DetectedObjects`  |   ✅    |
 |  `TrackedObjects`  |         |
 | `PredictedObjects` |         |

@@ -18,6 +18,8 @@
 #include "awviz/topic_option.hpp"
 #include "rclcpp/subscription.hpp"
 
+#include "autoware_perception_msgs/msg/detail/detected_objects__struct.hpp"
+
 #include <chrono>
 
 namespace awviz
@@ -49,6 +51,8 @@ void RerunLoggerNode::createSubscriptions()
       topic_to_subscription_[option.topic()] = createImageSubscription(option);
     } else if (option.type() == MsgType::CompressedImage) {
       topic_to_subscription_[option.topic()] = createCompressedImageSubscription(option);
+    } else if (option.type() == MsgType::DetectedObjects) {
+      topic_to_subscription_[option.topic()] = createDetectedObjectsSubscription(option);
     } else {
       RCLCPP_WARN_STREAM(this->get_logger(), "Unknown msg type of topic: " << option.topic());
     }
@@ -79,6 +83,15 @@ RerunLoggerNode::createCompressedImageSubscription(const TopicOption & option)
   return this->create_subscription<sensor_msgs::msg::CompressedImage>(
     option.topic(), 1000, [&](const sensor_msgs::msg::CompressedImage::SharedPtr msg) {
       awviz::logCompressedImage(stream_, option.entity(), msg);
+    });
+}
+
+rclcpp::Subscription<autoware_perception_msgs::msg::DetectedObjects>::SharedPtr
+RerunLoggerNode::createDetectedObjectsSubscription(const TopicOption & option)
+{
+  return this->create_subscription<autoware_perception_msgs::msg::DetectedObjects>(
+    option.topic(), 1000, [&](const autoware_perception_msgs::msg::DetectedObjects::SharedPtr msg) {
+      awviz::logDetectedObjects(stream_, option.entity(), msg);
     });
 }
 }  // namespace awviz

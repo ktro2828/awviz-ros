@@ -52,3 +52,9 @@ qtcreator-*
 # Catkin custom files
 CATKIN_IGNORE
 COLCON_IGNORE
+
+# VSCode
+.vscode
+
+# Clang
+compile_flags.txt

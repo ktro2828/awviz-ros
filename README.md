@@ -1,14 +1,17 @@
 # awviz-cpp
 
-`awviz` offers a ROS viewer of [Autoware](https://github.com/autowarefoundation/autoware) powered by [rerun](https://github.com/rerun-io/rerun).
+`awviz` offers a ROS viewer of [Autoware](https://github.com/autowarefoundation/autoware) powered by [Rerun](https://github.com/rerun-io/rerun).
 
 ## Build
 
 ```shell
-git clone git@github.com:ktro2828/awviz-cpp
-cd awviz-cpp
+git clone git@github.com:ktro2828/awviz-cpp && cd awviz-cpp
+
+# import dependencies
 mkdir src && vcs import src < depends.repos
-rospde update && rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+rosdep update && rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
+
+# build awviz
 colon build --symlink-install
 source install/setup.bash
 ```
@@ -18,6 +21,24 @@ source install/setup.bash
 ```shell
 ros2 launch awviz awviz.launch.xml
 ```
+
+## Configuration
+
+Sample topic configuration is following:
+
+```yaml
+/**:
+  ros__parameters:
+    topic_names:
+      - xxx
+
+    topic_options:
+      xxx:
+        type: PointCloud
+        entity: /topics/xxx/pointcloud
+```
+
+For details, please refer to [awviz/config/awviz.param.yaml](./awviz/config/awviz.param.yaml).
 
 ## ROS msg support
 

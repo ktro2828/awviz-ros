@@ -15,19 +15,21 @@
 #ifndef AWVIZ__COLLECTION_ADAPTERS_HPP_
 #define AWVIZ__COLLECTION_ADAPTERS_HPP_
 
+#include "rerun/collection.hpp"
+
 #include <opencv2/opencv.hpp>
 #include <rerun.hpp>
 
 #include <utility>
 #include <vector>
 
-namespace awviz
+namespace rerun
 {
 /**
  * @brief An adaptor to be able to borrow an OpenvCV matrix into Rerun images without copying.
  */
 template <typename TElement>
-struct rerun::CollectionAdapter<TElement, cv::Mat>
+struct CollectionAdapter<TElement, cv::Mat>
 {
   /// Borrow for non-temporary.
   Collection<TElement> operator()(const cv::Mat & img)
@@ -46,6 +48,10 @@ struct rerun::CollectionAdapter<TElement, cv::Mat>
   }
 };
 
+}  // namespace rerun
+
+namespace awviz
+{
 inline rerun::Collection<rerun::TensorDimension> tensorShape(const cv::Mat & img)
 {
   return {
@@ -53,4 +59,5 @@ inline rerun::Collection<rerun::TensorDimension> tensorShape(const cv::Mat & img
     static_cast<size_t>(img.channels())};
 }
 }  // namespace awviz
+
 #endif  // AWVIZ__COLLECTION_ADAPTERS_HPP_

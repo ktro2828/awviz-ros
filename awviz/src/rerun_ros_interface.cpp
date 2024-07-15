@@ -22,9 +22,7 @@
 #include <cv_bridge/cv_bridge.h>
 
 #include <cmath>
-#include <cstddef>
 #include <cstring>
-#include <optional>
 #include <string>
 #include <vector>
 
@@ -37,7 +35,7 @@ void logPointCloud(
   stream.set_time_seconds(
     "timestamp", rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
 
-  size_t x_offset, y_offset, z_offset;
+  size_t x_offset{0}, y_offset{0}, z_offset{0};
   bool has_x{false}, has_y{false}, has_z{false};
   for (const auto & field : msg->fields) {
     if (field.name == "x") {

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.14)
 project(awviz)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -15,9 +15,15 @@ FetchContent_Declare(rerun_sdk URL
     https://github.com/rerun-io/rerun/releases/latest/download/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 
+include_directories(
+  include
+  SYSTEM
+  ${rerun_sdk_SOURCE_DIR}/src
+)
+
 file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
-ament_auto_add_library(${PROJECT_NAME} STATIC ${SOURCES})
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/../install/awviz/include)
+ament_auto_add_library(${PROJECT_NAME} SHARED ${SOURCES})
+target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_link_libraries(${PRJECT_NAME} rerun_sdk)
 
 rclcpp_components_register_node(${PROJECT_NAME}

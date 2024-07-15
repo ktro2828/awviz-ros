@@ -8,18 +8,18 @@
 
 #### `sensor_msgs`
 
-| Type          | Support |
-|:-------------:|:-------:|
+|     Type      | Support |
+| :-----------: | :-----: |
 | `PointCloud2` |         |
-| `Image`       |         |
+|    `Image`    |         |
 | `CameraInfo`  |         |
 
 ### `autoware_msgs`
 
 #### `autoware_perception_msgs`
 
-| Type              | Support |
-|:-----------------:|:-------:|
+|       Type        | Support |
+| :---------------: | :-----: |
 | `DetectedObject`  |         |
-| `TrackedObject`   |         |
+|  `TrackedObject`  |         |
 | `PredictedObject` |         |

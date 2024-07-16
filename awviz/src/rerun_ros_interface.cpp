@@ -22,6 +22,8 @@
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
 
+#include <sensor_msgs/point_cloud2_iterator.hpp>
+
 #include <cv_bridge/cv_bridge.h>
 
 #include <cmath>
@@ -56,25 +58,21 @@ void logPointCloud(
   stream.set_time_seconds(
     "timestamp", rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
 
-  size_t x_offset{0}, y_offset{0}, z_offset{0};
   bool has_x{false}, has_y{false}, has_z{false};
   for (const auto & field : msg->fields) {
     if (field.name == "x") {
-      x_offset = field.offset;
       if (field.datatype != sensor_msgs::msg::PointField::FLOAT32) {
         stream.log(entity, rerun::TextLog("Only FLOAT32 x field supported"));
         return;
       }
       has_x = true;
     } else if (field.name == "y") {
-      y_offset = field.offset;
       if (field.datatype != sensor_msgs::msg::PointField::FLOAT32) {
         stream.log(entity, rerun::TextLog("Only FLOAT32 y field supported"));
         return;
       }
       has_y = true;
     } else if (field.name == "z") {
-      z_offset = field.offset;
       if (field.datatype != sensor_msgs::msg::PointField::FLOAT32) {
         stream.log(entity, rerun::TextLog("Only FLOAT32 z field supported"));
         return;
@@ -88,28 +86,16 @@ void logPointCloud(
     return;
   }
 
+  sensor_msgs::PointCloud2ConstIterator<float> itr_x(*msg, "x");
+  sensor_msgs::PointCloud2ConstIterator<float> itr_y(*msg, "y");
+  sensor_msgs::PointCloud2ConstIterator<float> itr_z(*msg, "z");
+
+  // TODO(ktro2828): update method retrieving colormap values
   std::vector<rerun::Position3D> points(msg->width * msg->height);
   std::vector<float> values(msg->width * msg->height);
-
-  auto & colormap_field = *std::find_if(
-    msg->fields.cbegin(), msg->fields.cend(),
-    [&](const auto & field) { return field.name == "z"; });
-
-  for (size_t i = 0; i < msg->height; ++i) {
-    for (size_t j = 0; j < msg->width; ++j) {
-      auto offset = i * msg->row_step + j * msg->point_step;
-      rerun::Position3D position;
-      std::memcpy(&position.xyz.xyz[0], &msg->data[offset + x_offset], sizeof(float));
-      std::memcpy(&position.xyz.xyz[1], &msg->data[offset + y_offset], sizeof(float));
-      std::memcpy(&position.xyz.xyz[2], &msg->data[offset + z_offset], sizeof(float));
-      points.emplace_back(std::move(position));
-
-      float value;
-      std::memcpy(
-        &value, &msg->data[i * msg->row_step + j * msg->point_step + colormap_field.offset],
-        sizeof(float));
-      values.emplace_back(value);
-    }
+  for (; itr_x != itr_x.end(); ++itr_x, ++itr_y, ++itr_z) {
+    points.emplace_back(*itr_x, *itr_y, *itr_z);
+    values.emplace_back(*itr_z);
   }
 
   auto colors = colormap(values);

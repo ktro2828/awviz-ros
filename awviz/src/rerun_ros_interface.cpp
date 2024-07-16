@@ -17,6 +17,7 @@
 #include "awviz/uuid.hpp"
 #include "collection_adapters.hpp"
 #include "color.hpp"
+#include "rerun/archetypes/pinhole.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
@@ -113,6 +114,20 @@ void logPointCloud(
 
   auto colors = colormap(values);
   stream.log(entity, rerun::Points3D(points).with_colors(colors));
+}
+
+void logCameraInfo(
+  const rerun::RecordingStream & stream, const std::string & entity,
+  const sensor_msgs::msg::CameraInfo::ConstSharedPtr & msg)
+{
+  const std::array<float, 9> camera_intrinsic = {
+    static_cast<float>(msg->k[0]), static_cast<float>(msg->k[3]), static_cast<float>(msg->k[6]),
+    static_cast<float>(msg->k[1]), static_cast<float>(msg->k[4]), static_cast<float>(msg->k[7]),
+    static_cast<float>(msg->k[2]), static_cast<float>(msg->k[5]), static_cast<float>(msg->k[8])};
+
+  stream.log(
+    entity, rerun::Pinhole(camera_intrinsic)
+              .with_resolution(static_cast<int>(msg->width), static_cast<int>(msg->height)));
 }
 
 void logImage(

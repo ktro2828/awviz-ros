@@ -20,6 +20,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
 
+#include "sensor_msgs/msg/detail/camera_info__struct.hpp"
 #include <autoware_perception_msgs/msg/detected_objects.hpp>
 #include <autoware_perception_msgs/msg/tracked_objects.hpp>
 #include <geometry_msgs/msg/transform_stamped.hpp>
@@ -60,8 +61,16 @@ private:
 
   /**
    * @brief Create a subscriber for PointCloud2 msg.
+   * @param option Topic option.
    */
   rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr createPointCloudSubscription(
+    const TopicOption & option);
+
+  /**
+   * @brief Create a subscriber for CameraInfo msg.
+   * @param option Topic option.
+   */
+  rclcpp::Subscription<sensor_msgs::msg::CameraInfo>::SharedPtr createCameraInfoSubscription(
     const TopicOption & option);
 
   /**

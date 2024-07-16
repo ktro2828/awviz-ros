@@ -27,7 +27,7 @@ namespace awviz
 /**
  * @brief Represent ROS msg types.
  */
-enum MsgType { Unknown, PointCloud, Image, CompressedImage, DetectedObjects, TrackedObjects };
+enum MsgType { Unknown, PointCloud, CameraInfo, Image, CompressedImage, DetectedObjects, TrackedObjects };
 
 /**
  * @brief Convert string name of ROS msg into MsgType.
@@ -38,6 +38,8 @@ MsgType nameToMsgType(const std::string & name)
 {
   if (name == "PointCloud") {
     return MsgType::PointCloud;
+  } else if (name == "CameraInfo") {
+    return MsgType::CameraInfo;
   } else if (name == "Image") {
     return MsgType::Image;
   } else if (name == "CompressedImage") {

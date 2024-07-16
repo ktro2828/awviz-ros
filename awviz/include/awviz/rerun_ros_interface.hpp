@@ -22,6 +22,7 @@
 #include <autoware_perception_msgs/msg/detected_objects.hpp>
 #include <autoware_perception_msgs/msg/tracked_objects.hpp>
 #include <geometry_msgs/msg/transform_stamped.hpp>
+#include <sensor_msgs/msg/camera_info.hpp>
 #include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
@@ -49,6 +50,16 @@ void logTransform(
 void logPointCloud(
   const rerun::RecordingStream & stream, const std::string & entity,
   const sensor_msgs::msg::PointCloud2::ConstSharedPtr & msg);
+
+/**
+ * @brief Log CameraInfo msg to rerun stream.
+ * @param stream Rerun recodring stream.
+ * @param entity Entity path of the record.
+ * @param msg CameraInfo msg pointer.
+ */
+void logCameraInfo(
+  const rerun::RecordingStream & stream, const std::string & entity,
+  const sensor_msgs::msg::CameraInfo::ConstSharedPtr & msg);
 
 /**
  * @brief Log Image msg to rerun stream.

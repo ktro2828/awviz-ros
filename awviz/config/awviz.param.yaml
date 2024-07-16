@@ -3,11 +3,17 @@
     topic_names:
       - /sensing/lidar/concatenated/pointcloud
       - /sensing/camera/camera0/image_rect_color/compressed
+      - /sensing/camera/camera0/camera_info
       - /sensing/camera/camera1/image_rect_color/compressed
+      - /sensing/camera/camera1/camera_info
       - /sensing/camera/camera2/image_rect_color/compressed
+      - /sensing/camera/camera2/camera_info
       - /sensing/camera/camera3/image_rect_color/compressed
+      - /sensing/camera/camera3/camera_info
       - /sensing/camera/camera4/image_rect_color/compressed
+      - /sensing/camera/camera4/camera_info
       - /sensing/camera/camera5/image_rect_color/compressed
+      - /sensing/camera/camera5/camera_info
       - /perception/object_recognition/detection/objects
       - /perception/object_recognition/tracking/objects
 
@@ -18,21 +24,39 @@
       /sensing/camera/camera0/image_rect_color/compressed:
         type: CompressedImage
         entity: /topics/sensing/camera/camera0/image_rect_color/compressed
+      /sensing/camera/camera0/camera_info:
+        type: CameraInfo
+        entity: /topics/sensing/camera/camera0/camera_info
       /sensing/camera/camera1/image_rect_color/compressed:
         type: CompressedImage
         entity: /topics/sensing/camera/camera1/image_rect_color/compressed
+      /sensing/camera/camera1/camera_info:
+        type: CameraInfo
+        entity: /topics/sensing/camera/camera1/camera_info
       /sensing/camera/camera2/image_rect_color/compressed:
         type: CompressedImage
         entity: /topics/sensing/camera/camera2/image_rect_color/compressed
+      /sensing/camera/camera2/camera_info:
+        type: CameraInfo
+        entity: /topics/sensing/camera/camera2/camera_info
       /sensing/camera/camera3/image_rect_color/compressed:
         type: CompressedImage
         entity: /topics/sensing/camera/camera3/image_rect_color/compressed
+      /sensing/camera/camera3/camera_info:
+        type: CameraInfo
+        entity: /topics/sensing/camera/camera3/camera_info
       /sensing/camera/camera4/image_rect_color/compressed:
         type: CompressedImage
         entity: /topics/sensing/camera/camera4/image_rect_color/compressed
+      /sensing/camera/camera4/camera_info:
+        type: CameraInfo
+        entity: /topics/sensing/camera/camera4/camera_info
       /sensing/camera/camera5/image_rect_color/compressed:
         type: CompressedImage
         entity: /topics/sensing/camera/camera5/image_rect_color/compressed
+      /sensing/camera/camera5/camera_info:
+        type: CameraInfo
+        entity: /topics/sensing/camera/camera5/camera_info
       /perception/object_recognition/detection/objects:
         type: DetectedObjects
         entity: /topics/perception/object_recognition/detection/objects

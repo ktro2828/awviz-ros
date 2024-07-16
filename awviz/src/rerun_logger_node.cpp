@@ -51,6 +51,8 @@ void RerunLoggerNode::createSubscriptions()
 
     if (option.type() == MsgType::PointCloud) {
       topic_to_subscription_[option.topic()] = createPointCloudSubscription(option);
+    } else if (option.type() == MsgType::CameraInfo) {
+      topic_to_subscription_[option.topic()] = createCameraInfoSubscription(option);
     } else if (option.type() == MsgType::Image) {
       topic_to_subscription_[option.topic()] = createImageSubscription(option);
     } else if (option.type() == MsgType::CompressedImage) {
@@ -88,6 +90,15 @@ RerunLoggerNode::createPointCloudSubscription(const TopicOption & option)
         return;
       }
       awviz::logPointCloud(stream_, option.entity(), msg);
+    });
+}
+
+rclcpp::Subscription<sensor_msgs::msg::CameraInfo>::SharedPtr
+RerunLoggerNode::createCameraInfoSubscription(const TopicOption & option)
+{
+  return this->create_subscription<sensor_msgs::msg::CameraInfo>(
+    option.topic(), 1000, [&](const sensor_msgs::msg::CameraInfo::SharedPtr msg) {
+      awviz::logCameraInfo(stream_, option.entity(), msg);
     });
 }
 

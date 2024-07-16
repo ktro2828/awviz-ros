@@ -51,7 +51,7 @@ For details, please refer to [awviz/config/awviz.param.yaml](./awviz/config/awvi
 |   `PointCloud2`   |   ✅    |
 |      `Image`      |   ✅    |
 | `CompressedImage` |   ✅    |
-|   `CameraInfo`    |         |
+|   `CameraInfo`    |   ✅    |
 
 ### `autoware_msgs`
 

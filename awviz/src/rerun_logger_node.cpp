@@ -20,6 +20,7 @@
 #include "rclcpp/subscription.hpp"
 #include "tf2/exceptions.h"
 
+#include <algorithm>
 #include <chrono>
 
 namespace awviz
@@ -41,15 +42,27 @@ RerunLoggerNode::RerunLoggerNode(const rclcpp::NodeOptions & node_options)
     100ms, [&]() -> void { createSubscriptions(); }, parallel_callback_group_);
 }
 
+void RerunLoggerNode::updateTopicOptions()
+{
+  for (const auto & [topic_name, topic_types] : get_topic_names_and_types()) {
+    const auto topic_type = nameToMsgType(topic_types.front());
+    if (std::find_if(topic_options_.cbegin(), topic_options_.cend(), [&](const auto & option) {
+          return option.topic() == topic_name && option.type() == topic_type;
+        }) == topic_options_.cend()) {
+      topic_options_.emplace_back(topic_name, topic_type);
+    }
+  }
+}
+
 void RerunLoggerNode::createSubscriptions()
 {
-  // TODO(ktro2828): use rclcpp::Node::get_topic_names_and_types()
+  updateTopicOptions();
   for (const auto & option : topic_options_) {
     if (topic_to_subscription_.find(option.topic()) != topic_to_subscription_.end()) {
       continue;
     }
 
-    if (option.type() == MsgType::PointCloud) {
+    if (option.type() == MsgType::PointCloud2) {
       topic_to_subscription_[option.topic()] = createPointCloudSubscription(option);
     } else if (option.type() == MsgType::CameraInfo) {
       topic_to_subscription_[option.topic()] = createCameraInfoSubscription(option);

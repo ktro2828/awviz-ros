@@ -29,7 +29,7 @@ namespace awviz
  */
 enum MsgType {
   Unknown,
-  PointCloud,
+  PointCloud2,
   CameraInfo,
   Image,
   CompressedImage,
@@ -44,17 +44,17 @@ enum MsgType {
  */
 MsgType nameToMsgType(const std::string & name)
 {
-  if (name == "PointCloud") {
-    return MsgType::PointCloud;
-  } else if (name == "CameraInfo") {
+  if (name == "sensor_msgs/msg/PointCloud2") {
+    return MsgType::PointCloud2;
+  } else if (name == "sensor_msgs/msg/CameraInfo") {
     return MsgType::CameraInfo;
-  } else if (name == "Image") {
+  } else if (name == "sensor_msgs/msg/Image") {
     return MsgType::Image;
-  } else if (name == "CompressedImage") {
+  } else if (name == "sensor_msgs/msg/CompressedImage") {
     return MsgType::CompressedImage;
-  } else if (name == "DetectedObjects") {
+  } else if (name == "autoware_perception_msgs/msg/DetectedObjects") {
     return MsgType::DetectedObjects;
-  } else if (name == "TrackedObjects") {
+  } else if (name == "autoware_perception_msgs/msg/TrackedObjects") {
     return MsgType::TrackedObjects;
   } else {
     return MsgType::Unknown;

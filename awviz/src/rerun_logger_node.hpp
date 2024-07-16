@@ -22,6 +22,7 @@
 #include <rerun.hpp>
 
 #include <autoware_perception_msgs/msg/detected_objects.hpp>
+#include <autoware_perception_msgs/msg/tracked_objects.hpp>
 #include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
@@ -66,8 +67,19 @@ private:
   rclcpp::Subscription<sensor_msgs::msg::CompressedImage>::SharedPtr
   createCompressedImageSubscription(const TopicOption & option);
 
+  /**
+   * @brief Create subscriber for DetectedObjects msg.
+   * @param option Topic option.
+   */
   rclcpp::Subscription<autoware_perception_msgs::msg::DetectedObjects>::SharedPtr
   createDetectedObjectsSubscription(const TopicOption & option);
+
+  /**
+   * @brief Create subscriber for TrackedObjects msg.
+   * @param option Topic option.
+   */
+  rclcpp::Subscription<autoware_perception_msgs::msg::TrackedObjects>::SharedPtr
+  createTrackedObjectsSubscription(const TopicOption & option);
 
 private:
   const rerun::RecordingStream stream_;

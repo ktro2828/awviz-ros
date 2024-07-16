@@ -60,5 +60,5 @@ For details, please refer to [awviz/config/awviz.param.yaml](./awviz/config/awvi
 |        Type        | Support |
 | :----------------: | :-----: |
 | `DetectedObjects`  |   ✅    |
-|  `TrackedObjects`  |         |
+|  `TrackedObjects`  |   ✅    |
 | `PredictedObjects` |         |

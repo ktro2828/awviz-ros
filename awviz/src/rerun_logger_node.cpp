@@ -14,30 +14,36 @@
 
 #include "rerun_logger_node.hpp"
 
+#include "awviz/geometry.hpp"
 #include "awviz/rerun_ros_interface.hpp"
 #include "awviz/topic_option.hpp"
 #include "rclcpp/subscription.hpp"
+#include "tf2/exceptions.h"
 
 #include <chrono>
 
 namespace awviz
 {
+using std::chrono_literals::operator""ms;
 RerunLoggerNode::RerunLoggerNode(const rclcpp::NodeOptions & node_options)
 : Node("rerun_logger_node", node_options), stream_("rerun_logger_node")
 {
-  using std::chrono_literals::operator""ms;
-
   stream_.spawn().exit_on_failure();
 
   topic_options_ = TopicOption::fromRosParam(this);
 
   parallel_callback_group_ = this->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
+
+  tf_buffer_ = std::make_unique<tf2_ros::Buffer>(this->get_clock());
+  tf_listener_ = std::make_unique<tf2_ros::TransformListener>(*tf_buffer_);
+
   callback_timer_ = create_wall_timer(
     100ms, [&]() -> void { createSubscriptions(); }, parallel_callback_group_);
 }
 
 void RerunLoggerNode::createSubscriptions()
 {
+  // TODO(ktro2828): use rclcpp::Node::get_topic_names_and_types()
   for (const auto & option : topic_options_) {
     if (topic_to_subscription_.find(option.topic()) != topic_to_subscription_.end()) {
       continue;
@@ -54,8 +60,22 @@ void RerunLoggerNode::createSubscriptions()
     } else if (option.type() == MsgType::TrackedObjects) {
       topic_to_subscription_[option.topic()] = createTrackedObjectsSubscription(option);
     } else {
+      topic_to_subscription_[option.topic()] = nullptr;
       RCLCPP_WARN_STREAM(this->get_logger(), "Unknown msg type of topic: " << option.topic());
     }
+  }
+}
+
+bool RerunLoggerNode::logMapTransform(
+  const std_msgs::msg::Header & header, const TopicOption & option) const
+{
+  try {
+    auto transform = tf_buffer_->lookupTransform("map", header.frame_id, header.stamp, 100ms);
+    awviz::logTransform(stream_, option.entity(), transform);
+    return true;
+  } catch (tf2::TransformException & e) {
+    RCLCPP_WARN(get_logger(), e.what());
+    return false;
   }
 }
 
@@ -64,6 +84,9 @@ RerunLoggerNode::createPointCloudSubscription(const TopicOption & option)
 {
   return this->create_subscription<sensor_msgs::msg::PointCloud2>(
     option.topic(), 1000, [&](const sensor_msgs::msg::PointCloud2::SharedPtr msg) {
+      if (!isMapFrameId(msg->header) && !logMapTransform(msg->header, option)) {
+        return;
+      }
       awviz::logPointCloud(stream_, option.entity(), msg);
     });
 }
@@ -91,6 +114,9 @@ RerunLoggerNode::createDetectedObjectsSubscription(const TopicOption & option)
 {
   return this->create_subscription<autoware_perception_msgs::msg::DetectedObjects>(
     option.topic(), 1000, [&](const autoware_perception_msgs::msg::DetectedObjects::SharedPtr msg) {
+      if (!isMapFrameId(msg->header) && !logMapTransform(msg->header, option)) {
+        return;
+      }
       awviz::logDetectedObjects(stream_, option.entity(), msg);
     });
 }
@@ -100,6 +126,9 @@ RerunLoggerNode::createTrackedObjectsSubscription(const TopicOption & option)
 {
   return this->create_subscription<autoware_perception_msgs::msg::TrackedObjects>(
     option.topic(), 1000, [&](const autoware_perception_msgs::msg::TrackedObjects::SharedPtr msg) {
+      if (!isMapFrameId(msg->header) && !logMapTransform(msg->header, option)) {
+        return;
+      }
       awviz::logTrackedObjects(stream_, option.entity(), msg);
     });
 }

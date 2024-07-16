@@ -31,6 +31,23 @@
 
 namespace awviz
 {
+void logTransform(
+  const rerun::RecordingStream & stream, const std::string & entity,
+  const geometry_msgs::msg::TransformStamped & msg)
+{
+  stream.set_time_seconds(
+    "timestamp", rclcpp::Time(msg.header.stamp.sec, msg.header.stamp.nanosec).seconds());
+
+  stream.log(
+    entity,
+    rerun::Transform3D(
+      rerun::Vector3D(
+        msg.transform.translation.x, msg.transform.translation.y, msg.transform.translation.z),
+      rerun::Quaternion::from_wxyz(
+        msg.transform.rotation.w, msg.transform.rotation.x, msg.transform.rotation.y,
+        msg.transform.rotation.z)));
+}
+
 void logPointCloud(
   const rerun::RecordingStream & stream, const std::string & entity,
   const sensor_msgs::msg::PointCloud2::ConstSharedPtr & msg)

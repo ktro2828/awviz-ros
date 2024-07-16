@@ -21,6 +21,7 @@
 
 #include <autoware_perception_msgs/msg/detected_objects.hpp>
 #include <autoware_perception_msgs/msg/tracked_objects.hpp>
+#include <geometry_msgs/msg/transform_stamped.hpp>
 #include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
@@ -29,6 +30,16 @@
 
 namespace awviz
 {
+/**
+ * @brief Log TransformStamped msg to rerun stream.
+ * @param stream Rerun recording stream.
+ * @param entity Entity path of the record.
+ * @param msg TransformStamped msg pointer.
+ */
+void logTransform(
+  const rerun::RecordingStream & stream, const std::string & entity,
+  const geometry_msgs::msg::TransformStamped & msg);
+
 /**
  * @brief Log PointCloud2 msg to rerun stream.
  * @param stream Rerun recording stream.

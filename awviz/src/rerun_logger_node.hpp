@@ -16,18 +16,20 @@
 #define AWVIZ_RERUN_LOGGER_NODE_HPP_
 
 #include "awviz/topic_option.hpp"
-#include "rclcpp/subscription.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
 
 #include <autoware_perception_msgs/msg/detected_objects.hpp>
 #include <autoware_perception_msgs/msg/tracked_objects.hpp>
+#include <geometry_msgs/msg/transform_stamped.hpp>
 #include <sensor_msgs/msg/compressed_image.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
+#include <std_msgs/msg/header.hpp>
 
 #include <tf2_ros/buffer.h>
+#include <tf2_ros/transform_listener.h>
 
 #include <map>
 #include <memory>
@@ -46,6 +48,15 @@ private:
    * @brief Create subscribers.
    */
   void createSubscriptions();
+
+  /**
+   * @brief Log Transform3D for map frame id to rerun stream.
+   *
+   * @param header
+   * @param option
+   * @return Return true, if logging is succeeded.
+   */
+  bool logMapTransform(const std_msgs::msg::Header & header, const TopicOption & option) const;
 
   /**
    * @brief Create a subscriber for PointCloud2 msg.
@@ -88,6 +99,7 @@ private:
   std::map<std::string, std::shared_ptr<rclcpp::SubscriptionBase>> topic_to_subscription_;
   std::map<std::string, std::string> frame_id_to_entity_;
   std::unique_ptr<tf2_ros::Buffer> tf_buffer_;
+  std::unique_ptr<tf2_ros::TransformListener> tf_listener_;
   rclcpp::TimerBase::SharedPtr callback_timer_;
   rclcpp::TimerBase::SharedPtr update_tf_timer_;
 

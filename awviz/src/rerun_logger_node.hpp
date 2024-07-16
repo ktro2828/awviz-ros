@@ -46,6 +46,11 @@ public:
 
 private:
   /**
+   * @brief Update topic option container if the topic has not registered yet.
+   */
+  void updateTopicOptions();
+
+  /**
    * @brief Create subscribers.
    */
   void createSubscriptions();

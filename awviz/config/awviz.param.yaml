@@ -9,6 +9,7 @@
       - /sensing/camera/camera4/image_rect_color/compressed
       - /sensing/camera/camera5/image_rect_color/compressed
       - /perception/object_recognition/detection/objects
+      - /perception/object_recognition/tracking/objects
 
     topic_options:
       /sensing/lidar/concatenated/pointcloud:
@@ -34,4 +35,7 @@
         entity: /topics/sensing/camera/camera5/image_rect_color/compressed
       /perception/object_recognition/detection/objects:
         type: DetectedObjects
-        entity: /topics/perception/object_recognition/detected_objects
+        entity: /topics/perception/object_recognition/detection/objects
+      /perception/object_recognition/tracking/objects:
+        type: TrackedObjects
+        entity: /topics/perception/object_recognition/tracking/objects

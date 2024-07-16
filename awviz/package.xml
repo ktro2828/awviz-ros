@@ -12,6 +12,7 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_components</depend>
   <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
   <depend>cv_bridge</depend>
   <depend>tf2_ros</depend>
   <depend>autoware_perception_msgs</depend>

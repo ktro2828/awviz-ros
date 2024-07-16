@@ -27,7 +27,15 @@ namespace awviz
 /**
  * @brief Represent ROS msg types.
  */
-enum MsgType { Unknown, PointCloud, CameraInfo, Image, CompressedImage, DetectedObjects, TrackedObjects };
+enum MsgType {
+  Unknown,
+  PointCloud,
+  CameraInfo,
+  Image,
+  CompressedImage,
+  DetectedObjects,
+  TrackedObjects
+};
 
 /**
  * @brief Convert string name of ROS msg into MsgType.

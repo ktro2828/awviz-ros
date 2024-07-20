@@ -28,7 +28,6 @@
 
 #include <cmath>
 #include <cstdint>
-#include <cstring>
 #include <string>
 #include <vector>
 
@@ -90,15 +89,14 @@ void logPointCloud(
   sensor_msgs::PointCloud2ConstIterator<float> itr_y(*msg, "y");
   sensor_msgs::PointCloud2ConstIterator<float> itr_z(*msg, "z");
 
-  // TODO(ktro2828): update method retrieving colormap values
   std::vector<rerun::Position3D> points(msg->width * msg->height);
-  std::vector<float> values(msg->width * msg->height);
+  std::vector<float> distances(msg->width * msg->height);
   for (; itr_x != itr_x.end(); ++itr_x, ++itr_y, ++itr_z) {
     points.emplace_back(*itr_x, *itr_y, *itr_z);
-    values.emplace_back(*itr_z);
+    distances.emplace_back(std::hypot(*itr_x, *itr_y, *itr_z));
   }
 
-  auto colors = colormap(values);
+  auto colors = colormap(distances);
   stream.log(entity, rerun::Points3D(points).with_colors(colors));
 }
 

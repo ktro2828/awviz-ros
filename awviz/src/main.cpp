@@ -12,20 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef AWVIZ__GEOMETRY_HPP_
-#define AWVIZ__GEOMETRY_HPP_
+#include <iostream>
 
-#include <std_msgs/msg/header.hpp>
-
-namespace awviz
+int main()
 {
-/**
- * @brief Check whether the frame id associated with the header is "map".
- * @param header Header msg.
- */
-inline bool isMapFrameId(const std_msgs::msg::Header & header)
-{
-  return header.frame_id == "map";
+  std::cout << "Hello, awviz!!" << std::endl;
 }
-}  // namespace awviz
-#endif  // AWVIZ__GEOMETRY_HPP_

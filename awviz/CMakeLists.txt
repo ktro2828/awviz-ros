@@ -7,6 +7,7 @@ endif()
 
 # find dependencies
 find_package(ament_cmake_auto REQUIRED)
+find_package(awviz_common REQUIRED)
 ament_auto_find_build_dependencies()
 
 # executable

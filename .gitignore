@@ -58,3 +58,5 @@ COLCON_IGNORE
 
 # Clang
 compile_flags.txt
+
+.cache

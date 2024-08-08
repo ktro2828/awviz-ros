@@ -12,12 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <awviz_common/viewer.hpp>
+#include "awviz_common/viewer.hpp"
 
-#include <iostream>
+#include "awviz_common/visualization_manager.hpp"
+#include "rclcpp/utilities.hpp"
+#include "rerun/recording_stream.hpp"
 
-int main()
+#include <memory>
+
+namespace awviz_common
 {
-  std::cout << "Hello, awviz!!" << std::endl;
-  awviz_common::ViewerApp app;
+ViewerApp::ViewerApp()
+{
+  node_ = std::make_shared<rclcpp::Node>("awviz");
+  stream_ = std::make_shared<rerun::RecordingStream>("awviz");
+  stream_->spawn().exit_on_failure();
+  manager_ = std::make_unique<VisualizationManager>(node_, stream_);
 }
+
+ViewerApp::~ViewerApp()
+{
+  rclcpp::shutdown();
+}
+}  // namespace awviz_common

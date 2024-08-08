@@ -1,64 +1,23 @@
-# awviz-cpp
+# AWViz
 
-`awviz` offers a ROS viewer of [Autoware](https://github.com/autowarefoundation/autoware) powered by [Rerun](https://github.com/rerun-io/rerun).
+AWViz offers a 3D viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
 
-## Build
+## Build & Run
+
+### Build
 
 ```shell
+# download repository
 git clone git@github.com:ktro2828/awviz-cpp && cd awviz-cpp
 
-# import dependencies
-mkdir src && vcs import src < depends.repos
-rosdep update && rosdep install -y --from-paths src --ignore-src --rosdistro $ROS_DISTRO
-
 # build awviz
-colon build --symlink-install
+colon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
 ```
 
-## Run
+### Run
 
 ```shell
-ros2 launch awviz awviz.launch.xml
+# run awviz
+ros2 run awviz awviz
 ```
-
-## Configuration
-
-Sample topic configuration is following:
-
-```yaml
-/**:
-  ros__parameters:
-    topic_names:
-      - xxx
-
-    topic_options:
-      xxx:
-        type: PointCloud
-        entity: /topics/xxx/pointcloud
-```
-
-For details, please refer to [awviz/config/awviz.param.yaml](./awviz/config/awviz.param.yaml).
-
-## ROS msg support
-
-### `common_interfaces`
-
-#### `sensor_msgs`
-
-|       Type        | Support |
-| :---------------: | :-----: |
-|   `PointCloud2`   |   ✅    |
-|      `Image`      |   ✅    |
-| `CompressedImage` |   ✅    |
-|   `CameraInfo`    |   ✅    |
-
-### `autoware_msgs`
-
-#### `autoware_perception_msgs`
-
-|        Type        | Support |
-| :----------------: | :-----: |
-| `DetectedObjects`  |   ✅    |
-|  `TrackedObjects`  |   ✅    |
-| `PredictedObjects` |         |

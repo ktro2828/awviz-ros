@@ -24,14 +24,14 @@
 namespace awviz_common
 {
 /**
- * @brief Interdimediate class for display items.
+ * @brief Intermediate class for display items.
  */
 class Display
 {
 public:
-  Display() {}
+  Display() = default;
 
-  virtual ~Display() {}
+  virtual ~Display() = default;
 
   /**
    * @brief Initialize attributes.

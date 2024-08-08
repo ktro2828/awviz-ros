@@ -15,6 +15,16 @@
 #ifndef AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_
 #define AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_
 
+#include "awviz_common/display.hpp"
+#include "awviz_common/display_factory.hpp"
+
+#include <rclcpp/rclcpp.hpp>
+#include <rerun.hpp>
+
+#include <map>
+#include <memory>
+#include <string>
+
 namespace awviz_common
 {
 /**
@@ -23,10 +33,19 @@ namespace awviz_common
 class VisualizationManager
 {
 public:
-  VisualizationManager() {}
+  VisualizationManager(
+    rclcpp::Node::SharedPtr node, const std::shared_ptr<rerun::RecordingStream> & stream);
 
 private:
-  ~VisualizationManager() {}
+  rclcpp::Node::SharedPtr node_;
+  const std::shared_ptr<rerun::RecordingStream> stream_;
+  std::unique_ptr<DisplayFactory> display_factory_;
+  std::map<std::string, std::shared_ptr<Display>> display_group_;
+  rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;
+  rclcpp::TimerBase::SharedPtr callback_timer_;
+
+private:
+  void createSubscriptions();
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_

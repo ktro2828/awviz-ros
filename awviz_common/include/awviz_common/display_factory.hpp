@@ -34,7 +34,8 @@ class DisplayFactory : public PluginFactory<Display>
 {
 public:
   DisplayFactory();
-  ~DisplayFactory();
+
+  ~DisplayFactory() = default;
 
   virtual const std::set<std::string> & getMessageTypes(const std::string & class_id);
 
@@ -59,7 +60,7 @@ private:
   bool hasRootNode(const tinyxml2::XMLElement * element) const;
 
   /**
-   * @brief Check whether xml elemnet has a library root.
+   * @brief Check whether xml element has a library root.
    * @param element Parsed XML element.
    * @return Return true if the element has the library root.
    */

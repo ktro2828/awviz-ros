@@ -31,7 +31,7 @@ struct PluginInfo
   std::string id;
   std::string name;
   std::string package;
-  std::string descritpion;
+  std::string description;
 };
 
 /**
@@ -42,9 +42,9 @@ class PluginFactory
 {
 public:
   /**
-   * @brief Construct facotry loading `pluginlib::ClassLoader<T>`.
+   * @brief Construct factory loading `pluginlib::ClassLoader<T>`.
    * @param package Name of package.
-   * @param base_calss_type A string with the fully qualified base class type for the plugin, i.e.
+   * @param base_class_type A string with the fully qualified base class type for the plugin, i.e.
    * `NAMESPACE::PLUGIN`.
    */
   PluginFactory(const std::string & package, const std::string & base_class_type)
@@ -71,8 +71,8 @@ public:
   {
     auto name = class_loader_->getName(class_id);
     auto package = class_loader_->getClassPackage(class_id);
-    auto descritpion = class_loader_->getClasssDescription(class_id);
-    return {class_id, name, package, descritpion};
+    auto description = class_loader_->getClasssDescription(class_id);
+    return {class_id, name, package, description};
   }
 
   /**

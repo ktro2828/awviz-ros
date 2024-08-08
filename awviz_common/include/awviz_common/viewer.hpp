@@ -15,6 +15,8 @@
 #ifndef AWVIZ_COMMON__VIEWER_HPP_
 #define AWVIZ_COMMON__VIEWER_HPP_
 
+#include "awviz_common/visualization_manager.hpp"
+
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
 
@@ -30,9 +32,8 @@ class ViewerApp
 public:
   /**
    * @brief Construct an application instance with the root ROS node.
-   * @param node Root ROS node.
    */
-  explicit ViewerApp(rclcpp::Node::SharedPtr node);
+  ViewerApp();
 
   /**
    * @brief Destruct an application instance.
@@ -42,6 +43,7 @@ public:
 private:
   rclcpp::Node::SharedPtr node_;
   std::shared_ptr<rerun::RecordingStream> stream_;
+  std::unique_ptr<VisualizationManager> manager_;
 };
 }  // namespace awviz_common
 

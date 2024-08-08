@@ -12,9 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <awviz_common/viewer.hpp>
+
 #include <iostream>
 
 int main()
 {
   std::cout << "Hello, awviz!!" << std::endl;
+  awviz_common::ViewerApp app;
 }

@@ -1,6 +1,6 @@
 # AWViz
 
-AWViz offers a 3D viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
+AWViz offers a 3D ROS viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
 
 ## Build & Run
 
@@ -8,7 +8,7 @@ AWViz offers a 3D viewer for [Autoware](https://autoware.org) powered by [Rerun]
 
 ```shell
 # download repository
-git clone git@github.com:ktro2828/awviz-cpp && cd awviz-cpp
+git clone git@github.com:ktro2828/awviz-ros && cd awviz-ros
 
 # build awviz
 colon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release

@@ -40,6 +40,11 @@ public:
    */
   ~ViewerApp();
 
+  /**
+   * @brief Start running application.
+   */
+  void run();
+
 private:
   rclcpp::Node::SharedPtr node_;
   std::shared_ptr<rerun::RecordingStream> stream_;

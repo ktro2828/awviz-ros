@@ -14,10 +14,9 @@
 
 #include <awviz_common/viewer.hpp>
 
-#include <iostream>
-
-int main()
+int main(int argc, char ** argv)
 {
-  std::cout << "Hello, awviz!!" << std::endl;
+  rclcpp::init(argc, argv);
   awviz_common::ViewerApp app;
+  app.run();
 }

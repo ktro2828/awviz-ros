@@ -18,6 +18,8 @@
 #include "rclcpp/utilities.hpp"
 #include "rerun/recording_stream.hpp"
 
+#include <rclcpp/executors.hpp>
+
 #include <memory>
 
 namespace awviz_common
@@ -33,5 +35,10 @@ ViewerApp::ViewerApp()
 ViewerApp::~ViewerApp()
 {
   rclcpp::shutdown();
+}
+
+void ViewerApp::run()
+{
+  rclcpp::spin(node_);
 }
 }  // namespace awviz_common

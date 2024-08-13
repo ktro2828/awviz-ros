@@ -12,25 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "awviz_common/viewer.hpp"
+#ifndef AWVIZ_PLUGIN__IMAGE__IMAGE_DISPLAY_HPP_
+#define AWVIZ_PLUGIN__IMAGE__IMAGE_DISPLAY_HPP_
 
-namespace awviz_common
-{
-ViewerApp::ViewerApp()
-{
-  node_ = std::make_shared<rclcpp::Node>("awviz");
-  stream_ = std::make_shared<rerun::RecordingStream>("awviz");
-  stream_->spawn().exit_on_failure();
-  manager_ = std::make_unique<VisualizationManager>(node_, stream_);
-}
+#include <awviz_common/display.hpp>
 
-ViewerApp::~ViewerApp()
-{
-  rclcpp::shutdown();
-}
+#include <sensor_msgs/msg/image.hpp>
 
-void ViewerApp::run()
+namespace awviz_plugin
 {
-  rclcpp::spin(node_);
-}
-}  // namespace awviz_common
+/**
+ * @brief Display plugin of `sensor_msgs::msg::Image`.
+ */
+class ImageDisplay : public awviz_common::RosTopicDisplay<sensor_msgs::msg::Image>
+{
+public:
+  /**
+   * @brief Construct a new object.
+   */
+  ImageDisplay();
+
+protected:
+  void logToStream(sensor_msgs::msg::Image::ConstSharedPtr msg) override;
+};
+}  // namespace awviz_plugin
+
+#endif  // AWVIZ_PLUGIN__IMAGE__IMAGE_DISPLAY_HPP_

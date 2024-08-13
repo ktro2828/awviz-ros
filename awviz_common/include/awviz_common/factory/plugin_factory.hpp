@@ -20,6 +20,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <vector>
 
 namespace awviz_common
 {
@@ -28,10 +29,11 @@ namespace awviz_common
  */
 struct PluginInfo
 {
-  std::string id;
-  std::string name;
-  std::string package;
-  std::string description;
+  std::string id;           //!< Class id.
+  std::string name;         //!< Name of class.
+  std::string type;         //!< Type of class.
+  std::string package;      //!< Package name.
+  std::string description;  //!< Description of class.
 };
 
 /**
@@ -54,44 +56,55 @@ public:
 
   /**
    * @brief Return plugin manifest path.
-   * @param class_id Lookup name of class.
+   * @param lookup_name Lookup name of the class.
    * @return The path of the associated plugin manifest.
    */
-  std::string getPluginManifestPath(const std::string & class_id) const
+  std::string getPluginManifestPath(const std::string & lookup_name) const
   {
-    return class_loader_->getPluginManifestPath(class_id);
+    return class_loader_->getPluginManifestPath(lookup_name);
   }
 
   /**
    * @brief Return plugin information.
-   * @param class_id Lookup name of the class.
+   * @param lookup_name Lookup name of the class.
    * @return PluginInfo instance.
    */
-  PluginInfo getPluginInfo(const std::string & class_id) const
+  PluginInfo getPluginInfo(const std::string & lookup_name) const
   {
-    auto name = class_loader_->getName(class_id);
-    auto package = class_loader_->getClassPackage(class_id);
-    auto description = class_loader_->getClasssDescription(class_id);
-    return {class_id, name, package, description};
+    auto name = class_loader_->getName(lookup_name);
+    auto type = class_loader_->getClassType(lookup_name);
+    auto package = class_loader_->getClassPackage(lookup_name);
+    auto description = class_loader_->getClassDescription(lookup_name);
+    return {lookup_name, name, type, package, description};
   }
 
   /**
    * @brief Create a instance of the plugin.
-   * @param class_id Lookup name of the class.
-   * @return Instance of plugin.
+   * @param lookup_name Lookup name of the class.
+   * @return Instance of plugin. Returns `nullptr` if exception occurred.
    */
-  virtual std::shared_ptr<T> createInstance(const std::string & class_id)
+  virtual std::shared_ptr<T> createInstance(const std::string & lookup_name) const
   {
     try {
-      return class_loader_->createSharedInstance(class_id);
+      return class_loader_->createSharedInstance(lookup_name);
     } catch (pluginlib::PluginlibException & ex) {
-      std::cout << ex.what() << std::endl;
+      std::cerr << "[PluginlibException]: " << ex.what() << std::endl;
       return nullptr;
     }
   }
 
+  /**
+   * @brief Return a list of all available classes for this ClassLoader's base class type.
+   *
+   * @return std::vector<std::string>
+   */
+  std::vector<std::string> getDeclaredClasses() const
+  {
+    return class_loader_->getDeclaredClasses();
+  }
+
 private:
-  std::shared_ptr<pluginlib::ClassLoader<T>> class_loader_;
+  std::shared_ptr<pluginlib::ClassLoader<T>> class_loader_;  //!< ClassLoader object.
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__PLUGIN_FACTORY_HPP_

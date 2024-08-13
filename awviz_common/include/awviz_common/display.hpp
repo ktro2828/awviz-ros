@@ -15,8 +15,12 @@
 #ifndef AWVIZ_COMMON__DISPLAY_HPP_
 #define AWVIZ_COMMON__DISPLAY_HPP_
 
+#include "awviz_common/property.hpp"
+
+#include <rclcpp/qos.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
+#include <rosidl_runtime_cpp/traits.hpp>
 
 #include <memory>
 #include <string>
@@ -54,6 +58,11 @@ public:
   virtual void start() = 0;
 
   /**
+   * @brief End to display
+   */
+  virtual void end() = 0;
+
+  /**
    * @brief Return true if the initialization is completed.
    * @return bool Return the value of the private member named `is_initialized_`.
    */
@@ -66,68 +75,7 @@ protected:
 };
 
 /**
- * @brief Struct representing a property of ROS msg display instance.
- */
-class RosTopicProperty
-{
-public:
-  RosTopicProperty() {}
-
-  /**
-   * @brief Construct instance.
-   * @param type ROS msg type.
-   * @param topic Name of topic.
-   * @param entity Entity path to log.
-   */
-  RosTopicProperty(const std::string & type, const std::string & topic, const std::string & entity)
-  : type_(type), topic_(topic), entity_(entity)
-  {
-  }
-
-  /**
-   * @brief Set ROS message type name.
-   * @param type Name of ROS message type.
-   */
-  void setType(const std::string & type) { type_ = type; }
-
-  /**
-   * @brief Set ROS topic name.
-   * @param topic Name of topic.
-   */
-  void setTopic(const std::string & topic) { topic_ = topic; }
-
-  /**
-   * @brief Set entity path of record.
-   * @param entity Entity path of record.
-   */
-  void setEntity(const std::string & entity) { entity_ = entity; }
-
-  /**
-   * @brief Get ROS message type.
-   * @return ROS message type name.
-   */
-  const std::string & type() const noexcept { return type_; }
-
-  /**
-   * @brief Get ROS topic name.
-   * @return Name of topic.
-   */
-  const std::string & topic() const noexcept { return topic_; }
-
-  /**
-   * @brief Get entity path of record.
-   * @return Entity path of record.
-   */
-  const std::string & entity() const noexcept { return entity_; }
-
-private:
-  std::string type_;
-  std::string topic_;
-  std::string entity_;
-};
-
-/**
- * @brief
+ * @brief Inherited plugin class to display ROS topics.
  */
 template <typename MsgType>
 class RosTopicDisplay : public Display
@@ -138,7 +86,7 @@ public:
    */
   RosTopicDisplay()
   {
-    auto msg_type = rosidl_generator_traits::name<MsgType>();
+    const auto msg_type = rosidl_generator_traits::name<MsgType>();
     property_.setType(msg_type);
   }
 
@@ -176,7 +124,14 @@ public:
    */
   void start() override { subscribe(); }
 
-private:
+  /**
+   * @brief End to display.
+   */
+  void end() override { unsubscribe(); }
+
+protected:
+  static constexpr const char * TIMELINE_NAME = "timestamp";  //!< Entity name of timeline record.
+
   /**
    * @brief Start to subscribing the specified topic.
    */
@@ -203,9 +158,9 @@ private:
    */
   virtual void logToStream(typename MsgType::ConstSharedPtr msg) = 0;
 
-private:
-  typename rclcpp::Subscription<MsgType>::SharedPtr subscription_;
-  RosTopicProperty property_;
+protected:
+  typename rclcpp::Subscription<MsgType>::SharedPtr subscription_;  //!< Subscription of the topic.
+  RosTopicProperty property_;                                       //!< Topic property.
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__DISPLAY_HPP_

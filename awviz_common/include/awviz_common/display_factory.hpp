@@ -21,6 +21,7 @@
 #include <tinyxml2.h>
 
 #include <map>
+#include <optional>
 #include <set>
 #include <string>
 
@@ -37,19 +38,29 @@ public:
 
   ~DisplayFactory() = default;
 
-  virtual const std::set<std::string> & getMessageTypes(const std::string & class_id);
+  /**
+   * @brief Get the set of declared message types.
+   *
+   * @param lookup_name Lookup name of the class.
+   * @return Set of declared message types.
+   */
+  const std::set<std::string> & getMessageTypes(const std::string & lookup_name);
+
+  /**
+   * @brief Get the Class Id of the corresponding message type.
+   *
+   * @param msg_type ROS message type.
+   * @return Return a string of lookup name if the specified type has been declared, otherwise
+   * returns nullptr.
+   */
+  std::optional<std::string> getClassLookupName(const std::string & msg_type) const;
 
 public:
-  static constexpr const char * LIBRARY_KEY = "library";
-  static constexpr const char * CLASS_LIBRARIES_KEY = "class_libraries";
-  static constexpr const char * CLASS_KEY = "class";
-  static constexpr const char * MSG_TYPE_KEY = "message_type";
-  static constexpr const char * TYPE_KEY = "type";
-  static constexpr const char * NAME_KEY = "name";
-
-private:
-  // Buffer storing ROS message types.
-  std::map<std::string, std::set<std::string>> msg_type_buffer_;
+  static constexpr const char * LIBRARY_TAG = "library";            //!< XML tag of library.
+  static constexpr const char * CLASS_TAG = "class";                //!< XML tag of class.
+  static constexpr const char * MESSAGE_TYPE_TAG = "message_type";  //!< XML tag of message type.
+  static constexpr const char * TYPE_ATTRIBUTE = "type";            //!< XML attribute of type.
+  static constexpr const char * NAME_ATTRIBUTE = "name";            //!< XML attribute of name.
 
 private:
   /**
@@ -75,13 +86,14 @@ private:
   /**
    * @brief Parse ROS message types from XML elements.
    * @param element Root XML element.
+   * @return Set of message types.
    */
   std::set<std::string> parseMsgTypes(const tinyxml2::XMLElement * element) const;
 
   /**
    * @brief Lookup derived class name.
    * @param element Parsed XML element.
-   * @param Return the class name if the element has a `type` key, otherwise returns empty string.
+   * @return Class name if the element has a `type` key, otherwise returns empty string.
    */
   std::string lookupDerivedClass(const tinyxml2::XMLElement * element) const;
 
@@ -89,10 +101,15 @@ private:
    * @brief Lookup the class id.
    * @param element Parsed XML element.
    * @param derived Name of derived class.
-   * @return Return the class id if the element has `name` key, otherwise returns derived name.
+   * @return Class id if the element has `name` key, otherwise returns derived name.
    */
   std::string lookupClassId(
     const tinyxml2::XMLElement * element, const std::string & derived) const;
+
+private:
+  std::map<std::string, std::set<std::string>>
+    msg_type_buffer_;  //!< Buffer storing declared classes, which key is class id and values are
+                       //!< message types.
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__DISPLAY_FACTORY_HPP_

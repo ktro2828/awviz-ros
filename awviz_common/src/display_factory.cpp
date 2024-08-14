@@ -14,51 +14,49 @@
 
 #include "awviz_common/display_factory.hpp"
 
-#include "awviz_common/display.hpp"
-#include "awviz_common/factory/plugin_factory.hpp"
-
-#include <tinyxml2.h>
-
-#include <set>
-#include <string>
-
 namespace awviz_common
 {
 DisplayFactory::DisplayFactory() : PluginFactory<Display>("awviz_common", "awviz_common::Display")
 {
+  for (const auto & lookup_name : getDeclaredClasses()) {
+    auto xml_path = getPluginManifestPath(lookup_name);
+    // Initialize cache as empty.
+    msg_type_buffer_[lookup_name] = std::set<std::string>();
+    if (!xml_path.empty()) {
+      tinyxml2::XMLDocument document;
+      document.LoadFile(xml_path.c_str());
+      auto * config = document.RootElement();
+      if (!hasRootNode(config) || !hasLibraryRoot(config)) {
+        continue;
+      }
+
+      auto * library = config;
+      while (library) {
+        cacheAllClassElements(library);
+        library = library->NextSiblingElement(LIBRARY_TAG);
+      }
+    }
+  }
 }
 
-const std::set<std::string> & DisplayFactory::getMessageTypes(const std::string & class_id)
+const std::set<std::string> & DisplayFactory::getMessageTypes(const std::string & lookup_name)
 {
-  if (msg_type_buffer_.find(class_id) != msg_type_buffer_.cend()) {
-    return msg_type_buffer_[class_id];
+  if (msg_type_buffer_.find(lookup_name) != msg_type_buffer_.cend()) {
+    return msg_type_buffer_[lookup_name];
   }
-
   // Initialize cache as empty.
-  msg_type_buffer_[class_id] = std::set<std::string>();
+  msg_type_buffer_[lookup_name] = std::set<std::string>();
+  return msg_type_buffer_[lookup_name];
+}
 
-  auto xml_path = getPluginManifestPath(class_id);
-
-  if (!xml_path.empty()) {
-    tinyxml2::XMLDocument document;
-    document.LoadFile(xml_path.c_str());
-    auto * config = document.RootElement();
-    if (!hasRootNode(config) || !hasLibraryRoot(config)) {
-      return msg_type_buffer_[class_id];
-    }
-
-    if (config->Value() == CLASS_LIBRARIES_KEY) {
-      config = config->FirstChildElement(LIBRARY_KEY);
-    }
-
-    auto * library = config;
-    while (library) {
-      cacheAllClassElements(library);
-      library = library->NextSiblingElement(LIBRARY_KEY);
+std::optional<std::string> DisplayFactory::getClassLookupName(const std::string & msg_type) const
+{
+  for (const auto & [class_id, msg_types] : msg_type_buffer_) {
+    if (msg_types.find(msg_type) != msg_types.cend()) {
+      return class_id;
     }
   }
-
-  return msg_type_buffer_[class_id];
+  return {};
 }
 
 bool DisplayFactory::hasRootNode(const tinyxml2::XMLElement * element) const
@@ -68,7 +66,7 @@ bool DisplayFactory::hasRootNode(const tinyxml2::XMLElement * element) const
 
 bool DisplayFactory::hasLibraryRoot(const tinyxml2::XMLElement * element) const
 {
-  return element->Value() == LIBRARY_KEY || element->Value() == CLASS_LIBRARIES_KEY;
+  return strcmp(element->Value(), LIBRARY_TAG) == 0;
 }
 
 void DisplayFactory::cacheAllClassElements(const tinyxml2::XMLElement * library)
@@ -81,7 +79,7 @@ void DisplayFactory::cacheAllClassElements(const tinyxml2::XMLElement * library)
     msg_type_buffer_[current] = parseMsgTypes(element);
 
     // search child element
-    element = element->NextSiblingElement(CLASS_KEY);
+    element = element->NextSiblingElement(CLASS_TAG);
   }
 }
 
@@ -89,7 +87,7 @@ std::set<std::string> DisplayFactory::parseMsgTypes(const tinyxml2::XMLElement *
 {
   std::set<std::string> output;
 
-  auto msg_type = element->FirstChildElement(MSG_TYPE_KEY);
+  auto msg_type = element->FirstChildElement(MESSAGE_TYPE_TAG);
 
   while (msg_type) {
     if (msg_type->GetText()) {
@@ -98,7 +96,7 @@ std::set<std::string> DisplayFactory::parseMsgTypes(const tinyxml2::XMLElement *
     }
 
     // search child element
-    msg_type = msg_type->NextSiblingElement(MSG_TYPE_KEY);
+    msg_type = msg_type->NextSiblingElement(MESSAGE_TYPE_TAG);
   }
 
   return output;
@@ -106,13 +104,13 @@ std::set<std::string> DisplayFactory::parseMsgTypes(const tinyxml2::XMLElement *
 
 std::string DisplayFactory::lookupDerivedClass(const tinyxml2::XMLElement * element) const
 {
-  return element->Attribute(TYPE_KEY) ? element->Attribute(TYPE_KEY) : "";
+  return element->Attribute(TYPE_ATTRIBUTE) ? element->Attribute(TYPE_ATTRIBUTE) : "";
 }
 
 std::string DisplayFactory::lookupClassId(
   const tinyxml2::XMLElement * element, const std::string & derived) const
 {
-  return element->Attribute(NAME_KEY) ? element->Attribute(NAME_KEY) : derived;
+  return element->Attribute(NAME_ATTRIBUTE) ? element->Attribute(NAME_ATTRIBUTE) : derived;
 }
 
 }  // namespace awviz_common

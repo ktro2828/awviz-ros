@@ -46,9 +46,9 @@ public:
   void run();
 
 private:
-  rclcpp::Node::SharedPtr node_;
-  std::shared_ptr<rerun::RecordingStream> stream_;
-  std::unique_ptr<VisualizationManager> manager_;
+  rclcpp::Node::SharedPtr node_;                    //!< Shared pointer of `rclcpp::Node`.
+  std::shared_ptr<rerun::RecordingStream> stream_;  //!< Shared pointer of `rerun::RecordingStream`.
+  std::unique_ptr<VisualizationManager> manager_;   //!< Unique pointer of `VisualizationManager`.
 };
 }  // namespace awviz_common
 

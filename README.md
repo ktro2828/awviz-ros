@@ -19,7 +19,7 @@ source install/setup.bash
 
 ```shell
 # run awviz
-ros2 run awviz awviz
+awviz
 ```
 
 ## Plugin Customization

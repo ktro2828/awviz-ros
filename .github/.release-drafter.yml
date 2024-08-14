@@ -1,0 +1,81 @@
+name-template: v$RESOLVED_VERSION
+tag-template: v$RESOLVED_VERSION
+change-template: "* $TITLE (#$NUMBER) @$AUTHOR"
+
+template: |
+  ## What's Changed
+
+  $CHANGES
+
+categories:
+  - title: 🚀 Features
+    labels: [enhancement]
+  - title: 🐛 Bug Fixes
+    labels: [bug]
+  - title: 🔧 Refactoring
+    labels: [refactor]
+  - title: 📖 Documents
+    labels: [documentation]
+  - title: 🔎 Test
+    labels: [ci]
+  - title: 🗳️ Dependency update
+    labels: [dependencies]
+  - title: 🧰 Maintenance
+    labels: [chore]
+  - title: ⏪ Revert
+    labels: [revert]
+
+autolabeler:
+  - label: enhancement
+    branch:
+      - /^feat(ure)?[/-].+/
+    title:
+      - /^feat(ure)?[/-].+/
+  - label: documentation
+    branch:
+      - /^docs[/-].+/
+    files:
+      - docs/**/*
+      - README.md
+    title:
+      - /^docs[/-].+/
+  - label: bug
+    branch:
+      - /^fix[/-].+/
+    title:
+      - /^fix[/-].+/
+  - label: refactor
+    branch:
+      - /^refactor[/-].+/
+      - /^perf[/-].+/
+      - /^style[/-].+/
+    title:
+      - /^refactor[/-].+/
+      - /^perf[/-].+/
+      - /^style[/-].+/
+  - label: ci
+    branch:
+      - /^ci[/-].+/
+      - /^test[/-].+/
+    files:
+      - .github/workflows/*
+    title:
+      - /^ci[/-].+/
+      - /^test[/-].+/
+  - label: dependencies
+    branch:
+      - /^chore/(deps/)[/-].+/
+    files:
+      - "*.repos"
+    title:
+      - /^chore/(deps/)[/-].+/
+  - label: chore
+    branch:
+      - /^chore(?!/(deps/))[/-].+/
+    title:
+      - /^chore(?!/(deps/))[/-].+/
+  - label: revert
+    branch:
+      - /^revert[/-].+/
+    title:
+      - /^revert[/-].+/

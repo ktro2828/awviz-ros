@@ -21,8 +21,9 @@ Even if there are ROS messages that are not supported by built-in plugins, we ca
 
 #### Autoware Messages
 
-| ROS Package | Message Type | Plugin Type |
-| :---------- | :----------- | :---------- |
+| ROS Package                | Message Type      | Plugin Type              |
+| :------------------------- | :---------------- | :----------------------- |
+| `autoware_perception_msgs` | `DetectedObjects` | `DetectedObjectsDisplay` |
 
 ### Custom Plugin Definition
 

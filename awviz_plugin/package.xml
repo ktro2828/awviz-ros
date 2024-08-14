@@ -14,6 +14,7 @@
   <depend>pluginlib</depend>
   <depend>rerun_sdk</depend>
   <depend>sensor_msgs</depend>
+  <depend>autoware_perception_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>

@@ -1,17 +1,13 @@
-# `awviz_plugin`
-
-`awviz_plugin` is a package that includes a set of built-in plugins for `awviz`.
-
-## Display Plugins
+# Plugin Support & Development {#page}
 
 Display plugins are responsible for subscribing to ROS messages and logging them in the recording stream.
 
-### ROS Message Support
+## ROS Message Support
 
 `awviz_plugin` exports built-in display plugins.
 Even if there are ROS messages that are not supported by built-in plugins, we can define custom plugins.
 
-#### ROS Built-in Messages
+### ROS Built-in Messages
 
 | ROS Package   | Message Type      | Plugin Type              |
 | :------------ | :---------------- | :----------------------- |
@@ -19,19 +15,19 @@ Even if there are ROS messages that are not supported by built-in plugins, we ca
 |               | `Image`           | `ImageDisplay`           |
 |               | `PointCloud2`     | `PointCloud2Display`     |
 
-#### Autoware Messages
+### Autoware Messages
 
 | ROS Package                | Message Type      | Plugin Type              |
 | :------------------------- | :---------------- | :----------------------- |
 | `autoware_perception_msgs` | `DetectedObjects` | `DetectedObjectsDisplay` |
 
-### Custom Plugin Definition
+## Custom Plugin Definition
 
-`awviz` allows us to define custom display plugins powered by `pluginlib`.
+`awviz` allows us to define custom display plugins powered by `pluginlib`.  
 `pluginlib` is a C++ library for loading and unloading plugins from within a ROS package.
 Plugins are dynamically loadable classes that are loaded from a runtime library.
 
-#### Example
+### Example
 
 As an example, let's create a plugin to display a custom ROS message `my_custom_msgs::msg::Foo` as below:
 
@@ -40,9 +36,10 @@ builtin_interfaces/Time stamp
 float32 data
 ```
 
-##### 1. Package Configuration
+#### 1. Package Configuration
 
-Then create your ROS packages named as `my_custom_display`. The package structure is as follows:
+Then create your ROS packages named as `my_custom_display`.  
+The package structure is as follows:
 
 ```bash
 my_custom_display
@@ -56,7 +53,7 @@ my_custom_display
     └── foo.cpp
 ```
 
-##### 2. Plugin Implementation
+#### 2. Plugin Implementation
 
 Edit `include/my_custom_display/foo.hpp` and declare the inheritance of `awviz_common::RosTopicDisplay`:
 
@@ -107,7 +104,7 @@ void Foo::logToStream(my_custom_msgs::msg::Foo::ConstSharedPtr msg)
 PLUGINLIB_EXPORT_CLASS(my_custom_display::Foo, awviz_common::Display);
 ```
 
-##### 3. Plugin Declaration XML
+#### 3. Plugin Declaration XML
 
 Edit `plugin_description.xml` with the following code:
 
@@ -131,9 +128,9 @@ XML tag and attribute represent followings:
   - `description`: A description of the plugin and what it does.
   - `message_type`: A ROS message type that the plugin displays. Now, that is `my_custom_msgs/msg/Foo`.
 
-##### 4. CMake Plugin Declaration
+#### 4. CMake Plugin Declaration
 
-Edit `CMakeLists.txt` to export the plugin and its description.
+Edit `CMakeLists.txt` to export the plugin and its description:
 
 ```cmake
 cmake_minimum_required(VERSION 3.14)

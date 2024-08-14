@@ -31,7 +31,13 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(${PROJECT_NAME} awviz_common::awviz_common rerun_sdk)
-ament_target_dependencies(${PROJECT_NAME} rclcpp cv_bridge sensor_msgs)
+ament_target_dependencies(
+  ${PROJECT_NAME}
+  rclcpp
+  cv_bridge
+  sensor_msgs
+  autoware_perception_msgs
+)
 
 # -------- export plugin description --------
 pluginlib_export_plugin_description_file(awviz_common plugin_description.xml)

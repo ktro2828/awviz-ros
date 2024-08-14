@@ -12,13 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef AWVIZ__COLLECTION_ADAPTERS_HPP_
-#define AWVIZ__COLLECTION_ADAPTERS_HPP_
-
-#include "rerun/collection.hpp"
+#ifndef AWVIZ_PLUGIN__IMAGE__COLLECTION_ADAPTER_HPP_
+#define AWVIZ_PLUGIN__IMAGE__COLLECTION_ADAPTER_HPP_
 
 #include <opencv2/opencv.hpp>
 #include <rerun.hpp>
+#include <rerun/collection.hpp>
 
 #include <utility>
 #include <vector>
@@ -26,7 +25,7 @@
 namespace rerun
 {
 /**
- * @brief An adaptor to be able to borrow an OpenvCV matrix into Rerun images without copying.
+ * @brief An adaptor to be able to borrow an OpenCV matrix into Rerun images without copying.
  */
 template <typename TElement>
 struct CollectionAdapter<TElement, cv::Mat>
@@ -47,17 +46,22 @@ struct CollectionAdapter<TElement, cv::Mat>
     return Collection<TElement>::take_ownership(std::move(img_vec));
   }
 };
-
 }  // namespace rerun
 
-namespace awviz
+namespace awviz_plugin
 {
+/**
+ * @brief Return image tensor shape as `rerun::Collection`.
+ *
+ * @param img Input image.
+ * @return Tensor shape as collection.
+ */
 inline rerun::Collection<rerun::TensorDimension> tensorShape(const cv::Mat & img)
 {
   return {
     static_cast<size_t>(img.rows), static_cast<size_t>(img.cols),
     static_cast<size_t>(img.channels())};
 }
-}  // namespace awviz
+}  // namespace awviz_plugin
 
-#endif  // AWVIZ__COLLECTION_ADAPTERS_HPP_
+#endif  // AWVIZ_PLUGIN__IMAGE__IMAGE_COMPRESSED_IMAGE_DISPLAY_HPP_

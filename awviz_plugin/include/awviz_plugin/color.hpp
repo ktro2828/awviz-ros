@@ -12,15 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef AWVIZ__COLOR_HPP_
-#define AWVIZ__COLOR_HPP_
+#ifndef AWVIZ_PLUGIN__COLOR_HPP_
+#define AWVIZ_PLUGIN__COLOR_HPP_
 
 #include <rerun.hpp>
 
 #include <algorithm>
 #include <vector>
 
-namespace awviz
+namespace awviz_plugin
 {
 constexpr float TurboBytes[256][3] = {
   {48, 18, 59},   {50, 21, 67},   {51, 24, 74},    {52, 27, 81},    {53, 30, 88},   {54, 33, 95},
@@ -68,10 +68,10 @@ constexpr float TurboBytes[256][3] = {
   {133, 7, 2},    {129, 6, 2},    {126, 5, 2},     {122, 4, 3}};
 
 /**
- * @brief Return a color map as a vector of rerun::Color.
- * @param values vector of colors.
+ * @brief Return a color map as a list of rerun::Color.
+ * @param values List of colors.
  */
-std::vector<rerun::Color> colormap(const std::vector<float> & values)
+inline std::vector<rerun::Color> colormap(const std::vector<float> & values)
 {
   float min_value = *std::min_element(values.cbegin(), values.cend());
   float max_value = *std::max_element(values.cbegin(), values.cend());
@@ -84,5 +84,6 @@ std::vector<rerun::Color> colormap(const std::vector<float> & values)
   }
   return colors;
 }
-}  // namespace awviz
-#endif  // AWVIZ__COLOR_HPP_
+}  // namespace awviz_plugin
+
+#endif  // AWVIZ_PLUGIN__COLOR_HPP_

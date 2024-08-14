@@ -1,7 +1,0 @@
-<launch>
-    <arg name="config" default="$(find-pkg-share awviz)/config/awviz.param.yaml"/>
-
-    <node pkg="awviz" exec="awviz_exec" name="rerun_logger_node" output="screen">
-        <param from="$(var config)"/>
-    </node>
-</launch>

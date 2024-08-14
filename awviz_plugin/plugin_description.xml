@@ -1,0 +1,29 @@
+<library path="awviz_plugin">
+    <!-- Image -->
+    <class name="awviz_plugin/CompressedImageDisplay" type="awviz_plugin::CompressedImageDisplay"
+        base_class_type="awviz_common::Display">
+        <description>Display from sensor_msgs/msg/CompressedImage message.</description>
+        <message_type>sensor_msgs/msg/CompressedImage</message_type>
+    </class>
+
+    <class name="awviz_plugin/ImageDisplay" type="awviz_plugin::ImageDisplay"
+        base_class_type="awviz_common::Display">
+        <description>Display from sensor_msgs/msg/Image message.</description>
+        <message_type>sensor_msgs/msg/Image</message_type>
+    </class>
+
+    <!-- PointCloud -->
+    <class name="awviz_plugin/PointCloud2Display" type="awviz_plugin::PointCloud2Display"
+        base_class_type="awviz_common::Display">
+        <description>Display from sensor_msgs/msg/PointCloud2 message.</description>
+        <message_type>sensor_msgs/msg/PointCloud2</message_type>
+    </class>
+
+    <!-- Autoware -->
+    <!-- Perception -->
+    <class name="awviz_plugin/DetectedObjectsDisplay" type="awviz_plugin::DetectedObjectsDisplay"
+        base_class_type="awviz_common::Display">
+        <description>Display from autoware_perception_msgs/msg/DetectedObjects message.</description>
+        <message_type>autoware_perception_msgs/msg/DetectedObjects</message_type>
+    </class>
+</library>

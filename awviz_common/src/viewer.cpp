@@ -12,20 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef AWVIZ__GEOMETRY_HPP_
-#define AWVIZ__GEOMETRY_HPP_
+#include "awviz_common/viewer.hpp"
 
-#include <std_msgs/msg/header.hpp>
-
-namespace awviz
+namespace awviz_common
 {
-/**
- * @brief Check whether the frame id associated with the header is "map".
- * @param header Header msg.
- */
-inline bool isMapFrameId(const std_msgs::msg::Header & header)
+ViewerApp::ViewerApp()
 {
-  return header.frame_id == "map";
+  node_ = std::make_shared<rclcpp::Node>("awviz");
+  stream_ = std::make_shared<rerun::RecordingStream>("awviz");
+  stream_->spawn().exit_on_failure();
+  manager_ = std::make_unique<VisualizationManager>(node_, stream_);
 }
-}  // namespace awviz
-#endif  // AWVIZ__GEOMETRY_HPP_
+
+ViewerApp::~ViewerApp()
+{
+  rclcpp::shutdown();
+}
+
+void ViewerApp::run()
+{
+  rclcpp::spin(node_);
+}
+}  // namespace awviz_common

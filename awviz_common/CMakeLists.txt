@@ -19,8 +19,6 @@ endif()
 
 # -------- find dependencies --------
 find_package(ament_cmake_auto REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(pluginlib REQUIRED)
 ament_auto_find_build_dependencies()
 
 # -------- fetch contents --------

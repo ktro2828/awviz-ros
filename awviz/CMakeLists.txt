@@ -19,19 +19,11 @@ endif()
 
 # -------- find dependencies --------
 find_package(ament_cmake_auto REQUIRED)
-find_package(rerun_sdk REQUIRED)
-find_package(awviz_common REQUIRED)
 ament_auto_find_build_dependencies()
 
 # -------- add executable --------
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} awviz_common::awviz_common)
-
-# -------- install executable --------
-install(TARGETS ${PROJECT_NAME}
-  DESTINATION bin
-  DESTINATION lib/${PROJECT_NAME}
-)
 
 # -------- for testing --------
 if(BUILD_TESTING)

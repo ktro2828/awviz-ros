@@ -140,11 +140,16 @@ project(my_custom_display)
 
 # -------- find dependencies --------
 find_package(ament_cmake_auto REQUIRED)
-# ... OTHER OPERATIONS
+ament_auto_find_build_dependencies()
 
 # -------- link targets --------
 add_library(${PROJECT_NAME} SHARED ${CMAKE_CURRENT_SOURCE_DIR}/src/foo.cpp)
-# ... OTHER OPERATIONS
+target_include_directories(${PROJECT_NAME} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<INSTALL_INTERFACE:include>
+)
+target_link_libraries(${PROJECT_NAME} awviz_common::awviz_common rerun_sdk)
+ament_target_dependencies(${PROJECT_NAME} rclcpp my_custom_msgs)
 
 # -------- export plugin description --------
 pluginlib_export_plugin_description_file(awviz_common plugin_description.xml)

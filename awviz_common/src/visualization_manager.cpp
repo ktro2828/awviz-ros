@@ -32,6 +32,15 @@ VisualizationManager::VisualizationManager(
     100ms, [&]() { createSubscriptions(); }, parallel_callback_group_);
 }
 
+VisualizationManager::~VisualizationManager()
+{
+  for (auto & [_, display] : display_group_) {
+    if (display) {
+      display->end();
+    }
+  }
+}
+
 void VisualizationManager::createSubscriptions()
 {
   for (const auto & [topic_name, topic_types] : node_->get_topic_names_and_types()) {
@@ -39,7 +48,25 @@ void VisualizationManager::createSubscriptions()
       continue;
     }
 
-    const auto topic_type = topic_types.front();
+    const auto & topic_type = topic_types.front();
+    const auto lookup_name = display_factory_->getClassLookupName(topic_type);
+
+    if (lookup_name) {
+      auto display = display_factory_->createInstance(lookup_name.value());
+
+      if (display) {
+        display->initialize(node_, stream_);
+
+        // TODO(ktro2828): update entity
+        const auto entity = topic_name;
+        display->setStatus(topic_name, entity);
+
+        display->start();
+      }
+      display_group_[topic_name] = display;
+    } else {
+      display_group_[topic_name] = nullptr;
+    }
   }
 }
 

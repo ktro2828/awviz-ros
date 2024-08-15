@@ -25,7 +25,6 @@ GENERATE_LATEX         = NO
 GENERATE_XML           = NO
 HTML_EXTRA_STYLESHEET  = docs/assets/CustomDoxygen.css
 
-INPUT += README.md
 INPUT += docs
 INPUT += awviz_common
 INPUT += awviz_plugin

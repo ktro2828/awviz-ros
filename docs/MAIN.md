@@ -1,4 +1,4 @@
-# AWViz ROS
+# AWViz ROS {#mainpage}
 
 AWViz offers a 3D ROS viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
 

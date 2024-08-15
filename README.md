@@ -20,6 +20,8 @@ source install/setup.bash
 
 ### Run
 
+To see the usage, run `awviz -h`.
+
 ```shell
 # run awviz
 awviz

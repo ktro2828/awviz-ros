@@ -1,4 +1,4 @@
-# AWViz
+# AWViz ROS {#mainpage}
 
 AWViz offers a 3D ROS viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
 
@@ -28,4 +28,4 @@ awviz
 ## Plugin Customization
 
 Some ROS messages are already covered by built-in plugins defined in `awviz_plugin`.
-For the detail of supported ROS messages and plugin customization, please refer to [`awviz_plugin/README.md`](./awviz_plugin/README.md).
+For the detail of supported ROS messages and plugin customization, please refer to [docs/PLUGIN.md](./docs/PLUGIN.md).

@@ -1,0 +1,37 @@
+PROJECT_NAME = AWViz ROS C++ API
+
+DOXYFILE_ENCODING = UTF-8
+
+INPUT_ENCODING         = UTF-8
+MACRO_EXPANSION        = YES
+OUTPUT_DIRECTORY       = docs
+OUTPUT_LANGUAGE        = English
+RECURSIVE              = YES
+SKIP_FUNCTION_MACROS   = NO
+XML_OUTPUT             = build
+
+FILE_PATTERNS += *.hpp
+FILE_PATTERNS += *.cpp
+FILE_PATTERNS += *.md
+
+ENABLE_PREPROCESSING   = YES
+EXPAND_ONLY_PREDEF     = YES
+EXTRACT_ALL            = YES
+EXTRACT_ANON_NSPACES   = YES
+EXTRACT_LOCAL_CLASSES  = YES
+EXTRACT_LOCAL_METHODS  = YES
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+GENERATE_XML           = NO
+HTML_EXTRA_STYLESHEET  = docs/assets/CustomDoxygen.css
+
+INPUT += README.md
+INPUT += docs
+INPUT += awviz_common
+INPUT += awviz_plugin
+
+IMAGE_PATH += awviz_common
+IMAGE_PATH += awviz_plugin
+
+EXAMPLE_PATH += awviz_common
+EXAMPLE_PATH += awviz_plugin

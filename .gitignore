@@ -60,3 +60,5 @@ COLCON_IGNORE
 compile_flags.txt
 
 .cache
+html
+latex

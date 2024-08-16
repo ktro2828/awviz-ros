@@ -26,4 +26,9 @@
         <description>Display from autoware_perception_msgs/msg/DetectedObjects message.</description>
         <message_type>autoware_perception_msgs/msg/DetectedObjects</message_type>
     </class>
+    <class name="awviz_plugin/TrackedObjectsDisplay" type="awviz_plugin::TrackedObjectsDisplay"
+        base_class_type="awviz_common::Display">
+        <description>Display from autoware_perception_msgs/msg/TrackedObjects message.</description>
+        <message_type>autoware_perception_msgs/msg/TrackedObjects</message_type>
+    </class>
 </library>

@@ -25,6 +25,15 @@ ament_auto_find_build_dependencies()
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} awviz_common::awviz_common)
 
+# -------- install executable --------
+install(TARGETS ${PROJECT_NAME}
+  DESTINATION bin
+)
+
+install(TARGETS ${PROJECT_NAME}
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 # -------- for testing --------
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

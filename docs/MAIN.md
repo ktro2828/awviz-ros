@@ -3,7 +3,7 @@
 AWViz-ROS features a ROS 3D viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
 
 <div align="center">
-    <img src="./images/awviz-viewer.png" alt="awviz-viewer">
+    <img src="./awviz-viewer.png" alt="awviz-viewer" width="800">
 </div>
 
 ## Build & Run

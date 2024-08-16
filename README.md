@@ -35,3 +35,11 @@ awviz
 
 Some ROS messages are already covered by built-in plugins defined in `awviz_plugin`.
 For the detail of supported ROS messages and plugin customization, please refer to [docs/PLUGIN.md](./docs/PLUGIN.md).
+
+## Contribution
+
+Please refer to [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md).
+
+## API Reference
+
+Please refer to [AWViz-ROS C++ API Reference](https://ktro2828.github.io/awviz-ros/).

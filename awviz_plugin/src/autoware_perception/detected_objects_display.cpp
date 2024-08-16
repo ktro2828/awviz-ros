@@ -46,10 +46,15 @@ void DetectedObjectsDisplay::logToStream(
     class_ids.emplace_back(static_cast<uint16_t>(object.classification.front().label));
   }
 
-  stream_->log(
-    property_.entity(), rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
-                          .with_rotations(rotations)
-                          .with_class_ids(class_ids));
+  const auto entity_path = property_.entity(msg->header.frame_id);
+  if (!entity_path) {
+    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+  } else {
+    stream_->log(
+      entity_path.value(), rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
+                             .with_rotations(rotations)
+                             .with_class_ids(class_ids));
+  }
 }
 }  // namespace awviz_plugin
 

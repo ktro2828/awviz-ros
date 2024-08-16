@@ -24,6 +24,7 @@
 
 #include <memory>
 #include <string>
+#include <unordered_map>
 
 namespace awviz_common
 {
@@ -50,7 +51,9 @@ public:
    * @param topic Name of topic.
    * @param entity Entity path of the record.
    */
-  virtual void setStatus(const std::string & topic, const std::string & entity) = 0;
+  virtual void setStatus(
+    const std::string & topic,
+    const std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots) = 0;
 
   /**
    * @brief Start to display.
@@ -66,12 +69,12 @@ public:
    * @brief Return true if the initialization is completed.
    * @return bool Return the value of the private member named `is_initialized_`.
    */
-  bool isInitialized() const { return is_initialized_; }
+  virtual bool isInitialized() const { return is_initialized_; }
 
 protected:
-  rclcpp::Node::SharedPtr node_;
-  std::shared_ptr<rerun::RecordingStream> stream_;
-  bool is_initialized_;
+  rclcpp::Node::SharedPtr node_;                    //!< Node shared pointer.
+  std::shared_ptr<rerun::RecordingStream> stream_;  //!< RecordingStream shared pointer.
+  bool is_initialized_;                             //!< Whether the object has been initialized.
 };
 
 /**
@@ -113,10 +116,12 @@ public:
    * @param topic Name of topic.
    * @param entity Entity path of the record.
    */
-  void setStatus(const std::string & topic, const std::string & entity) override
+  void setStatus(
+    const std::string & topic,
+    const std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots) override
   {
     property_.setTopic(topic);
-    property_.setEntity(entity);
+    property_.setEntityRoots(entity_roots);
   }
 
   /**
@@ -129,11 +134,14 @@ public:
    */
   void end() override { unsubscribe(); }
 
+  bool isInitialized() const override { return is_initialized_ && property_.isInitialized(); }
+
 protected:
   static constexpr const char * TIMELINE_NAME = "timestamp";  //!< Entity name of timeline record.
 
   /**
    * @brief Start to subscribing the specified topic.
+   * @todo Currently, `rclcpp::SensorDataQoS` is used for QoS profile setting.
    */
   virtual void subscribe()
   {
@@ -154,7 +162,8 @@ protected:
 
   /**
    * @brief Log subscribed ROS message to recording stream.
-   * @param msg ROS message.
+   * @param msg Constant shared pointer of ROS message.
+   * @note Currently, if the corresponding entity path doesn't exist this just logs warning as text.
    */
   virtual void logToStream(typename MsgType::ConstSharedPtr msg) = 0;
 

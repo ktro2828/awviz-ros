@@ -4,5 +4,8 @@ include(CMakeFindDependencyMacro)
 
 find_dependency(rclcpp)
 find_dependency(pluginlib)
+find_dependency(tf2)
+find_dependency(tf2_ros)
+find_dependency(yaml-cpp)
 
 include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")

@@ -32,21 +32,27 @@ void CompressedImageDisplay::logToStream(sensor_msgs::msg::CompressedImage::Cons
   stream_->set_time_seconds(
     TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
 
+  const auto entity_path = property_.entity(msg->header.frame_id);
+  if (!entity_path) {
+    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+    return;
+  }
+
   if (msg->format.find("jpeg")) {
     auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
     cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
 
-    stream_->log(property_.entity(), rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
+    stream_->log(entity_path.value(), rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
   } else {
     auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
     cv::Mat depth;
     img.convertTo(depth, CV_32FC1);
 
     stream_->log(
-      property_.entity(), rerun::DepthImage(
-                            {static_cast<size_t>(depth.rows), static_cast<size_t>(depth.cols)},
-                            rerun::TensorBuffer::f32(depth))
-                            .with_meter(1.0));
+      entity_path.value(), rerun::DepthImage(
+                             {static_cast<size_t>(depth.rows), static_cast<size_t>(depth.cols)},
+                             rerun::TensorBuffer::f32(depth))
+                             .with_meter(1.0));
   }
 }
 }  // namespace awviz_plugin

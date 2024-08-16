@@ -29,6 +29,7 @@ INPUT += docs
 INPUT += awviz_common
 INPUT += awviz_plugin
 
+IMAGE_PATH += docs
 IMAGE_PATH += awviz_common
 IMAGE_PATH += awviz_plugin
 

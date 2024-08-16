@@ -7,10 +7,13 @@ var searchData=
   ['timeline_5fname_4',['TIMELINE_NAME',['../classawviz__common_1_1RosTopicDisplay.html#a119465e661c65570366e5fdcc55e461f',1,'awviz_common::RosTopicDisplay']]],
   ['todo_20list_5',['Todo List',['../todo.html',1,'']]],
   ['topic_6',['topic',['../classawviz__common_1_1RosTopicProperty.html#a5751285392e10eb6a2dbbb71c151fddd',1,'awviz_common::RosTopicProperty']]],
-  ['transformation_5fmanager_2ecpp_7',['transformation_manager.cpp',['../transformation__manager_8cpp.html',1,'']]],
-  ['transformation_5fmanager_2ehpp_8',['transformation_manager.hpp',['../transformation__manager_8hpp.html',1,'']]],
-  ['transformationmanager_9',['TransformationManager',['../classawviz__common_1_1TransformationManager.html',1,'awviz_common::TransformationManager'],['../classawviz__common_1_1TransformationManager.html#a020014d90526532548343787a22a0e21',1,'awviz_common::TransformationManager::TransformationManager()']]],
-  ['turbobytes_10',['TurboBytes',['../namespaceawviz__plugin.html#a2cf8df8ec51a8b578b906d239f809f41',1,'awviz_plugin']]],
-  ['type_11',['type',['../structawviz__common_1_1PluginInfo.html#a12b8bc4defde0b5e22f9c96c2afbfca7',1,'awviz_common::PluginInfo::type()'],['../classawviz__common_1_1RosTopicProperty.html#a011f9a410b246a3e1c974018962cab3e',1,'awviz_common::RosTopicProperty::type()']]],
-  ['type_5fattribute_12',['TYPE_ATTRIBUTE',['../classawviz__common_1_1DisplayFactory.html#a583a0a53657293019eb8168413062a53',1,'awviz_common::DisplayFactory']]]
+  ['tracked_5fobjects_5fdisplay_2ecpp_7',['tracked_objects_display.cpp',['../tracked__objects__display_8cpp.html',1,'']]],
+  ['tracked_5fobjects_5fdisplay_2ehpp_8',['tracked_objects_display.hpp',['../tracked__objects__display_8hpp.html',1,'']]],
+  ['trackedobjectsdisplay_9',['TrackedObjectsDisplay',['../classawviz__plugin_1_1TrackedObjectsDisplay.html',1,'awviz_plugin::TrackedObjectsDisplay'],['../classawviz__plugin_1_1TrackedObjectsDisplay.html#a43d6bc75c78526b9eb3be82e47677a8a',1,'awviz_plugin::TrackedObjectsDisplay::TrackedObjectsDisplay()']]],
+  ['transformation_5fmanager_2ecpp_10',['transformation_manager.cpp',['../transformation__manager_8cpp.html',1,'']]],
+  ['transformation_5fmanager_2ehpp_11',['transformation_manager.hpp',['../transformation__manager_8hpp.html',1,'']]],
+  ['transformationmanager_12',['TransformationManager',['../classawviz__common_1_1TransformationManager.html',1,'awviz_common::TransformationManager'],['../classawviz__common_1_1TransformationManager.html#a020014d90526532548343787a22a0e21',1,'awviz_common::TransformationManager::TransformationManager()']]],
+  ['turbobytes_13',['TurboBytes',['../namespaceawviz__plugin.html#a2cf8df8ec51a8b578b906d239f809f41',1,'awviz_plugin']]],
+  ['type_14',['type',['../structawviz__common_1_1PluginInfo.html#a12b8bc4defde0b5e22f9c96c2afbfca7',1,'awviz_common::PluginInfo::type()'],['../classawviz__common_1_1RosTopicProperty.html#a011f9a410b246a3e1c974018962cab3e',1,'awviz_common::RosTopicProperty::type()']]],
+  ['type_5fattribute_15',['TYPE_ATTRIBUTE',['../classawviz__common_1_1DisplayFactory.html#a583a0a53657293019eb8168413062a53',1,'awviz_common::DisplayFactory']]]
 ];

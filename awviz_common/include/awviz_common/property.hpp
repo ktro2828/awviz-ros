@@ -15,7 +15,10 @@
 #ifndef AWVIZ_COMMON__PROPERTY_HPP_
 #define AWVIZ_COMMON__PROPERTY_HPP_
 
+#include <memory>
+#include <optional>
 #include <string>
+#include <unordered_map>
 
 namespace awviz_common
 {
@@ -31,10 +34,12 @@ public:
    * @brief Construct instance.
    * @param type ROS msg type.
    * @param topic Name of topic.
-   * @param entity Entity path to log.
+   * @param entity_roots Root entity paths to recording.
    */
-  RosTopicProperty(const std::string & type, const std::string & topic, const std::string & entity)
-  : type_(type), topic_(topic), entity_(entity)
+  RosTopicProperty(
+    const std::string & type, const std::string & topic,
+    const std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots)
+  : type_(type), topic_(topic), entity_roots_(entity_roots)
   {
   }
 
@@ -54,7 +59,11 @@ public:
    * @brief Set entity path of record.
    * @param entity Entity path of record.
    */
-  void setEntity(const std::string & entity) { entity_ = entity; }
+  void setEntityRoots(
+    const std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots)
+  {
+    entity_roots_ = entity_roots;
+  }
 
   /**
    * @brief Get ROS message type.
@@ -69,15 +78,34 @@ public:
   const std::string & topic() const noexcept { return topic_; }
 
   /**
-   * @brief Get entity path of record.
-   * @return Entity path of record.
+   * @brief Return the entity path using topic name.
+   * @return Topic name used as entity path.
    */
-  const std::string & entity() const noexcept { return entity_; }
+  const std::string & entity() const noexcept { return topic_; }
+
+  /**
+   * @brief Return the entity path using the corresponding root and its frame ID.
+   *
+   * @param frame_id Frame ID.
+   * @return Return "/<Root>/<FrameID>/<Topic>" if the corresponding root exists, otherwise return
+   * `std::nullopt`.
+   */
+  std::optional<std::string> entity(const std::string & frame_id) const noexcept
+  {
+    if (entity_roots_ && entity_roots_->count(frame_id) > 0) {
+      return entity_roots_->at(frame_id) + topic_;
+    } else {
+      return std::nullopt;
+    }
+  }
+
+  bool isInitialized() const { return !type_.empty() && !topic_.empty() && entity_roots_; }
 
 private:
-  std::string type_;    //!< Type of ROS message.
-  std::string topic_;   //!< Name of topic.
-  std::string entity_;  //!< Entity path of recording.
+  std::string type_;   //!< Type of ROS message.
+  std::string topic_;  //!< Name of topic.
+  std::shared_ptr<std::unordered_map<std::string, std::string>>
+    entity_roots_;  //!< Entity root paths of recording.
 };
 }  // namespace awviz_common
 

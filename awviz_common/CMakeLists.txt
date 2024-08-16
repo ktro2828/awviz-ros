@@ -38,9 +38,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
-target_link_libraries(${PROJECT_NAME} rerun_sdk)
+target_link_libraries(${PROJECT_NAME} rerun_sdk yaml-cpp)
 # NOTE: ament_target_dependencies ensures that all dependency include directories are ordered correctly when using an overlay workspace
-ament_target_dependencies(${PROJECT_NAME} rclcpp pluginlib)
+ament_target_dependencies(${PROJECT_NAME} rclcpp pluginlib tf2 tf2_ros)
 
 # -------- install targets --------
 install(

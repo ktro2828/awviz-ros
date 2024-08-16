@@ -17,6 +17,7 @@
 
 #include "awviz_common/display.hpp"
 #include "awviz_common/display_factory.hpp"
+#include "awviz_common/transformation/transformation_manager.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
@@ -54,6 +55,7 @@ private:
   std::map<std::string, std::shared_ptr<Display>>
     display_group_;  //!< Buffer storing created displays, which key is topic name and value is its
                      //!< shared pointer.
+  std::unique_ptr<TransformationManager> tf_manager_;         //!< Transformation manager.
   rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;  //!< Parallel callback group.
   rclcpp::TimerBase::SharedPtr callback_timer_;               //!< Timer callback.
 

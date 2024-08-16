@@ -39,23 +39,29 @@ void PointCloud2Display::logToStream(sensor_msgs::msg::PointCloud2::ConstSharedP
     return datatype == sensor_msgs::msg::PointField::FLOAT32;
   };
 
+  const auto entity_path = property_.entity(msg->header.frame_id);
+  if (!entity_path) {
+    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+    return;
+  }
+
   bool has_x{false}, has_y{false}, has_z{false};
   for (const auto & field : msg->fields) {
     if (field.name == "x") {
       if (!isValidDataType(field.datatype)) {
-        stream_->log(property_.entity(), rerun::TextLog("Only FLOAT32 x field supported"));
+        stream_->log(entity_path.value(), rerun::TextLog("Only FLOAT32 x field supported"));
         return;
       }
       has_x = true;
     } else if (field.name == "y") {
       if (!isValidDataType(field.datatype)) {
-        stream_->log(property_.entity(), rerun::TextLog("Only FLOAT32 y field supported"));
+        stream_->log(entity_path.value(), rerun::TextLog("Only FLOAT32 y field supported"));
         return;
       }
       has_y = true;
     } else if (field.name == "z") {
       if (!isValidDataType(field.datatype)) {
-        stream_->log(property_.entity(), rerun::TextLog("Only FLOAT32 z field supported"));
+        stream_->log(entity_path.value(), rerun::TextLog("Only FLOAT32 z field supported"));
         return;
       }
       has_z = true;
@@ -64,7 +70,7 @@ void PointCloud2Display::logToStream(sensor_msgs::msg::PointCloud2::ConstSharedP
 
   if (!has_x || !has_y || !has_z) {
     stream_->log(
-      property_.entity(), rerun::TextLog("Currently only PointCloud2 with x/y/z are supported"));
+      entity_path.value(), rerun::TextLog("Currently only PointCloud2 with x/y/z are supported"));
     return;
   }
 
@@ -80,7 +86,7 @@ void PointCloud2Display::logToStream(sensor_msgs::msg::PointCloud2::ConstSharedP
   }
 
   auto colors = colormap(distances);
-  stream_->log(property_.entity(), rerun::Points3D(points).with_colors(colors));
+  stream_->log(entity_path.value(), rerun::Points3D(points).with_colors(colors));
 }
 }  // namespace awviz_plugin
 

@@ -2,9 +2,7 @@
 
 AWViz-ROS features a ROS 3D viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
 
-<div align="center">
-    <img src="./awviz-viewer.png" alt="awviz-viewer" width="800">
-</div>
+![AWVis viewer sample](@ref awviz-viewer.png)
 
 ## Build & Run
 
@@ -35,3 +33,7 @@ awviz
 
 Some ROS messages are already covered by built-in plugins defined in `awviz_plugin`.
 For the detail of supported ROS messages and plugin customization, please refer to [docs/PLUGIN.md](./docs/PLUGIN.md).
+
+## Contribution
+
+Please refer to [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md).

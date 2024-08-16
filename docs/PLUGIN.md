@@ -1,4 +1,4 @@
-# Plugin Support & Development {#page}
+# Plugin Support & Development
 
 Display plugins are responsible for subscribing to ROS messages and logging them in the recording stream.
 
@@ -57,7 +57,7 @@ my_custom_display
 
 Edit `include/my_custom_display/foo.hpp` and declare the inheritance of `awviz_common::RosTopicDisplay`:
 
-```c++
+```cpp
 #ifndef MY_CUSTOM_DISPLAY__FOO_HPP_
 #define MY_CUSTOM_DISPLAY__FOO_HPP_
 
@@ -82,7 +82,7 @@ namespace my_custom_display
 
 Edit `src/foo.cpp` and write implementations:
 
-```c++
+```cpp
 #include "my_custom_display/foo.hpp"
 
 namespace my_custom_display

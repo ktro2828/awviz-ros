@@ -14,6 +14,8 @@
 
 #include "awviz_common/visualization_manager.hpp"
 
+#include "awviz_common/transformation/transformation_manager.hpp"
+
 #include <chrono>
 #include <memory>
 
@@ -26,6 +28,7 @@ VisualizationManager::VisualizationManager(
   using std::chrono_literals::operator""ms;
 
   display_factory_ = std::make_unique<DisplayFactory>();
+  tf_manager_ = std::make_unique<TransformationManager>(node, stream);
 
   parallel_callback_group_ = node_->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
   callback_timer_ = node_->create_wall_timer(
@@ -57,9 +60,7 @@ void VisualizationManager::createSubscriptions()
       if (display) {
         display->initialize(node_, stream_);
 
-        // TODO(ktro2828): update entity
-        const auto entity = topic_name;
-        display->setStatus(topic_name, entity);
+        display->setStatus(topic_name, tf_manager_->entities());
 
         display->start();
       }

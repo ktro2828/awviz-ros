@@ -31,25 +31,31 @@ void ImageDisplay::logToStream(sensor_msgs::msg::Image::ConstSharedPtr msg)
   stream_->set_time_seconds(
     TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
 
+  const auto entity_path = property_.entity(msg->header.frame_id);
+  if (!entity_path) {
+    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+    return;
+  }
+
   if (msg->encoding == "16UC1") {
     auto img = cv_bridge::toCvCopy(msg)->image;
     stream_->log(
-      property_.entity(), rerun::DepthImage(
-                            {static_cast<size_t>(img.rows), static_cast<size_t>(img.cols)},
-                            rerun::TensorBuffer::u16(img))
-                            .with_meter(1000));
+      entity_path.value(), rerun::DepthImage(
+                             {static_cast<size_t>(img.rows), static_cast<size_t>(img.cols)},
+                             rerun::TensorBuffer::u16(img))
+                             .with_meter(1000));
   } else if (msg->encoding == "32FC1") {
     auto img = cv_bridge::toCvCopy(msg)->image;
 
     stream_->log(
-      property_.entity(), rerun::DepthImage(
-                            {static_cast<size_t>(img.rows), static_cast<size_t>(img.cols)},
-                            rerun::TensorBuffer::f32(img))
-                            .with_meter(1.0));
+      entity_path.value(), rerun::DepthImage(
+                             {static_cast<size_t>(img.rows), static_cast<size_t>(img.cols)},
+                             rerun::TensorBuffer::f32(img))
+                             .with_meter(1.0));
   } else {
     auto img = cv_bridge::toCvCopy(msg, "rgb8")->image;
 
-    stream_->log(property_.entity(), rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
+    stream_->log(entity_path.value(), rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
   }
 }
 }  // namespace awviz_plugin

@@ -34,7 +34,7 @@ public:
   CompressedImageDisplay();
 
 protected:
-  void logToStream(sensor_msgs::msg::CompressedImage::ConstSharedPtr msg) override;
+  void log_message(sensor_msgs::msg::CompressedImage::ConstSharedPtr msg) override;
 };
 }  // namespace awviz_plugin
 

@@ -44,16 +44,16 @@ public:
    * @param lookup_name Lookup name of the class.
    * @return Set of declared message types.
    */
-  const std::set<std::string> & getMessageTypes(const std::string & lookup_name);
+  const std::set<std::string> & get_message_types(const std::string & lookup_name);
 
   /**
    * @brief Get the Class Id of the corresponding message type.
    *
    * @param msg_type ROS message type.
    * @return Return a string of lookup name if the specified type has been declared, otherwise
-   * returns nullptr.
+   * returns `nullptr`.
    */
-  std::optional<std::string> getClassLookupName(const std::string & msg_type) const;
+  std::optional<std::string> get_class_lookup_name(const std::string & msg_type) const;
 
 public:
   static constexpr const char * LIBRARY_TAG = "library";            //!< XML tag of library.
@@ -68,34 +68,34 @@ private:
    * @param element Parsed XML element.
    * @return Return true if the element has the root node.
    */
-  bool hasRootNode(const tinyxml2::XMLElement * element) const;
+  bool has_root_node(const tinyxml2::XMLElement * element) const;
 
   /**
    * @brief Check whether xml element has a library root.
    * @param element Parsed XML element.
    * @return Return true if the element has the library root.
    */
-  bool hasLibraryRoot(const tinyxml2::XMLElement * element) const;
+  bool has_library_root(const tinyxml2::XMLElement * element) const;
 
   /**
    * @brief Cache all classes associated with the library.
    * @param library Parsed XML element for library.
    */
-  void cacheAllClassElements(const tinyxml2::XMLElement * library);
+  void cache_classes(const tinyxml2::XMLElement * library);
 
   /**
    * @brief Parse ROS message types from XML elements.
    * @param element Root XML element.
    * @return Set of message types.
    */
-  std::set<std::string> parseMsgTypes(const tinyxml2::XMLElement * element) const;
+  std::set<std::string> parse_message_types(const tinyxml2::XMLElement * element) const;
 
   /**
    * @brief Lookup derived class name.
    * @param element Parsed XML element.
    * @return Class name if the element has a `type` key, otherwise returns empty string.
    */
-  std::string lookupDerivedClass(const tinyxml2::XMLElement * element) const;
+  std::string lookup_derived_class(const tinyxml2::XMLElement * element) const;
 
   /**
    * @brief Lookup the class id.
@@ -103,7 +103,7 @@ private:
    * @param derived Name of derived class.
    * @return Class id if the element has `name` key, otherwise returns derived name.
    */
-  std::string lookupClassId(
+  std::string lookup_class_id(
     const tinyxml2::XMLElement * element, const std::string & derived) const;
 
 private:

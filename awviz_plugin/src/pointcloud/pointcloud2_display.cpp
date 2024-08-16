@@ -30,7 +30,7 @@ PointCloud2Display::PointCloud2Display()
 {
 }
 
-void PointCloud2Display::logToStream(sensor_msgs::msg::PointCloud2::ConstSharedPtr msg)
+void PointCloud2Display::log_message(sensor_msgs::msg::PointCloud2::ConstSharedPtr msg)
 {
   stream_->set_time_seconds(
     TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());

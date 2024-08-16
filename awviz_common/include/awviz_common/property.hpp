@@ -47,19 +47,19 @@ public:
    * @brief Set ROS message type name.
    * @param type Name of ROS message type.
    */
-  void setType(const std::string & type) { type_ = type; }
+  void set_type(const std::string & type) { type_ = type; }
 
   /**
    * @brief Set ROS topic name.
    * @param topic Name of topic.
    */
-  void setTopic(const std::string & topic) { topic_ = topic; }
+  void set_topic(const std::string & topic) { topic_ = topic; }
 
   /**
    * @brief Set entity path of record.
    * @param entity Entity path of record.
    */
-  void setEntityRoots(
+  void set_entity_roots(
     const std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots)
   {
     entity_roots_ = entity_roots;
@@ -99,7 +99,7 @@ public:
     }
   }
 
-  bool isInitialized() const { return !type_.empty() && !topic_.empty() && entity_roots_; }
+  bool is_initialized() const { return !type_.empty() && !topic_.empty() && entity_roots_; }
 
 private:
   std::string type_;   //!< Type of ROS message.

@@ -65,14 +65,18 @@ Here's the process:
 
 6. **Submit a pull request** to the main repository. Please describe your changes in detail, linking to any relevant issues.
 
-### 3. Code Style
+### 3. Coding Rules
 
 To maintain a clean and consistent codebase, please follow these guidelines:
 
-- Follow the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html).
-- We recommend to use [clangd](https://clangd.llvm.org/) that features like code completion, navigation (e.g. go to definition, find references), refactoring, and diagnostics.
-- Write clear, concise, and well-documented code.
-  - For the code documentation, follow the [Doxygen C++ Document Style](https://www.doxygen.nl/manual/index.html).
+- **Code Style**
+  - Follow the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html) for general style conventions.
+  - Use `snake_case` for function names. For example, `void set_name(const std::string & name);`.
+- **Code Formatting**
+  - We recommend using [clangd](https://clangd.llvm.org/) that features like code completion, navigation (e.g. go to definition, find references), refactoring, and diagnostics.
+- **Code Documentation**
+  - Ensure your code is well-documented code with clear and concise comments.
+  - Follow the [Doxygen C++ Document Style](https://www.doxygen.nl/manual/index.html) for writing code documentation.
 
 ### 4. Testing
 

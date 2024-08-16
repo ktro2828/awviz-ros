@@ -63,7 +63,7 @@ private:
   /**
    * @brief Parse topics and create new ROS subscriptions every time.
    */
-  void createSubscriptions();
+  void create_subscriptions();
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_

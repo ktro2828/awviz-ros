@@ -47,11 +47,11 @@ public:
     rclcpp::Node::SharedPtr node, std::shared_ptr<rerun::RecordingStream> stream) = 0;
 
   /**
-   * @brief Set status of attributes.
+   * @brief Set attributes of property.
    * @param topic Name of topic.
    * @param entity Entity path of the record.
    */
-  virtual void setStatus(
+  virtual void set_property(
     const std::string & topic,
     const std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots) = 0;
 
@@ -69,7 +69,7 @@ public:
    * @brief Return true if the initialization is completed.
    * @return bool Return the value of the private member named `is_initialized_`.
    */
-  virtual bool isInitialized() const { return is_initialized_; }
+  virtual bool is_initialized() const { return is_initialized_; }
 
 protected:
   rclcpp::Node::SharedPtr node_;                    //!< Node shared pointer.
@@ -90,7 +90,7 @@ public:
   RosTopicDisplay()
   {
     const auto msg_type = rosidl_generator_traits::name<MsgType>();
-    property_.setType(msg_type);
+    property_.set_type(msg_type);
   }
 
   /**
@@ -116,12 +116,12 @@ public:
    * @param topic Name of topic.
    * @param entity Entity path of the record.
    */
-  void setStatus(
+  void set_property(
     const std::string & topic,
     const std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots) override
   {
-    property_.setTopic(topic);
-    property_.setEntityRoots(entity_roots);
+    property_.set_topic(topic);
+    property_.set_entity_roots(entity_roots);
   }
 
   /**
@@ -134,7 +134,7 @@ public:
    */
   void end() override { unsubscribe(); }
 
-  bool isInitialized() const override { return is_initialized_ && property_.isInitialized(); }
+  bool is_initialized() const override { return is_initialized_ && property_.is_initialized(); }
 
 protected:
   static constexpr const char * TIMELINE_NAME = "timestamp";  //!< Entity name of timeline record.
@@ -145,14 +145,14 @@ protected:
    */
   virtual void subscribe()
   {
-    if (!isInitialized()) {
+    if (!is_initialized()) {
       return;
     }
 
     // TODO(ktro2828): QoS setting
     subscription_ = node_->create_subscription<MsgType>(
       property_.topic(), rclcpp::SensorDataQoS{},
-      [this](const typename MsgType::ConstSharedPtr msg) { logToStream(msg); });
+      [this](const typename MsgType::ConstSharedPtr msg) { log_message(msg); });
   };
 
   /**
@@ -165,7 +165,7 @@ protected:
    * @param msg Constant shared pointer of ROS message.
    * @note Currently, if the corresponding entity path doesn't exist this just logs warning as text.
    */
-  virtual void logToStream(typename MsgType::ConstSharedPtr msg) = 0;
+  virtual void log_message(typename MsgType::ConstSharedPtr msg) = 0;
 
 protected:
   typename rclcpp::Subscription<MsgType>::SharedPtr subscription_;  //!< Subscription of the topic.

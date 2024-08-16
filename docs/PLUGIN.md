@@ -73,7 +73,7 @@ namespace my_custom_display
 
     protected:
         // Callback to log subscribed message to the recording stream.
-        void logToStream(my_custom_msgs::msg::Foo::ConstSharedPtr msg) override;
+        void log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg) override;
     };
 }  // namespace my_custom_display
 
@@ -91,7 +91,7 @@ Foo::Foo() : awviz_common::RosTopicDisplay<my_custom_msgs::msg::Foo>()
 {
 }
 
-void Foo::logToStream(my_custom_msgs::msg::Foo::ConstSharedPtr msg)
+void Foo::log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg)
 {
     stream_->set_time_seconds(
         TIMELINE_NAME, rclcpp::Time(msg->stamp.sec, msg->stamp.nanosec).seconds());

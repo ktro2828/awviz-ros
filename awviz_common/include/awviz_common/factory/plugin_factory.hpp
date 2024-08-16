@@ -59,7 +59,7 @@ public:
    * @param lookup_name Lookup name of the class.
    * @return The path of the associated plugin manifest.
    */
-  std::string getPluginManifestPath(const std::string & lookup_name) const
+  std::string get_plugin_manifest_path(const std::string & lookup_name) const
   {
     return class_loader_->getPluginManifestPath(lookup_name);
   }
@@ -67,9 +67,9 @@ public:
   /**
    * @brief Return plugin information.
    * @param lookup_name Lookup name of the class.
-   * @return PluginInfo instance.
+   * @return `PluginInfo` object.
    */
-  PluginInfo getPluginInfo(const std::string & lookup_name) const
+  PluginInfo get_plugin_info(const std::string & lookup_name) const
   {
     auto name = class_loader_->getName(lookup_name);
     auto type = class_loader_->getClassType(lookup_name);
@@ -81,9 +81,10 @@ public:
   /**
    * @brief Create a instance of the plugin.
    * @param lookup_name Lookup name of the class.
-   * @return Instance of plugin. Returns `nullptr` if exception occurred.
+   * @return Shared pointer of a plugin. Returns `nullptr` if `pluginlib::PluginlibException`
+   * occurred.
    */
-  virtual std::shared_ptr<T> createInstance(const std::string & lookup_name) const
+  virtual std::shared_ptr<T> create_instance(const std::string & lookup_name) const
   {
     try {
       return class_loader_->createSharedInstance(lookup_name);
@@ -98,7 +99,7 @@ public:
    *
    * @return std::vector<std::string>
    */
-  std::vector<std::string> getDeclaredClasses() const
+  std::vector<std::string> get_declared_classes() const
   {
     return class_loader_->getDeclaredClasses();
   }

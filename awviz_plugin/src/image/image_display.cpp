@@ -26,7 +26,7 @@ ImageDisplay::ImageDisplay() : awviz_common::RosTopicDisplay<sensor_msgs::msg::I
 {
 }
 
-void ImageDisplay::logToStream(sensor_msgs::msg::Image::ConstSharedPtr msg)
+void ImageDisplay::log_message(sensor_msgs::msg::Image::ConstSharedPtr msg)
 {
   stream_->set_time_seconds(
     TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
@@ -55,7 +55,8 @@ void ImageDisplay::logToStream(sensor_msgs::msg::Image::ConstSharedPtr msg)
   } else {
     auto img = cv_bridge::toCvCopy(msg, "rgb8")->image;
 
-    stream_->log(entity_path.value(), rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
+    stream_->log(
+      entity_path.value(), rerun::Image(tensor_shape(img), rerun::TensorBuffer::u8(img)));
   }
 }
 }  // namespace awviz_plugin

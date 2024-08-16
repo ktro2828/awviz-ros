@@ -11,5 +11,5 @@ var searchData=
   ['contains_8',['contains',['../classawviz__common_1_1TfTree.html#a45c9f8a0f7c6a788ec283b4341e33cb4',1,'awviz_common::TfTree']]],
   ['contributing_20guidelines_9',['Contributing Guidelines',['../md_docs_CONTRIBUTING.html',1,'']]],
   ['contributing_2emd_10',['CONTRIBUTING.md',['../CONTRIBUTING_8md.html',1,'']]],
-  ['createinstance_11',['createInstance',['../classawviz__common_1_1PluginFactory.html#a386f04a831c17864187aef366a54186a',1,'awviz_common::PluginFactory']]]
+  ['create_5finstance_11',['create_instance',['../classawviz__common_1_1PluginFactory.html#a1cb0e77d52562a869f5ff8ae9c4b1978',1,'awviz_common::PluginFactory']]]
 ];

@@ -91,18 +91,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a653a1f09a4aaef4939a634f888d09085"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#a653a1f09a4aaef4939a634f888d09085">PluginFactory</a> (const std::string &amp;package, const std::string &amp;base_class_type)</td></tr>
 <tr class="memdesc:a653a1f09a4aaef4939a634f888d09085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct factory loading <code>pluginlib::ClassLoader&lt;T&gt;</code>.  <br /></td></tr>
 <tr class="separator:a653a1f09a4aaef4939a634f888d09085"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0f106992ee3ddeb3552b55e0634620b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#ab0f106992ee3ddeb3552b55e0634620b">getPluginManifestPath</a> (const std::string &amp;lookup_name) const</td></tr>
-<tr class="memdesc:ab0f106992ee3ddeb3552b55e0634620b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return plugin manifest path.  <br /></td></tr>
-<tr class="separator:ab0f106992ee3ddeb3552b55e0634620b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4c5368e2960ea0d46a532bf2d8e4ea2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structawviz__common_1_1PluginInfo.html">PluginInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#ad4c5368e2960ea0d46a532bf2d8e4ea2">getPluginInfo</a> (const std::string &amp;lookup_name) const</td></tr>
-<tr class="memdesc:ad4c5368e2960ea0d46a532bf2d8e4ea2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return plugin information.  <br /></td></tr>
-<tr class="separator:ad4c5368e2960ea0d46a532bf2d8e4ea2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a386f04a831c17864187aef366a54186a"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#a386f04a831c17864187aef366a54186a">createInstance</a> (const std::string &amp;lookup_name) const</td></tr>
-<tr class="memdesc:a386f04a831c17864187aef366a54186a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a instance of the plugin.  <br /></td></tr>
-<tr class="separator:a386f04a831c17864187aef366a54186a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fcf7601a4b93b1b56068aa142e9137e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#a1fcf7601a4b93b1b56068aa142e9137e">getDeclaredClasses</a> () const</td></tr>
-<tr class="memdesc:a1fcf7601a4b93b1b56068aa142e9137e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of all available classes for this ClassLoader's base class type.  <br /></td></tr>
-<tr class="separator:a1fcf7601a4b93b1b56068aa142e9137e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af47e4727edd944ed51b6ebd80cae5292"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#af47e4727edd944ed51b6ebd80cae5292">get_plugin_manifest_path</a> (const std::string &amp;lookup_name) const</td></tr>
+<tr class="memdesc:af47e4727edd944ed51b6ebd80cae5292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return plugin manifest path.  <br /></td></tr>
+<tr class="separator:af47e4727edd944ed51b6ebd80cae5292"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a792e69ef53a09ebbe7544d70b4ec525e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structawviz__common_1_1PluginInfo.html">PluginInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#a792e69ef53a09ebbe7544d70b4ec525e">get_plugin_info</a> (const std::string &amp;lookup_name) const</td></tr>
+<tr class="memdesc:a792e69ef53a09ebbe7544d70b4ec525e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return plugin information.  <br /></td></tr>
+<tr class="separator:a792e69ef53a09ebbe7544d70b4ec525e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1cb0e77d52562a869f5ff8ae9c4b1978"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#a1cb0e77d52562a869f5ff8ae9c4b1978">create_instance</a> (const std::string &amp;lookup_name) const</td></tr>
+<tr class="memdesc:a1cb0e77d52562a869f5ff8ae9c4b1978"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a instance of the plugin.  <br /></td></tr>
+<tr class="separator:a1cb0e77d52562a869f5ff8ae9c4b1978"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3651da797b44cfbd5599425c4b7064fe"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1PluginFactory.html#a3651da797b44cfbd5599425c4b7064fe">get_declared_classes</a> () const</td></tr>
+<tr class="memdesc:a3651da797b44cfbd5599425c4b7064fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a list of all available classes for this ClassLoader's base class type.  <br /></td></tr>
+<tr class="separator:a3651da797b44cfbd5599425c4b7064fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><div class="compoundTemplParams">template&lt;typename T&gt;<br />
@@ -156,8 +156,8 @@ template&lt;typename T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a386f04a831c17864187aef366a54186a" name="a386f04a831c17864187aef366a54186a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a386f04a831c17864187aef366a54186a">&#9670;&#160;</a></span>createInstance()</h2>
+<a id="a1cb0e77d52562a869f5ff8ae9c4b1978" name="a1cb0e77d52562a869f5ff8ae9c4b1978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb0e77d52562a869f5ff8ae9c4b1978">&#9670;&#160;</a></span>create_instance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -168,7 +168,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::shared_ptr&lt; T &gt; <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::createInstance </td>
+          <td class="memname">virtual std::shared_ptr&lt; T &gt; <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::create_instance </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>lookup_name</em></td><td>)</td>
@@ -189,12 +189,12 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Instance of plugin. Returns <code>nullptr</code> if exception occurred. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer of a plugin. Returns <code>nullptr</code> if <code>pluginlib::PluginlibException</code> occurred. </dd></dl>
 
 </div>
 </div>
-<a id="a1fcf7601a4b93b1b56068aa142e9137e" name="a1fcf7601a4b93b1b56068aa142e9137e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fcf7601a4b93b1b56068aa142e9137e">&#9670;&#160;</a></span>getDeclaredClasses()</h2>
+<a id="a3651da797b44cfbd5599425c4b7064fe" name="a3651da797b44cfbd5599425c4b7064fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3651da797b44cfbd5599425c4b7064fe">&#9670;&#160;</a></span>get_declared_classes()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -205,7 +205,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::string &gt; <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::getDeclaredClasses </td>
+          <td class="memname">std::vector&lt; std::string &gt; <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::get_declared_classes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -223,8 +223,8 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a id="ad4c5368e2960ea0d46a532bf2d8e4ea2" name="ad4c5368e2960ea0d46a532bf2d8e4ea2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4c5368e2960ea0d46a532bf2d8e4ea2">&#9670;&#160;</a></span>getPluginInfo()</h2>
+<a id="a792e69ef53a09ebbe7544d70b4ec525e" name="a792e69ef53a09ebbe7544d70b4ec525e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a792e69ef53a09ebbe7544d70b4ec525e">&#9670;&#160;</a></span>get_plugin_info()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +235,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structawviz__common_1_1PluginInfo.html">PluginInfo</a> <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::getPluginInfo </td>
+          <td class="memname"><a class="el" href="structawviz__common_1_1PluginInfo.html">PluginInfo</a> <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::get_plugin_info </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>lookup_name</em></td><td>)</td>
@@ -256,12 +256,12 @@ template&lt;typename T &gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structawviz__common_1_1PluginInfo.html" title="Struct to bundle the information of plugin.">PluginInfo</a> instance. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code><a class="el" href="structawviz__common_1_1PluginInfo.html" title="Struct to bundle the information of plugin.">PluginInfo</a></code> object. </dd></dl>
 
 </div>
 </div>
-<a id="ab0f106992ee3ddeb3552b55e0634620b" name="ab0f106992ee3ddeb3552b55e0634620b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0f106992ee3ddeb3552b55e0634620b">&#9670;&#160;</a></span>getPluginManifestPath()</h2>
+<a id="af47e4727edd944ed51b6ebd80cae5292" name="af47e4727edd944ed51b6ebd80cae5292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af47e4727edd944ed51b6ebd80cae5292">&#9670;&#160;</a></span>get_plugin_manifest_path()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -272,7 +272,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::getPluginManifestPath </td>
+          <td class="memname">std::string <a class="el" href="classawviz__common_1_1PluginFactory.html">awviz_common::PluginFactory</a>&lt; T &gt;::get_plugin_manifest_path </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>lookup_name</em></td><td>)</td>

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['tensorshape_0',['tensorShape',['../namespaceawviz__plugin.html#a3307a7f2bc9df497f23dd36724556c04',1,'awviz_plugin']]],
+  ['tensor_5fshape_0',['tensor_shape',['../namespaceawviz__plugin.html#ad5f7fc49eced56639be61f0f25cb9066',1,'awviz_plugin']]],
   ['tf_5ftree_2ehpp_1',['tf_tree.hpp',['../tf__tree_8hpp.html',1,'']]],
   ['tfframe_2',['TfFrame',['../classawviz__common_1_1TfFrame.html',1,'awviz_common::TfFrame'],['../classawviz__common_1_1TfFrame.html#ae7e62e6c8670426ff0e13f3dc90a2823',1,'awviz_common::TfFrame::TfFrame(const std::string &amp;id)'],['../classawviz__common_1_1TfFrame.html#ace9b01887e61ef9870781fc369fe6078',1,'awviz_common::TfFrame::TfFrame(const std::string &amp;id, const std::string &amp;parent)']]],
   ['tftree_3',['TfTree',['../classawviz__common_1_1TfTree.html',1,'awviz_common']]],

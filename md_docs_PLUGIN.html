@@ -137,7 +137,7 @@ Example</h2>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">protected</span>:</div>
 <div class="line">        <span class="comment">// Callback to log subscribed message to the recording stream.</span></div>
-<div class="line">        <span class="keywordtype">void</span> logToStream(my_custom_msgs::msg::Foo::ConstSharedPtr msg) <span class="keyword">override</span>;</div>
+<div class="line">        <span class="keywordtype">void</span> log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg) <span class="keyword">override</span>;</div>
 <div class="line">    };</div>
 <div class="line">}  <span class="comment">// namespace my_custom_display</span></div>
 <div class="line"> </div>
@@ -153,7 +153,7 @@ Example</h2>
 <div class="line">{</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="line"><span class="keywordtype">void</span> Foo::logToStream(my_custom_msgs::msg::Foo::ConstSharedPtr msg)</div>
+<div class="line"><span class="keywordtype">void</span> Foo::log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg)</div>
 <div class="line">{</div>
 <div class="line">    stream_-&gt;set_time_seconds(</div>
 <div class="line">        TIMELINE_NAME, rclcpp::Time(msg-&gt;stamp.sec, msg-&gt;stamp.nanosec).seconds());</div>

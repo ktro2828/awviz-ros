@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plugin_20support_20_26_20development_0',['Plugin Support &amp; Development',['../page.html',1,'']]]
+  ['contributing_20guidelines_0',['Contributing Guidelines',['../md_docs_CONTRIBUTING.html',1,'']]]
 ];

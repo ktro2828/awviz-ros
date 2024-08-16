@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['setentity_0',['setEntity',['../classawviz__common_1_1RosTopicProperty.html#ac565aefe216f9ce654093ff3aee31b19',1,'awviz_common::RosTopicProperty']]],
-  ['setstatus_1',['setStatus',['../classawviz__common_1_1Display.html#ac9c2fad5c9176d7afbc1329ea1f70862',1,'awviz_common::Display::setStatus()'],['../classawviz__common_1_1RosTopicDisplay.html#aa806429969c8c2eea4c4f746aea132ba',1,'awviz_common::RosTopicDisplay::setStatus()']]],
+  ['setentityroots_0',['setEntityRoots',['../classawviz__common_1_1RosTopicProperty.html#a1bfb6efef0021de9e32a9d67ff99fb4e',1,'awviz_common::RosTopicProperty']]],
+  ['setstatus_1',['setStatus',['../classawviz__common_1_1Display.html#a66815d064fa481f2bb124c70afb34067',1,'awviz_common::Display::setStatus()'],['../classawviz__common_1_1RosTopicDisplay.html#adca47ba2358e9820ce3917afeb9e72d9',1,'awviz_common::RosTopicDisplay::setStatus()']]],
   ['settopic_2',['setTopic',['../classawviz__common_1_1RosTopicProperty.html#a219c7b68c2d05e10f25bddfcb74b1a72',1,'awviz_common::RosTopicProperty']]],
   ['settype_3',['setType',['../classawviz__common_1_1RosTopicProperty.html#aa07bd2d122b487120b9568a30c5b89a9',1,'awviz_common::RosTopicProperty']]],
   ['start_4',['start',['../classawviz__common_1_1Display.html#a33a9266fe8006b765e092acb9cb4a1c3',1,'awviz_common::Display::start()'],['../classawviz__common_1_1RosTopicDisplay.html#ad1d2bcce0dc594911624a1d384261842',1,'awviz_common::RosTopicDisplay::start() override']]],

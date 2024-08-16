@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AWViz ROS C++ API: awviz_common::Display Class Reference</title>
+<title>AWViz-ROS C++ API Reference: awviz_common::Display Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AWViz ROS C++ API
+   <div id="projectname">AWViz-ROS C++ API Reference
    </div>
   </td>
  </tr>
@@ -113,26 +113,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7d17157dfb51ba0a7bf3760fd4551568"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a7d17157dfb51ba0a7bf3760fd4551568">initialize</a> (rclcpp::Node::SharedPtr node, std::shared_ptr&lt; rerun::RecordingStream &gt; stream)=0</td></tr>
 <tr class="memdesc:a7d17157dfb51ba0a7bf3760fd4551568"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize attributes.  <br /></td></tr>
 <tr class="separator:a7d17157dfb51ba0a7bf3760fd4551568"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9c2fad5c9176d7afbc1329ea1f70862"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#ac9c2fad5c9176d7afbc1329ea1f70862">setStatus</a> (const std::string &amp;topic, const std::string &amp;entity)=0</td></tr>
-<tr class="memdesc:ac9c2fad5c9176d7afbc1329ea1f70862"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set status of attributes.  <br /></td></tr>
-<tr class="separator:ac9c2fad5c9176d7afbc1329ea1f70862"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66815d064fa481f2bb124c70afb34067"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a66815d064fa481f2bb124c70afb34067">setStatus</a> (const std::string &amp;topic, const std::shared_ptr&lt; std::unordered_map&lt; std::string, std::string &gt; &gt; entity_roots)=0</td></tr>
+<tr class="memdesc:a66815d064fa481f2bb124c70afb34067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set status of attributes.  <br /></td></tr>
+<tr class="separator:a66815d064fa481f2bb124c70afb34067"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33a9266fe8006b765e092acb9cb4a1c3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a33a9266fe8006b765e092acb9cb4a1c3">start</a> ()=0</td></tr>
 <tr class="memdesc:a33a9266fe8006b765e092acb9cb4a1c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to display.  <br /></td></tr>
 <tr class="separator:a33a9266fe8006b765e092acb9cb4a1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a593a232df77047ca16a8b164dbbd0899"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a593a232df77047ca16a8b164dbbd0899">end</a> ()=0</td></tr>
 <tr class="memdesc:a593a232df77047ca16a8b164dbbd0899"><td class="mdescLeft">&#160;</td><td class="mdescRight">End to display.  <br /></td></tr>
 <tr class="separator:a593a232df77047ca16a8b164dbbd0899"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a173ab6ae9d6fa162d7d714b0472ad3c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a173ab6ae9d6fa162d7d714b0472ad3c2">isInitialized</a> () const</td></tr>
-<tr class="memdesc:a173ab6ae9d6fa162d7d714b0472ad3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the initialization is completed.  <br /></td></tr>
-<tr class="separator:a173ab6ae9d6fa162d7d714b0472ad3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8e388e8c8c58766cbb014d56178f276"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#ae8e388e8c8c58766cbb014d56178f276">isInitialized</a> () const</td></tr>
+<tr class="memdesc:ae8e388e8c8c58766cbb014d56178f276"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the initialization is completed.  <br /></td></tr>
+<tr class="separator:ae8e388e8c8c58766cbb014d56178f276"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a8c2f6069bdb554a2df1df9c395fb2823"><td class="memItemLeft" align="right" valign="top">rclcpp::Node::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a8c2f6069bdb554a2df1df9c395fb2823">node_</a></td></tr>
+<tr class="memdesc:a8c2f6069bdb554a2df1df9c395fb2823"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node shared pointer.  <br /></td></tr>
 <tr class="separator:a8c2f6069bdb554a2df1df9c395fb2823"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9433f0d3e4d925158c72a134b512735"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; rerun::RecordingStream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#ac9433f0d3e4d925158c72a134b512735">stream_</a></td></tr>
+<tr class="memdesc:ac9433f0d3e4d925158c72a134b512735"><td class="mdescLeft">&#160;</td><td class="mdescRight">RecordingStream shared pointer.  <br /></td></tr>
 <tr class="separator:ac9433f0d3e4d925158c72a134b512735"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98839a2263581963ed4e80ef359b6ce7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a98839a2263581963ed4e80ef359b6ce7">is_initialized_</a></td></tr>
+<tr class="memdesc:a98839a2263581963ed4e80ef359b6ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the object has been initialized.  <br /></td></tr>
 <tr class="separator:a98839a2263581963ed4e80ef359b6ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -265,8 +268,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a173ab6ae9d6fa162d7d714b0472ad3c2" name="a173ab6ae9d6fa162d7d714b0472ad3c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a173ab6ae9d6fa162d7d714b0472ad3c2">&#9670;&#160;</a></span>isInitialized()</h2>
+<a id="ae8e388e8c8c58766cbb014d56178f276" name="ae8e388e8c8c58766cbb014d56178f276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8e388e8c8c58766cbb014d56178f276">&#9670;&#160;</a></span>isInitialized()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -275,7 +278,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool awviz_common::Display::isInitialized </td>
+          <td class="memname">virtual bool awviz_common::Display::isInitialized </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -283,7 +286,7 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -291,10 +294,12 @@ Protected Attributes</h2></td></tr>
 <p>Return true if the initialization is completed. </p>
 <dl class="section return"><dt>Returns</dt><dd>bool Return the value of the private member named <code>is_initialized_</code>. </dd></dl>
 
+<p>Reimplemented in <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa62dcec0c534403e56b3908a9fd0d386">awviz_common::RosTopicDisplay&lt; MsgType &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa62dcec0c534403e56b3908a9fd0d386">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::CompressedImage &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa62dcec0c534403e56b3908a9fd0d386">awviz_common::RosTopicDisplay&lt; autoware_perception_msgs::msg::DetectedObjects &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa62dcec0c534403e56b3908a9fd0d386">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a>, and <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa62dcec0c534403e56b3908a9fd0d386">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::PointCloud2 &gt;</a>.</p>
+
 </div>
 </div>
-<a id="ac9c2fad5c9176d7afbc1329ea1f70862" name="ac9c2fad5c9176d7afbc1329ea1f70862"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9c2fad5c9176d7afbc1329ea1f70862">&#9670;&#160;</a></span>setStatus()</h2>
+<a id="a66815d064fa481f2bb124c70afb34067" name="a66815d064fa481f2bb124c70afb34067"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66815d064fa481f2bb124c70afb34067">&#9670;&#160;</a></span>setStatus()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,8 +316,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>entity</em>&#160;</td>
+          <td class="paramtype">const std::shared_ptr&lt; std::unordered_map&lt; std::string, std::string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>entity_roots</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -336,7 +341,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa806429969c8c2eea4c4f746aea132ba">awviz_common::RosTopicDisplay&lt; MsgType &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa806429969c8c2eea4c4f746aea132ba">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::CompressedImage &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa806429969c8c2eea4c4f746aea132ba">awviz_common::RosTopicDisplay&lt; autoware_perception_msgs::msg::DetectedObjects &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa806429969c8c2eea4c4f746aea132ba">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a>, and <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa806429969c8c2eea4c4f746aea132ba">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::PointCloud2 &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#adca47ba2358e9820ce3917afeb9e72d9">awviz_common::RosTopicDisplay&lt; MsgType &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#adca47ba2358e9820ce3917afeb9e72d9">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::CompressedImage &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#adca47ba2358e9820ce3917afeb9e72d9">awviz_common::RosTopicDisplay&lt; autoware_perception_msgs::msg::DetectedObjects &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#adca47ba2358e9820ce3917afeb9e72d9">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a>, and <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#adca47ba2358e9820ce3917afeb9e72d9">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::PointCloud2 &gt;</a>.</p>
 
 </div>
 </div>
@@ -390,6 +395,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Whether the object has been initialized. </p>
+
 </div>
 </div>
 <a id="a8c2f6069bdb554a2df1df9c395fb2823" name="a8c2f6069bdb554a2df1df9c395fb2823"></a>
@@ -412,6 +419,8 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Node shared pointer. </p>
+
 </div>
 </div>
 <a id="ac9433f0d3e4d925158c72a134b512735" name="ac9433f0d3e4d925158c72a134b512735"></a>
@@ -433,6 +442,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>RecordingStream shared pointer. </p>
 
 </div>
 </div>

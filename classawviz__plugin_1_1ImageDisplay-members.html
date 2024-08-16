@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AWViz ROS C++ API: Member List</title>
+<title>AWViz-ROS C++ API Reference: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">AWViz ROS C++ API
+   <div id="projectname">AWViz-ROS C++ API Reference
    </div>
   </td>
  </tr>
@@ -85,13 +85,13 @@ $(function() {
   <tr class="even"><td class="entry"><a class="el" href="classawviz__plugin_1_1ImageDisplay.html#af62072bf30fdd110e229fe1d04247d76">ImageDisplay</a>()</td><td class="entry"><a class="el" href="classawviz__plugin_1_1ImageDisplay.html">awviz_plugin::ImageDisplay</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a445cf44644e500d5283fb6d844c1cf52">initialize</a>(rclcpp::Node::SharedPtr node, std::shared_ptr&lt; rerun::RecordingStream &gt; stream) override</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classawviz__common_1_1Display.html#a98839a2263581963ed4e80ef359b6ce7">is_initialized_</a></td><td class="entry"><a class="el" href="classawviz__common_1_1Display.html">awviz_common::Display</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1Display.html#a173ab6ae9d6fa162d7d714b0472ad3c2">isInitialized</a>() const</td><td class="entry"><a class="el" href="classawviz__common_1_1Display.html">awviz_common::Display</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa62dcec0c534403e56b3908a9fd0d386">isInitialized</a>() const override</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classawviz__plugin_1_1ImageDisplay.html#a9df90159021bd4fee8770590fa051889">logToStream</a>(sensor_msgs::msg::Image::ConstSharedPtr msg) override</td><td class="entry"><a class="el" href="classawviz__plugin_1_1ImageDisplay.html">awviz_plugin::ImageDisplay</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a8967195c08ee48fdf3a84b46617e26e0">RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;::logToStream</a>(typename MsgType::ConstSharedPtr msg)=0</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classawviz__common_1_1Display.html#a8c2f6069bdb554a2df1df9c395fb2823">node_</a></td><td class="entry"><a class="el" href="classawviz__common_1_1Display.html">awviz_common::Display</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#add1726431ed86ce660fbe8449ea4f7f8">property_</a></td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a69c6d74e3bab8d8becc7980b2d25c2ab">RosTopicDisplay</a>()</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#aa806429969c8c2eea4c4f746aea132ba">setStatus</a>(const std::string &amp;topic, const std::string &amp;entity) override</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#adca47ba2358e9820ce3917afeb9e72d9">setStatus</a>(const std::string &amp;topic, const std::shared_ptr&lt; std::unordered_map&lt; std::string, std::string &gt; &gt; entity_roots) override</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ad1d2bcce0dc594911624a1d384261842">start</a>() override</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">virtual</span></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classawviz__common_1_1Display.html#ac9433f0d3e4d925158c72a134b512735">stream_</a></td><td class="entry"><a class="el" href="classawviz__common_1_1Display.html">awviz_common::Display</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a26a2bf5e3a7b469dd4d0caf10c0658ee">subscribe</a>()</td><td class="entry"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a></td><td class="entry"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></td></tr>

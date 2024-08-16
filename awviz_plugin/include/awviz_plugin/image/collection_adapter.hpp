@@ -56,7 +56,7 @@ namespace awviz_plugin
  * @param img Input image.
  * @return Tensor shape as collection.
  */
-inline rerun::Collection<rerun::TensorDimension> tensorShape(const cv::Mat & img)
+inline rerun::Collection<rerun::TensorDimension> tensor_shape(const cv::Mat & img)
 {
   return {
     static_cast<size_t>(img.rows), static_cast<size_t>(img.cols),

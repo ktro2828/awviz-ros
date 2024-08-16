@@ -31,7 +31,7 @@ public:
   DetectedObjectsDisplay();
 
 protected:
-  void logToStream(autoware_perception_msgs::msg::DetectedObjects::ConstSharedPtr msg) override;
+  void log_message(autoware_perception_msgs::msg::DetectedObjects::ConstSharedPtr msg) override;
 };
 }  // namespace awviz_plugin
 

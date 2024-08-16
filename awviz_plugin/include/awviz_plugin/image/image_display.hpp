@@ -33,7 +33,7 @@ public:
   ImageDisplay();
 
 protected:
-  void logToStream(sensor_msgs::msg::Image::ConstSharedPtr msg) override;
+  void log_message(sensor_msgs::msg::Image::ConstSharedPtr msg) override;
 };
 }  // namespace awviz_plugin
 

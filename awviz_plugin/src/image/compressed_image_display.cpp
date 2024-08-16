@@ -27,7 +27,7 @@ CompressedImageDisplay::CompressedImageDisplay()
 {
 }
 
-void CompressedImageDisplay::logToStream(sensor_msgs::msg::CompressedImage::ConstSharedPtr msg)
+void CompressedImageDisplay::log_message(sensor_msgs::msg::CompressedImage::ConstSharedPtr msg)
 {
   stream_->set_time_seconds(
     TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
@@ -42,7 +42,8 @@ void CompressedImageDisplay::logToStream(sensor_msgs::msg::CompressedImage::Cons
     auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
     cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
 
-    stream_->log(entity_path.value(), rerun::Image(tensorShape(img), rerun::TensorBuffer::u8(img)));
+    stream_->log(
+      entity_path.value(), rerun::Image(tensor_shape(img), rerun::TensorBuffer::u8(img)));
   } else {
     auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
     cv::Mat depth;

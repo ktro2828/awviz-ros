@@ -25,7 +25,7 @@ DetectedObjectsDisplay::DetectedObjectsDisplay()
 {
 }
 
-void DetectedObjectsDisplay::logToStream(
+void DetectedObjectsDisplay::log_message(
   autoware_perception_msgs::msg::DetectedObjects::ConstSharedPtr msg)
 {
   stream_->set_time_seconds(

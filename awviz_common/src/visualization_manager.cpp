@@ -32,7 +32,7 @@ VisualizationManager::VisualizationManager(
 
   parallel_callback_group_ = node_->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
   callback_timer_ = node_->create_wall_timer(
-    100ms, [&]() { createSubscriptions(); }, parallel_callback_group_);
+    100ms, [&]() { create_subscriptions(); }, parallel_callback_group_);
 }
 
 VisualizationManager::~VisualizationManager()
@@ -44,7 +44,7 @@ VisualizationManager::~VisualizationManager()
   }
 }
 
-void VisualizationManager::createSubscriptions()
+void VisualizationManager::create_subscriptions()
 {
   for (const auto & [topic_name, topic_types] : node_->get_topic_names_and_types()) {
     if (display_group_.find(topic_name) != display_group_.cend()) {
@@ -52,15 +52,15 @@ void VisualizationManager::createSubscriptions()
     }
 
     const auto & topic_type = topic_types.front();
-    const auto lookup_name = display_factory_->getClassLookupName(topic_type);
+    const auto lookup_name = display_factory_->get_class_lookup_name(topic_type);
 
     if (lookup_name) {
-      auto display = display_factory_->createInstance(lookup_name.value());
+      auto display = display_factory_->create_instance(lookup_name.value());
 
       if (display) {
         display->initialize(node_, stream_);
 
-        display->setStatus(topic_name, tf_manager_->entities());
+        display->set_property(topic_name, tf_manager_->entities());
 
         display->start();
       }

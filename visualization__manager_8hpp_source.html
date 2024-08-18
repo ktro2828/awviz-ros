@@ -103,38 +103,37 @@ $(function() {
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;map&gt;</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceawviz__common.html">awviz_common</a></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classawviz__common_1_1VisualizationManager.html">   35</a></span><span class="keyword">class </span><a class="code hl_class" href="classawviz__common_1_1VisualizationManager.html">VisualizationManager</a></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  <a class="code hl_class" href="classawviz__common_1_1VisualizationManager.html">VisualizationManager</a>(</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    rclcpp::Node::SharedPtr node, <span class="keyword">const</span> std::shared_ptr&lt;rerun::RecordingStream&gt; &amp; stream);</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <a class="code hl_function" href="classawviz__common_1_1VisualizationManager.html#a45b2314e77cdc07a6425491947a4e520">~VisualizationManager</a>();</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  rclcpp::Node::SharedPtr node_;                          </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  <span class="keyword">const</span> std::shared_ptr&lt;rerun::RecordingStream&gt; stream_;  </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  std::unique_ptr&lt;DisplayFactory&gt; display_factory_;       </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  std::map&lt;std::string, std::shared_ptr&lt;Display&gt;&gt;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    display_group_;  </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  std::unique_ptr&lt;TransformationManager&gt; tf_manager_;         </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;  </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  rclcpp::TimerBase::SharedPtr callback_timer_;               </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  std::mutex display_mutex_;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  <span class="keywordtype">void</span> create_subscriptions();</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>}  <span class="comment">// namespace awviz_common</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_</span></div>
-<div class="ttc" id="aclassawviz__common_1_1VisualizationManager_html"><div class="ttname"><a href="classawviz__common_1_1VisualizationManager.html">awviz_common::VisualizationManager</a></div><div class="ttdoc">Manager class to handle visualization processes.</div><div class="ttdef"><b>Definition:</b> visualization_manager.hpp:36</div></div>
-<div class="ttc" id="aclassawviz__common_1_1VisualizationManager_html_a45b2314e77cdc07a6425491947a4e520"><div class="ttname"><a href="classawviz__common_1_1VisualizationManager.html#a45b2314e77cdc07a6425491947a4e520">awviz_common::VisualizationManager::~VisualizationManager</a></div><div class="ttdeci">~VisualizationManager()</div><div class="ttdoc">Destroy the VisualizationManager object with unsubscribing topics of displays.</div><div class="ttdef"><b>Definition:</b> visualization_manager.cpp:41</div></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceawviz__common.html">awviz_common</a></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classawviz__common_1_1VisualizationManager.html">   34</a></span><span class="keyword">class </span><a class="code hl_class" href="classawviz__common_1_1VisualizationManager.html">VisualizationManager</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>{</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  <a class="code hl_class" href="classawviz__common_1_1VisualizationManager.html">VisualizationManager</a>(</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    rclcpp::Node::SharedPtr node, <span class="keyword">const</span> std::shared_ptr&lt;rerun::RecordingStream&gt; &amp; stream);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>  <a class="code hl_function" href="classawviz__common_1_1VisualizationManager.html#a45b2314e77cdc07a6425491947a4e520">~VisualizationManager</a>();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  rclcpp::Node::SharedPtr node_;                          </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  <span class="keyword">const</span> std::shared_ptr&lt;rerun::RecordingStream&gt; stream_;  </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  std::unique_ptr&lt;DisplayFactory&gt; display_factory_;       </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  std::map&lt;std::string, std::shared_ptr&lt;Display&gt;&gt;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    display_group_;  </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  std::unique_ptr&lt;TransformationManager&gt; tf_manager_;         </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;  </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  rclcpp::TimerBase::SharedPtr callback_timer_;               </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  std::mutex display_mutex_;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keywordtype">void</span> create_subscriptions();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}  <span class="comment">// namespace awviz_common</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_</span></div>
+<div class="ttc" id="aclassawviz__common_1_1VisualizationManager_html"><div class="ttname"><a href="classawviz__common_1_1VisualizationManager.html">awviz_common::VisualizationManager</a></div><div class="ttdoc">Manager class to handle visualization processes.</div><div class="ttdef"><b>Definition:</b> visualization_manager.hpp:35</div></div>
+<div class="ttc" id="aclassawviz__common_1_1VisualizationManager_html_a45b2314e77cdc07a6425491947a4e520"><div class="ttname"><a href="classawviz__common_1_1VisualizationManager.html#a45b2314e77cdc07a6425491947a4e520">awviz_common::VisualizationManager::~VisualizationManager</a></div><div class="ttdeci">~VisualizationManager()</div><div class="ttdoc">Destroy the VisualizationManager object with unsubscribing topics of displays.</div><div class="ttdef"><b>Definition:</b> visualization_manager.cpp:37</div></div>
 <div class="ttc" id="adisplay_8hpp_html"><div class="ttname"><a href="display_8hpp.html">display.hpp</a></div></div>
 <div class="ttc" id="adisplay__factory_8hpp_html"><div class="ttname"><a href="display__factory_8hpp.html">display_factory.hpp</a></div></div>
 <div class="ttc" id="anamespaceawviz__common_html"><div class="ttname"><a href="namespaceawviz__common.html">awviz_common</a></div><div class="ttdef"><b>Definition:</b> display.hpp:30</div></div>

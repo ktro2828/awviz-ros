@@ -54,6 +54,8 @@ void VisualizationManager::create_subscriptions()
       continue;
     }
 
+    std::lock_guard<std::mutex> lock(display_mutex_);
+
     const auto & topic_type = topic_types.front();
     const auto lookup_name = display_factory_->get_class_lookup_name(topic_type);
 

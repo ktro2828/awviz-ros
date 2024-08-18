@@ -84,7 +84,7 @@ public:
   const std::string & entity() const noexcept { return topic_; }
 
   /**
-   * @brief Return the entity path using the corresponding root and its frame ID.
+   * @brief Return the entity path using the corresponding root and its frame ID with its topic.
    *
    * @param frame_id Frame ID.
    * @return Return "/<Root>/<FrameID>/<Topic>" if the corresponding root exists, otherwise return
@@ -94,6 +94,22 @@ public:
   {
     if (entity_roots_ && entity_roots_->count(frame_id) > 0) {
       return entity_roots_->at(frame_id) + topic_;
+    } else {
+      return std::nullopt;
+    }
+  }
+
+  /**
+   * @brief Return the entity path using the corresponding root and its frame ID without its topic.
+   *
+   * @param frame_id Frame ID.
+   * @return Return "/<Root>/<FrameID>" if the corresponding root exists, otherwise return
+   * `std::nullopt`.
+   */
+  std::optional<std::string> entity_without_topic(const std::string & frame_id) const noexcept
+  {
+    if (entity_roots_ && entity_roots_->count(frame_id) > 0) {
+      return entity_roots_->at(frame_id);
     } else {
       return std::nullopt;
     }

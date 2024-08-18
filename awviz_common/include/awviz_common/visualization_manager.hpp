@@ -59,8 +59,6 @@ private:
   rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;  //!< Parallel callback group.
   rclcpp::TimerBase::SharedPtr callback_timer_;               //!< Timer callback.
 
-  std::mutex display_mutex_;
-
 private:
   /**
    * @brief Parse topics and create new ROS subscriptions every time.

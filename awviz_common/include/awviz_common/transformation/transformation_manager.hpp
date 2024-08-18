@@ -90,7 +90,7 @@ private:
   std::unique_ptr<TfTree> tf_tree_;                          //!< TfTree unique pointer.
   std::shared_ptr<std::unordered_map<std::string, std::string>>
     entities_;  //!< Map stores a entity path of a corresponding frame ID.
-  std::unordered_map<std::string, double> last_log_stamps_;
+  std::unordered_map<std::string, double> last_log_stamps_;  //!< Map stores last log timestamps.
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_

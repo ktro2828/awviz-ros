@@ -125,13 +125,11 @@ $(function() {
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;  </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  rclcpp::TimerBase::SharedPtr callback_timer_;               </div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  std::mutex display_mutex_;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <span class="keywordtype">void</span> create_subscriptions();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>};</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>}  <span class="comment">// namespace awviz_common</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  <span class="keywordtype">void</span> create_subscriptions();</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>};</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}  <span class="comment">// namespace awviz_common</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_</span></div>
 <div class="ttc" id="aclassawviz__common_1_1VisualizationManager_html"><div class="ttname"><a href="classawviz__common_1_1VisualizationManager.html">awviz_common::VisualizationManager</a></div><div class="ttdoc">Manager class to handle visualization processes.</div><div class="ttdef"><b>Definition:</b> visualization_manager.hpp:35</div></div>
 <div class="ttc" id="aclassawviz__common_1_1VisualizationManager_html_a45b2314e77cdc07a6425491947a4e520"><div class="ttname"><a href="classawviz__common_1_1VisualizationManager.html#a45b2314e77cdc07a6425491947a4e520">awviz_common::VisualizationManager::~VisualizationManager</a></div><div class="ttdeci">~VisualizationManager()</div><div class="ttdoc">Destroy the VisualizationManager object with unsubscribing topics of displays.</div><div class="ttdef"><b>Definition:</b> visualization_manager.cpp:37</div></div>
 <div class="ttc" id="adisplay_8hpp_html"><div class="ttname"><a href="display_8hpp.html">display.hpp</a></div></div>

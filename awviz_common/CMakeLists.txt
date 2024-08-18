@@ -80,10 +80,15 @@ install(FILES
 # -------- for testing --------
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
-  set(ament_cmake_copyright_FOUND TRUE)
-  set(ament_cmake_cppcheck_FOUND TRUE)
-  set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
+
+  # -------- test transformation --------
+  ament_auto_add_gtest(test_tf_frame
+    test/transformation/test_tf_frame.cpp
+  )
+  ament_auto_add_gtest(test_tf_tree
+    test/transformation/test_tf_tree.cpp
+  )
 endif()
 
 ament_auto_package()

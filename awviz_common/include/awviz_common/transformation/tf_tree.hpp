@@ -16,6 +16,7 @@
 #define AWVIZ_COMMON__TF_TREE_HPP_
 
 #include <algorithm>
+#include <cstring>
 #include <memory>
 #include <optional>
 #include <string>
@@ -24,6 +25,9 @@
 
 namespace awviz_common
 {
+
+constexpr const char * TF_ROOT = "map";  //!< Root transformation frame.
+
 /**
  * @brief A class to represent a TF frame information.
  */
@@ -68,11 +72,22 @@ public:
 
   /**
    * @brief Return whether the tf frame is static or not.
-   * @note Currently, this returns true if the parent id is not `"map"`.
+   * @note Currently, this returns true if the parent id is not `TF_ROOT` or is empty.
    *
-   * @return Return true if the parent id is not `"map"`.
+   * @return Return true if the parent id is not `TF_ROOT` or is empty.
    */
-  bool is_static() const { return parent_ != "map"; }
+  bool is_static() const { return std::strcmp(parent_.c_str(), TF_ROOT) != 0 || parent_.empty(); }
+
+  /**
+   * @brief Compare with an another object.
+   *
+   * @param other Another object.
+   * @return Return true if both id and parent are the same.
+   */
+  bool operator==(const TfFrame & other) const
+  {
+    return id_ == other.id() && parent_ == other.parent();
+  }
 
 private:
   std::string id_;      //!< Frame ID.
@@ -83,32 +98,23 @@ class TfTree
 {
 public:
   /**
+   * @brief Construct a object setting `TF_ROOT` as root.
+   */
+  TfTree() : frames_() { frames_.emplace(TF_ROOT, TF_ROOT); }
+
+  /**
    * @brief Add a new tf frame to the tree.
    *
    * @param frame A new tf frame. If it has been already registered, skip adding.
    */
-  void emplace(const TfFrame & frame)
-  {
-    if (!contains(frame.id())) {
-      frames_.emplace(frame.id(), frame);
-    }
+  void emplace(const TfFrame & frame) { frames_.emplace(frame.id(), frame); }
 
-    if (!frame.is_root()) {
-      emplace(frame.parent());
-    }
-  }
-
-  /**
-   * @brief Add a new tf frame to the tree with the empty string parent.
-   *
-   * @param id Frame ID. If it has been already registered, skip adding.
-   */
-  void emplace(const std::string & id)
-  {
-    if (!contains(id)) {
-      frames_.emplace(id, id);
-    }
-  }
+  // /**
+  //  * @brief Add a new tf frame to the tree with the empty string parent.
+  //  *
+  //  * @param id Frame ID. If it has been already registered, skip adding.
+  //  */
+  // void emplace(const std::string & id) { frames_.emplace(id, id); }
 
   /**
    * @brief Return map of all frames.
@@ -141,7 +147,7 @@ public:
   }
 
   /**
-   * @brief Whether to the specified frame is contained in the tree.
+   * @brief Whether to the specified frame ID is contained as a node of tree.
    *
    * @param id Frame ID.
    * @return Returns true, if the frame is contained.
@@ -149,12 +155,55 @@ public:
   bool contains(const std::string & id) const { return frames_.count(id) > 0; }
 
   /**
-   * @brief Whether to the parent of specified frame is contained in the tree.
+   * @brief Whether to the specified frame is contained in the tree checking both key and value.
    *
-   * @param id Frame ID.
-   * @return Returns true, if the parent frame is contained.
+   * @param frame `TfFrame` object.
+   * @return true Return true if the tree contains the ID of `frame` as a key, and then if its value
+   * is equivalent to `frame`.
    */
-  bool is_root(const std::string & id) const { return contains(id) && frames_.at(id).is_root(); }
+  bool contains(const TfFrame & frame) const
+  {
+    return contains(frame.id()) && frame == frames_.at(frame.id());
+  }
+
+  /**
+   * @brief Return entity path of the specified frame. The entity path will be in the format
+   * `"/<Parent0>/<Parent1>/.../<FrameID>"`, where `"<Parent0>"` represents the deepest parent
+   * frame.
+   *
+   * @param frame `TfFrame` Object.
+   * @return Entity path of the frame.
+   */
+  std::string entity_path(const TfFrame & frame) const
+  {
+    auto current = std::make_optional<TfFrame>(frame);
+    std::string entity = "/" + current->id();
+    while (current && !current->is_root()) {
+      current = get_frame(current->parent());
+      if (current) {
+        entity = "/" + current->id() + entity;
+      } else {
+        break;
+      }
+    }
+    return entity;
+  }
+
+  /**
+   * @brief Check whether the input frame is linked to the input `id`.
+   *
+   * @param frame `TfFrame` object.
+   * @param id Frame ID.
+   * @return Return true if the input frame can link to `id`.
+   */
+  bool can_link_to(const TfFrame & frame, const std::string & id) const
+  {
+    auto current = std::make_optional<TfFrame>(frame);
+    while (current && !current->is_root()) {
+      current = get_frame(current->parent());
+    }
+    return current->id() == id;
+  }
 
 private:
   std::unordered_map<std::string, TfFrame> frames_;  //!< Map to store frames.

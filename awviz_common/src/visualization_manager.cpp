@@ -14,6 +14,7 @@
 
 #include "awviz_common/visualization_manager.hpp"
 
+#include "awviz_common/transformation/tf_tree.hpp"
 #include "awviz_common/transformation/transformation_manager.hpp"
 
 #include <chrono>
@@ -26,6 +27,8 @@ VisualizationManager::VisualizationManager(
 : node_(node), stream_(stream)
 {
   using std::chrono_literals::operator""ms;
+
+  stream_->log_static(TF_ROOT, rerun::ViewCoordinates::RIGHT_HAND_Z_UP);
 
   display_factory_ = std::make_unique<DisplayFactory>();
   tf_manager_ = std::make_unique<TransformationManager>(node, stream);
@@ -50,6 +53,8 @@ void VisualizationManager::create_subscriptions()
     if (display_group_.find(topic_name) != display_group_.cend()) {
       continue;
     }
+
+    std::lock_guard<std::mutex> lock(display_mutex_);
 
     const auto & topic_type = topic_types.front();
     const auto lookup_name = display_factory_->get_class_lookup_name(topic_type);

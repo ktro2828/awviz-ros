@@ -79,7 +79,7 @@ private:
    *
    * @param frame `TfFrame` object.
    */
-  void log_transform(const TfFrame & frame) const;
+  void log_transform(const TfFrame & frame);
 
 private:
   rclcpp::Node::SharedPtr node_;                             //!< Node shared pointer.
@@ -90,6 +90,7 @@ private:
   std::unique_ptr<TfTree> tf_tree_;                          //!< TfTree unique pointer.
   std::shared_ptr<std::unordered_map<std::string, std::string>>
     entities_;  //!< Map stores a entity path of a corresponding frame ID.
+  std::unordered_map<std::string, double> last_log_stamps_;
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_

@@ -1,11 +1,15 @@
 <library path="awviz_plugin">
     <!-- Image -->
+    <class name="awviz_plugin/CameraInfoDisplay" type="awviz_plugin::CameraInfoDisplay"
+        base_class_type="awviz_common::Display">
+        <description>Display from sensor_msgs/msg/CameraInfo message.</description>
+        <message_type>sensor_msgs/msg/CameraInfo</message_type>
+    </class>
     <class name="awviz_plugin/CompressedImageDisplay" type="awviz_plugin::CompressedImageDisplay"
         base_class_type="awviz_common::Display">
         <description>Display from sensor_msgs/msg/CompressedImage message.</description>
         <message_type>sensor_msgs/msg/CompressedImage</message_type>
     </class>
-
     <class name="awviz_plugin/ImageDisplay" type="awviz_plugin::ImageDisplay"
         base_class_type="awviz_common::Display">
         <description>Display from sensor_msgs/msg/Image message.</description>

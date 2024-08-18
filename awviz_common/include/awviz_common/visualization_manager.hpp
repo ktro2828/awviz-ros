@@ -24,6 +24,7 @@
 
 #include <map>
 #include <memory>
+#include <mutex>
 #include <string>
 
 namespace awviz_common
@@ -58,6 +59,8 @@ private:
   std::unique_ptr<TransformationManager> tf_manager_;         //!< Transformation manager.
   rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;  //!< Parallel callback group.
   rclcpp::TimerBase::SharedPtr callback_timer_;               //!< Timer callback.
+
+  std::mutex display_mutex_;
 
 private:
   /**

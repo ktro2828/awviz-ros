@@ -14,10 +14,6 @@
 
 #include "awviz_common/transformation/transformation_manager.hpp"
 
-#include "rerun.hpp"
-
-#include <rclcpp/qos.hpp>
-
 #include <yaml-cpp/yaml.h>
 
 #include <chrono>
@@ -66,10 +62,6 @@ void TransformationManager::update_tree()
 
       const TfFrame frame(id, parent);
 
-      // If parsed frame has already been registered and static skip to update
-      if (tf_tree_->contains(id) && frame.is_static()) {
-        continue;
-      }
       tf_tree_->emplace(frame);
     }
   } catch (const YAML::Exception & ex) {
@@ -79,33 +71,30 @@ void TransformationManager::update_tree()
 
 void TransformationManager::update_entity(const TfFrame & frame)
 {
-  if (entities_->count(frame.id()) > 0) {
+  if (!tf_tree_->can_link_to(frame, TF_ROOT)) {
     return;
   }
-
-  auto current = std::make_optional<TfFrame>(frame);
-  std::string entity = "/" + current->id();
-  while (current && !current->is_root()) {
-    current = tf_tree_->get_parent(current->id());
-    if (current) {
-      entity = "/" + current->id() + entity;
-    } else {
-      break;
-    }
-  }
+  const auto entity = tf_tree_->entity_path(frame);
   entities_->emplace(frame.id(), entity);
 }
 
-void TransformationManager::log_transform(const TfFrame & frame) const
+void TransformationManager::log_transform(const TfFrame & frame)
 {
   // Root frame is skipped to log transformation
-  if (frame.is_root()) {
+  if (frame.is_root() || entities_->count(frame.id()) == 0) {
     return;
   }
 
   try {
     const auto tf_stamped =
       tf_buffer_->lookupTransform(frame.parent(), frame.id(), tf2::TimePointZero);
+
+    const auto timestamp =
+      rclcpp::Time(tf_stamped.header.stamp.sec, tf_stamped.header.stamp.nanosec).seconds();
+
+    if (last_log_stamps_.count(frame.id()) > 0 && last_log_stamps_.at(frame.id()) == timestamp) {
+      return;
+    }
 
     const auto & entity_path = entities_->at(frame.id());
 
@@ -120,11 +109,10 @@ void TransformationManager::log_transform(const TfFrame & frame) const
     if (frame.is_static()) {
       stream_->log_static(entity_path, transform);
     } else {
-      stream_->set_time_seconds(
-        "timestamp",
-        rclcpp::Time(tf_stamped.header.stamp.sec, tf_stamped.header.stamp.nanosec).seconds());
+      stream_->set_time_seconds("timestamp", timestamp);
       stream_->log(entity_path, transform);
     }
+    last_log_stamps_[frame.id()] = timestamp;
   } catch (const tf2::TransformException & ex) {
     RCLCPP_ERROR_STREAM(
       node_->get_logger(),

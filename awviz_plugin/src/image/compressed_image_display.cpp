@@ -32,7 +32,7 @@ void CompressedImageDisplay::log_message(sensor_msgs::msg::CompressedImage::Cons
   stream_->set_time_seconds(
     TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
 
-  const auto entity_path = property_.entity(msg->header.frame_id);
+  const auto entity_path = property_.entity_without_topic(msg->header.frame_id);
   if (!entity_path) {
     stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
     return;

@@ -11,7 +11,8 @@ Even if there are ROS messages that are not supported by built-in plugins, we ca
 
 | ROS Package   | Message Type      | Plugin Type              |
 | :------------ | :---------------- | :----------------------- |
-| `sensor_msgs` | `CompressedImage` | `CompressedImageDisplay` |
+| `sensor_msgs` | `CameraInfo`      | `CameraInfoDisplay`      |
+|               | `CompressedImage` | `CompressedImageDisplay` |
 |               | `Image`           | `ImageDisplay`           |
 |               | `PointCloud2`     | `PointCloud2Display`     |
 

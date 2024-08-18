@@ -127,7 +127,7 @@ $(function() {
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
 <div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keywordtype">void</span> update_entity(<span class="keyword">const</span> <a class="code hl_class" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp; frame);</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="keywordtype">void</span> log_transform(<span class="keyword">const</span> <a class="code hl_class" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp; frame) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>  <span class="keywordtype">void</span> log_transform(<span class="keyword">const</span> <a class="code hl_class" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp; frame);</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  rclcpp::Node::SharedPtr node_;                             </div>
@@ -138,10 +138,11 @@ $(function() {
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  std::unique_ptr&lt;TfTree&gt; tf_tree_;                          </div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  std::shared_ptr&lt;std::unordered_map&lt;std::string, std::string&gt;&gt;</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    entities_;  </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>};</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>}  <span class="comment">// namespace awviz_common</span></div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_</span></div>
-<div class="ttc" id="aclassawviz__common_1_1TfFrame_html"><div class="ttname"><a href="classawviz__common_1_1TfFrame.html">awviz_common::TfFrame</a></div><div class="ttdoc">A class to represent a TF frame information.</div><div class="ttdef"><b>Definition:</b> tf_tree.hpp:31</div></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  std::unordered_map&lt;std::string, double&gt; last_log_stamps_;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}  <span class="comment">// namespace awviz_common</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_</span></div>
+<div class="ttc" id="aclassawviz__common_1_1TfFrame_html"><div class="ttname"><a href="classawviz__common_1_1TfFrame.html">awviz_common::TfFrame</a></div><div class="ttdoc">A class to represent a TF frame information.</div><div class="ttdef"><b>Definition:</b> tf_tree.hpp:35</div></div>
 <div class="ttc" id="aclassawviz__common_1_1TransformationManager_html"><div class="ttname"><a href="classawviz__common_1_1TransformationManager.html">awviz_common::TransformationManager</a></div><div class="ttdoc">A class to manage transform frames.</div><div class="ttdef"><b>Definition:</b> transformation_manager.hpp:37</div></div>
 <div class="ttc" id="aclassawviz__common_1_1TransformationManager_html_a3a535428c41e2908080e2ae04057cf51"><div class="ttname"><a href="classawviz__common_1_1TransformationManager.html#a3a535428c41e2908080e2ae04057cf51">awviz_common::TransformationManager::entities</a></div><div class="ttdeci">const std::shared_ptr&lt; std::unordered_map&lt; std::string, std::string &gt; &gt; entities() const</div><div class="ttdoc">Return the entity paths.</div><div class="ttdef"><b>Definition:</b> transformation_manager.hpp:53</div></div>
 <div class="ttc" id="anamespaceawviz__common_html"><div class="ttname"><a href="namespaceawviz__common.html">awviz_common</a></div><div class="ttdef"><b>Definition:</b> display.hpp:30</div></div>

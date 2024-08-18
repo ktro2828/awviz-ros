@@ -85,12 +85,12 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a177d677fa50d183039b6292c91d95673"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a177d677fa50d183039b6292c91d95673">TfTree</a> ()</td></tr>
+<tr class="memdesc:a177d677fa50d183039b6292c91d95673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a object setting <code>TF_ROOT</code> as root.  <br /></td></tr>
+<tr class="separator:a177d677fa50d183039b6292c91d95673"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a198b8b584be6f83480b00c926ad8485c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a198b8b584be6f83480b00c926ad8485c">emplace</a> (const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;frame)</td></tr>
 <tr class="memdesc:a198b8b584be6f83480b00c926ad8485c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new tf frame to the tree.  <br /></td></tr>
 <tr class="separator:a198b8b584be6f83480b00c926ad8485c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e70cc21107184b4ee03e0164905e356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a9e70cc21107184b4ee03e0164905e356">emplace</a> (const std::string &amp;id)</td></tr>
-<tr class="memdesc:a9e70cc21107184b4ee03e0164905e356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new tf frame to the tree with the empty string parent.  <br /></td></tr>
-<tr class="separator:a9e70cc21107184b4ee03e0164905e356"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64b3ae21ccc152091e94115808d27aa6"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; std::string, <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a64b3ae21ccc152091e94115808d27aa6">get_frames</a> () const</td></tr>
 <tr class="memdesc:a64b3ae21ccc152091e94115808d27aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return map of all frames.  <br /></td></tr>
 <tr class="separator:a64b3ae21ccc152091e94115808d27aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,15 +101,95 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a425c7304b46fac6663bf396ac9abcb14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parent <code><a class="el" href="classawviz__common_1_1TfFrame.html" title="A class to represent a TF frame information.">TfFrame</a></code> object.  <br /></td></tr>
 <tr class="separator:a425c7304b46fac6663bf396ac9abcb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45c9f8a0f7c6a788ec283b4341e33cb4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a45c9f8a0f7c6a788ec283b4341e33cb4">contains</a> (const std::string &amp;id) const</td></tr>
-<tr class="memdesc:a45c9f8a0f7c6a788ec283b4341e33cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to the specified frame is contained in the tree.  <br /></td></tr>
+<tr class="memdesc:a45c9f8a0f7c6a788ec283b4341e33cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to the specified frame ID is contained as a node of tree.  <br /></td></tr>
 <tr class="separator:a45c9f8a0f7c6a788ec283b4341e33cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff3827522956a94e14a754ee7076c62a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#aff3827522956a94e14a754ee7076c62a">is_root</a> (const std::string &amp;id) const</td></tr>
-<tr class="memdesc:aff3827522956a94e14a754ee7076c62a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to the parent of specified frame is contained in the tree.  <br /></td></tr>
-<tr class="separator:aff3827522956a94e14a754ee7076c62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af685aa283ae729f127bac2533b4ec14a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#af685aa283ae729f127bac2533b4ec14a">contains</a> (const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;frame) const</td></tr>
+<tr class="memdesc:af685aa283ae729f127bac2533b4ec14a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to the specified frame is contained in the tree checking both key and value.  <br /></td></tr>
+<tr class="separator:af685aa283ae729f127bac2533b4ec14a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade07b0e6472fb186a07f1f6eabb27ab7"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#ade07b0e6472fb186a07f1f6eabb27ab7">entity_path</a> (const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;frame) const</td></tr>
+<tr class="memdesc:ade07b0e6472fb186a07f1f6eabb27ab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return entity path of the specified frame. The entity path will be in the format <code>"/&lt;Parent0&gt;/&lt;Parent1&gt;/.../&lt;FrameID&gt;"</code>, where <code>"&lt;Parent0&gt;"</code> represents the deepest parent frame.  <br /></td></tr>
+<tr class="separator:ade07b0e6472fb186a07f1f6eabb27ab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d0e1832098fca6902cabe2da6f7eab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#ab1d0e1832098fca6902cabe2da6f7eab">can_link_to</a> (const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;frame, const std::string &amp;id) const</td></tr>
+<tr class="memdesc:ab1d0e1832098fca6902cabe2da6f7eab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether the input frame is linked to the input <code>id</code>.  <br /></td></tr>
+<tr class="separator:ab1d0e1832098fca6902cabe2da6f7eab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a177d677fa50d183039b6292c91d95673" name="a177d677fa50d183039b6292c91d95673"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a177d677fa50d183039b6292c91d95673">&#9670;&#160;</a></span>TfTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">awviz_common::TfTree::TfTree </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a object setting <code>TF_ROOT</code> as root. </p>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab1d0e1832098fca6902cabe2da6f7eab" name="ab1d0e1832098fca6902cabe2da6f7eab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d0e1832098fca6902cabe2da6f7eab">&#9670;&#160;</a></span>can_link_to()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool awviz_common::TfTree::can_link_to </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check whether the input frame is linked to the input <code>id</code>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td><code><a class="el" href="classawviz__common_1_1TfFrame.html" title="A class to represent a TF frame information.">TfFrame</a></code> object. </td></tr>
+    <tr><td class="paramname">id</td><td>Frame ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return true if the input frame can link to <code>id</code>. </dd></dl>
+
+</div>
+</div>
 <a id="a45c9f8a0f7c6a788ec283b4341e33cb4" name="a45c9f8a0f7c6a788ec283b4341e33cb4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a45c9f8a0f7c6a788ec283b4341e33cb4">&#9670;&#160;</a></span>contains()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a45c9f8a0f7c6a788ec283b4341e33cb4">&#9670;&#160;</a></span>contains() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -132,7 +212,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Whether to the specified frame is contained in the tree. </p>
+<p>Whether to the specified frame ID is contained as a node of tree. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">id</td><td>Frame ID. </td></tr>
@@ -143,8 +223,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a9e70cc21107184b4ee03e0164905e356" name="a9e70cc21107184b4ee03e0164905e356"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e70cc21107184b4ee03e0164905e356">&#9670;&#160;</a></span>emplace() <span class="overload">[1/2]</span></h2>
+<a id="af685aa283ae729f127bac2533b4ec14a" name="af685aa283ae729f127bac2533b4ec14a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af685aa283ae729f127bac2533b4ec14a">&#9670;&#160;</a></span>contains() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -153,11 +233,11 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void awviz_common::TfTree::emplace </td>
+          <td class="memname">bool awviz_common::TfTree::contains </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -167,18 +247,19 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Add a new tf frame to the tree with the empty string parent. </p>
+<p>Whether to the specified frame is contained in the tree checking both key and value. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>Frame ID. If it has been already registered, skip adding. </td></tr>
+    <tr><td class="paramname">frame</td><td><code><a class="el" href="classawviz__common_1_1TfFrame.html" title="A class to represent a TF frame information.">TfFrame</a></code> object. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>true Return true if the tree contains the ID of <code>frame</code> as a key, and then if its value is equivalent to <code>frame</code>. </dd></dl>
 
 </div>
 </div>
 <a id="a198b8b584be6f83480b00c926ad8485c" name="a198b8b584be6f83480b00c926ad8485c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a198b8b584be6f83480b00c926ad8485c">&#9670;&#160;</a></span>emplace() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a198b8b584be6f83480b00c926ad8485c">&#9670;&#160;</a></span>emplace()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -208,6 +289,41 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="ade07b0e6472fb186a07f1f6eabb27ab7" name="ade07b0e6472fb186a07f1f6eabb27ab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade07b0e6472fb186a07f1f6eabb27ab7">&#9670;&#160;</a></span>entity_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string awviz_common::TfTree::entity_path </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>frame</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return entity path of the specified frame. The entity path will be in the format <code>"/&lt;Parent0&gt;/&lt;Parent1&gt;/.../&lt;FrameID&gt;"</code>, where <code>"&lt;Parent0&gt;"</code> represents the deepest parent frame. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame</td><td><code><a class="el" href="classawviz__common_1_1TfFrame.html" title="A class to represent a TF frame information.">TfFrame</a></code> Object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Entity path of the frame. </dd></dl>
 
 </div>
 </div>
@@ -306,41 +422,6 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Parent <code><a class="el" href="classawviz__common_1_1TfFrame.html" title="A class to represent a TF frame information.">TfFrame</a></code> object. If there is no parent, returns <code>nullptr</code>. </dd></dl>
-
-</div>
-</div>
-<a id="aff3827522956a94e14a754ee7076c62a" name="aff3827522956a94e14a754ee7076c62a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff3827522956a94e14a754ee7076c62a">&#9670;&#160;</a></span>is_root()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool awviz_common::TfTree::is_root </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>id</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Whether to the parent of specified frame is contained in the tree. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">id</td><td>Frame ID. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Returns true, if the parent frame is contained. </dd></dl>
 
 </div>
 </div>

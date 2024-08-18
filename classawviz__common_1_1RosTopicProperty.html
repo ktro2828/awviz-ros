@@ -112,8 +112,11 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5decee746bd9e364438ce8583bf76843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the entity path using topic name.  <br /></td></tr>
 <tr class="separator:a5decee746bd9e364438ce8583bf76843"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61b44efb8412428d83318fb57df36a96"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicProperty.html#a61b44efb8412428d83318fb57df36a96">entity</a> (const std::string &amp;frame_id) const noexcept</td></tr>
-<tr class="memdesc:a61b44efb8412428d83318fb57df36a96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the entity path using the corresponding root and its frame ID.  <br /></td></tr>
+<tr class="memdesc:a61b44efb8412428d83318fb57df36a96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the entity path using the corresponding root and its frame ID with its topic.  <br /></td></tr>
 <tr class="separator:a61b44efb8412428d83318fb57df36a96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9afa32dc3c579e944bf41224685e090"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicProperty.html#ab9afa32dc3c579e944bf41224685e090">entity_without_topic</a> (const std::string &amp;frame_id) const noexcept</td></tr>
+<tr class="memdesc:ab9afa32dc3c579e944bf41224685e090"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the entity path using the corresponding root and its frame ID without its topic.  <br /></td></tr>
+<tr class="separator:ab9afa32dc3c579e944bf41224685e090"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac475ea6a3ad9640d14f9fe8112081234"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicProperty.html#ac475ea6a3ad9640d14f9fe8112081234">is_initialized</a> () const</td></tr>
 <tr class="separator:ac475ea6a3ad9640d14f9fe8112081234"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -250,7 +253,7 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Return the entity path using the corresponding root and its frame ID. </p>
+<p>Return the entity path using the corresponding root and its frame ID with its topic. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frame_id</td><td>Frame ID. </td></tr>
@@ -258,6 +261,41 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return "/&lt;Root&gt;/&lt;FrameID&gt;/&lt;Topic&gt;" if the corresponding root exists, otherwise return <code>std::nullopt</code>. </dd></dl>
+
+</div>
+</div>
+<a id="ab9afa32dc3c579e944bf41224685e090" name="ab9afa32dc3c579e944bf41224685e090"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9afa32dc3c579e944bf41224685e090">&#9670;&#160;</a></span>entity_without_topic()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; awviz_common::RosTopicProperty::entity_without_topic </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>frame_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Return the entity path using the corresponding root and its frame ID without its topic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame_id</td><td>Frame ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return "/&lt;Root&gt;/&lt;FrameID&gt;" if the corresponding root exists, otherwise return <code>std::nullopt</code>. </dd></dl>
 
 </div>
 </div>

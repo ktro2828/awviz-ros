@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac54710816f9e5af7ba8de46245dc588a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfFrame.html#ac54710816f9e5af7ba8de46245dc588a">is_static</a> () const</td></tr>
 <tr class="memdesc:ac54710816f9e5af7ba8de46245dc588a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return whether the tf frame is static or not.  <br /></td></tr>
 <tr class="separator:ac54710816f9e5af7ba8de46245dc588a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b0bca30c0fc93d8760bdcb92006b7c0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfFrame.html#a8b0bca30c0fc93d8760bdcb92006b7c0">operator==</a> (const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;other) const</td></tr>
+<tr class="memdesc:a8b0bca30c0fc93d8760bdcb92006b7c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare with an another object.  <br /></td></tr>
+<tr class="separator:a8b0bca30c0fc93d8760bdcb92006b7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class to represent a TF frame information. </p>
@@ -270,8 +273,43 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return whether the tf frame is static or not. </p>
-<dl class="section note"><dt>Note</dt><dd>Currently, this returns true if the parent id is not <code>"map"</code>.</dd></dl>
-<dl class="section return"><dt>Returns</dt><dd>Return true if the parent id is not <code>"map"</code>. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Currently, this returns true if the parent id is not <code>TF_ROOT</code> or is empty.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Return true if the parent id is not <code>TF_ROOT</code> or is empty. </dd></dl>
+
+</div>
+</div>
+<a id="a8b0bca30c0fc93d8760bdcb92006b7c0" name="a8b0bca30c0fc93d8760bdcb92006b7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b0bca30c0fc93d8760bdcb92006b7c0">&#9670;&#160;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool awviz_common::TfFrame::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compare with an another object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Another object. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return true if both id and parent are the same. </dd></dl>
 
 </div>
 </div>

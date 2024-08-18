@@ -24,7 +24,6 @@
 
 #include <map>
 #include <memory>
-#include <mutex>
 #include <string>
 
 namespace awviz_common

@@ -89,6 +89,10 @@ if(BUILD_TESTING)
   ament_auto_add_gtest(test_tf_tree
     test/transformation/test_tf_tree.cpp
   )
+  # -------- test property --------
+  ament_auto_add_gtest(test_property
+    test/test_property.cpp
+  )
 endif()
 
 ament_auto_package()

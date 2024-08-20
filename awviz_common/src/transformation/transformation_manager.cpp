@@ -14,9 +14,29 @@
 
 #include "awviz_common/transformation/transformation_manager.hpp"
 
+#include <geometry_msgs/msg/transform.hpp>
+
 #include <yaml-cpp/yaml.h>
 
 #include <chrono>
+
+namespace
+{
+/**
+ * @brief Convert `geometry_msgs::msg::Transform` to `rerun::Transform3D`.
+ *
+ * @param transform ROS message transform.
+ * @return Converted instance.
+ */
+rerun::Transform3D from_msg(const geometry_msgs::msg::Transform & transform)
+{
+  return rerun::Transform3D::from_translation({static_cast<float>(transform.translation.x),
+                                               static_cast<float>(transform.translation.y),
+                                               static_cast<float>(transform.translation.z)})
+    .with_quaternion(rerun::Quaternion::from_wxyz(
+      transform.rotation.w, transform.rotation.x, transform.rotation.y, transform.rotation.z));
+}
+}  // namespace
 
 namespace awviz_common
 {
@@ -98,19 +118,11 @@ void TransformationManager::log_transform(const TfFrame & frame)
 
     const auto & entity_path = entities_->at(frame.id());
 
-    const rerun::Transform3D transform(
-      rerun::Vector3D(
-        tf_stamped.transform.translation.x, tf_stamped.transform.translation.y,
-        tf_stamped.transform.translation.z),
-      rerun::Quaternion::from_wxyz(
-        tf_stamped.transform.rotation.w, tf_stamped.transform.rotation.x,
-        tf_stamped.transform.rotation.y, tf_stamped.transform.rotation.z));
-
     if (frame.is_static()) {
-      stream_->log_static(entity_path, transform);
+      stream_->log_static(entity_path, from_msg(tf_stamped.transform));
     } else {
       stream_->set_time_seconds("timestamp", timestamp);
-      stream_->log(entity_path, transform);
+      stream_->log(entity_path, from_msg(tf_stamped.transform));
     }
     last_log_stamps_[frame.id()] = timestamp;
   } catch (const tf2::TransformException & ex) {

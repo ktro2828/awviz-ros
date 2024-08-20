@@ -37,21 +37,21 @@ void TrackedObjectsDisplay::log_message(
 
   std::vector<rerun::Position3D> centers;
   std::vector<rerun::HalfSize3D> sizes;
-  std::vector<rerun::Rotation3D> rotations;
+  std::vector<rerun::Quaternion> quaternions;
   std::vector<rerun::components::ClassId> class_ids;
   for (const auto & object : msg->objects) {
     const auto & pose = object.kinematics.pose_with_covariance.pose;
     const auto & dimensions = object.shape.dimensions;
     centers.emplace_back(pose.position.x, pose.position.y, pose.position.z);
     sizes.emplace_back(dimensions.x, dimensions.y, dimensions.z);
-    rotations.emplace_back(rerun::Quaternion::from_wxyz(
+    quaternions.emplace_back(rerun::Quaternion::from_wxyz(
       pose.orientation.w, pose.orientation.x, pose.orientation.y, pose.orientation.z));
     class_ids.emplace_back(static_cast<uint16_t>(object.classification.front().label));
   }
 
   stream_->log(
     entity_path.value(), rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
-                           .with_rotations(rotations)
+                           .with_quaternions(quaternions)
                            .with_class_ids(class_ids));
 }
 }  // namespace awviz_plugin

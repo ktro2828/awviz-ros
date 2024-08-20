@@ -18,6 +18,7 @@
 
 #include <opencv2/opencv.hpp>
 
+#include <cstdint>
 #include <iostream>
 
 namespace awviz_plugin
@@ -43,17 +44,15 @@ void CompressedImageDisplay::log_message(sensor_msgs::msg::CompressedImage::Cons
     cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
 
     stream_->log(
-      entity_path.value(), rerun::Image(tensor_shape(img), rerun::TensorBuffer::u8(img)));
+      entity_path.value(), rerun::Image::from_rgb24(img, rerun::WidthHeight(img.cols, img.rows)));
   } else {
     auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
     cv::Mat depth;
     img.convertTo(depth, CV_32FC1);
 
     stream_->log(
-      entity_path.value(), rerun::DepthImage(
-                             {static_cast<size_t>(depth.rows), static_cast<size_t>(depth.cols)},
-                             rerun::TensorBuffer::f32(depth))
-                             .with_meter(1.0));
+      entity_path.value(),
+      rerun::DepthImage(depth.data, rerun::WidthHeight(depth.cols, depth.rows)).with_meter(1.0));
   }
 }
 }  // namespace awviz_plugin

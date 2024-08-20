@@ -40,23 +40,19 @@ void ImageDisplay::log_message(sensor_msgs::msg::Image::ConstSharedPtr msg)
   if (msg->encoding == "16UC1") {
     auto img = cv_bridge::toCvCopy(msg)->image;
     stream_->log(
-      entity_path.value(), rerun::DepthImage(
-                             {static_cast<size_t>(img.rows), static_cast<size_t>(img.cols)},
-                             rerun::TensorBuffer::u16(img))
-                             .with_meter(1000));
+      entity_path.value(),
+      rerun::DepthImage(img.data, rerun::WidthHeight(img.cols, img.rows)).with_meter(1000));
   } else if (msg->encoding == "32FC1") {
     auto img = cv_bridge::toCvCopy(msg)->image;
 
     stream_->log(
-      entity_path.value(), rerun::DepthImage(
-                             {static_cast<size_t>(img.rows), static_cast<size_t>(img.cols)},
-                             rerun::TensorBuffer::f32(img))
-                             .with_meter(1.0));
+      entity_path.value(),
+      rerun::DepthImage(img.data, rerun::WidthHeight(img.cols, img.rows)).with_meter(1.0));
   } else {
     auto img = cv_bridge::toCvCopy(msg, "rgb8")->image;
 
     stream_->log(
-      entity_path.value(), rerun::Image(tensor_shape(img), rerun::TensorBuffer::u8(img)));
+      entity_path.value(), rerun::Image::from_rgb24(img, rerun::WidthHeight(img.cols, img.rows)));
   }
 }
 }  // namespace awviz_plugin

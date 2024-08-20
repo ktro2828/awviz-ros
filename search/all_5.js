@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['id_0',['id',['../structawviz__common_1_1PluginInfo.html#a6ea39948275ed6cfb2a8bf12e4475e06',1,'awviz_common::PluginInfo::id()'],['../classawviz__common_1_1TfFrame.html#afe553f2ddde984ef1bdf1d5f40b1f379',1,'awviz_common::TfFrame::id()']]],
-  ['image_5fdisplay_2ecpp_1',['image_display.cpp',['../image__display_8cpp.html',1,'']]],
-  ['image_5fdisplay_2ehpp_2',['image_display.hpp',['../image__display_8hpp.html',1,'']]],
-  ['imagedisplay_3',['ImageDisplay',['../classawviz__plugin_1_1ImageDisplay.html',1,'awviz_plugin::ImageDisplay'],['../classawviz__plugin_1_1ImageDisplay.html#af62072bf30fdd110e229fe1d04247d76',1,'awviz_plugin::ImageDisplay::ImageDisplay()']]],
-  ['initialize_4',['initialize',['../classawviz__common_1_1Display.html#a7d17157dfb51ba0a7bf3760fd4551568',1,'awviz_common::Display::initialize()'],['../classawviz__common_1_1RosTopicDisplay.html#a445cf44644e500d5283fb6d844c1cf52',1,'awviz_common::RosTopicDisplay::initialize()']]],
-  ['is_5finitialized_5',['is_initialized',['../classawviz__common_1_1Display.html#a7a35799c33b402fa746f11f02215120d',1,'awviz_common::Display::is_initialized()'],['../classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0',1,'awviz_common::RosTopicDisplay::is_initialized()'],['../classawviz__common_1_1RosTopicProperty.html#ac475ea6a3ad9640d14f9fe8112081234',1,'awviz_common::RosTopicProperty::is_initialized()']]],
-  ['is_5finitialized_5f_6',['is_initialized_',['../classawviz__common_1_1Display.html#a98839a2263581963ed4e80ef359b6ce7',1,'awviz_common::Display']]],
-  ['is_5froot_7',['is_root',['../classawviz__common_1_1TfFrame.html#a01a85bf399096af13b9a690349fb8170',1,'awviz_common::TfFrame']]],
-  ['is_5fstatic_8',['is_static',['../classawviz__common_1_1TfFrame.html#ac54710816f9e5af7ba8de46245dc588a',1,'awviz_common::TfFrame']]]
+  ['get_5fclass_5flookup_5fname_0',['get_class_lookup_name',['../classawviz__common_1_1DisplayFactory.html#a2d1170ef4a933bceb436ec85201e2566',1,'awviz_common::DisplayFactory']]],
+  ['get_5fdeclared_5fclasses_1',['get_declared_classes',['../classawviz__common_1_1PluginFactory.html#a3651da797b44cfbd5599425c4b7064fe',1,'awviz_common::PluginFactory']]],
+  ['get_5fframe_2',['get_frame',['../classawviz__common_1_1TfTree.html#adfa05fe186c01b830b3daa1c2781953d',1,'awviz_common::TfTree']]],
+  ['get_5fframes_3',['get_frames',['../classawviz__common_1_1TfTree.html#a64b3ae21ccc152091e94115808d27aa6',1,'awviz_common::TfTree']]],
+  ['get_5fmessage_5ftypes_4',['get_message_types',['../classawviz__common_1_1DisplayFactory.html#a3a7253e666134a13621a5162ea328b58',1,'awviz_common::DisplayFactory']]],
+  ['get_5fparent_5',['get_parent',['../classawviz__common_1_1TfTree.html#a425c7304b46fac6663bf396ac9abcb14',1,'awviz_common::TfTree']]],
+  ['get_5fplugin_5finfo_6',['get_plugin_info',['../classawviz__common_1_1PluginFactory.html#a792e69ef53a09ebbe7544d70b4ec525e',1,'awviz_common::PluginFactory']]],
+  ['get_5fplugin_5fmanifest_5fpath_7',['get_plugin_manifest_path',['../classawviz__common_1_1PluginFactory.html#af47e4727edd944ed51b6ebd80cae5292',1,'awviz_common::PluginFactory']]]
 ];

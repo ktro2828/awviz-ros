@@ -1,24 +1,11 @@
 var searchData=
 [
-  ['tensor_5fshape_0',['tensor_shape',['../namespaceawviz__plugin.html#ad5f7fc49eced56639be61f0f25cb9066',1,'awviz_plugin']]],
-  ['test_1',['TEST',['../test__tf__tree_8cpp.html#a4466617b60168644b39bc2318621db3d',1,'TEST(TfTreeTest, GetParent):&#160;test_tf_tree.cpp'],['../test__tf__frame_8cpp.html#aaec52b63fe3d352f896640d510030433',1,'TEST(TfFrameTest, ConstructOnlyId):&#160;test_tf_frame.cpp'],['../test__tf__frame_8cpp.html#a5359cb7ec7173657f8ce2e03f85b645e',1,'TEST(TfFrameTest, ConstructWithOtherBoth):&#160;test_tf_frame.cpp'],['../test__tf__tree_8cpp.html#a6f678683e27b7458a49507a0fea84aaa',1,'TEST(TfTreeTest, Construct):&#160;test_tf_tree.cpp'],['../test__tf__tree_8cpp.html#a918b71414e89a9e7265296b29d43befb',1,'TEST(TfTreeTest, Emplace):&#160;test_tf_tree.cpp'],['../test__tf__tree_8cpp.html#ae6f42479d263694f1d868b6961a61bf0',1,'TEST(TfTreeTest, GetFrames):&#160;test_tf_tree.cpp'],['../test__tf__tree_8cpp.html#a1ae80a12ad6a3ebd67de4c7ba81cd230',1,'TEST(TfTreeTest, GetFrame):&#160;test_tf_tree.cpp'],['../test__property_8cpp.html#a8ca861a53a15905a315fdd0fcc19fb3e',1,'TEST(PropertyTest, EntityTopic):&#160;test_property.cpp'],['../test__property_8cpp.html#a75985774a41675341425ca8756d9838a',1,'TEST(PropertyTest, EntityWithRootAndTopic):&#160;test_property.cpp'],['../test__property_8cpp.html#ad4b497d3499f388a4c56ed2bc0424a40',1,'TEST(PropertyTest, EntityWithoutTopic):&#160;test_property.cpp'],['../test__tf__tree_8cpp.html#a58c1e8ea417995d8718764c9044b94d5',1,'TEST(TfTreeTest, ContainsFrame):&#160;test_tf_tree.cpp'],['../test__tf__tree_8cpp.html#ab417203fb7cd339a1454ff77d43619dc',1,'TEST(TfTreeTest, EntityPath):&#160;test_tf_tree.cpp'],['../test__tf__tree_8cpp.html#acc123b93c4e2718673e40cdb6803783f',1,'TEST(TfTreeTest, CanLinkedTo):&#160;test_tf_tree.cpp'],['../test__tf__frame_8cpp.html#a90c75dc50b4d5c2f614cc90a5e174d96',1,'TEST(TfFrameTest, ConstructWithRoot):&#160;test_tf_frame.cpp']]],
-  ['test_5fproperty_2ecpp_2',['test_property.cpp',['../test__property_8cpp.html',1,'']]],
-  ['test_5ftf_5fframe_2ecpp_3',['test_tf_frame.cpp',['../test__tf__frame_8cpp.html',1,'']]],
-  ['test_5ftf_5ftree_2ecpp_4',['test_tf_tree.cpp',['../test__tf__tree_8cpp.html',1,'']]],
-  ['tf_5froot_5',['TF_ROOT',['../namespaceawviz__common.html#ab58be3ec6fbc4ac67ff656c4cd91071f',1,'awviz_common']]],
-  ['tf_5ftree_2ehpp_6',['tf_tree.hpp',['../tf__tree_8hpp.html',1,'']]],
-  ['tfframe_7',['TfFrame',['../classawviz__common_1_1TfFrame.html',1,'awviz_common::TfFrame'],['../classawviz__common_1_1TfFrame.html#ae7e62e6c8670426ff0e13f3dc90a2823',1,'awviz_common::TfFrame::TfFrame(const std::string &amp;id)'],['../classawviz__common_1_1TfFrame.html#ace9b01887e61ef9870781fc369fe6078',1,'awviz_common::TfFrame::TfFrame(const std::string &amp;id, const std::string &amp;parent)']]],
-  ['tftree_8',['TfTree',['../classawviz__common_1_1TfTree.html',1,'awviz_common::TfTree'],['../classawviz__common_1_1TfTree.html#a177d677fa50d183039b6292c91d95673',1,'awviz_common::TfTree::TfTree()']]],
-  ['timeline_5fname_9',['TIMELINE_NAME',['../classawviz__common_1_1RosTopicDisplay.html#a119465e661c65570366e5fdcc55e461f',1,'awviz_common::RosTopicDisplay']]],
-  ['todo_20list_10',['Todo List',['../todo.html',1,'']]],
-  ['topic_11',['topic',['../classawviz__common_1_1RosTopicProperty.html#a5751285392e10eb6a2dbbb71c151fddd',1,'awviz_common::RosTopicProperty']]],
-  ['tracked_5fobjects_5fdisplay_2ecpp_12',['tracked_objects_display.cpp',['../tracked__objects__display_8cpp.html',1,'']]],
-  ['tracked_5fobjects_5fdisplay_2ehpp_13',['tracked_objects_display.hpp',['../tracked__objects__display_8hpp.html',1,'']]],
-  ['trackedobjectsdisplay_14',['TrackedObjectsDisplay',['../classawviz__plugin_1_1TrackedObjectsDisplay.html',1,'awviz_plugin::TrackedObjectsDisplay'],['../classawviz__plugin_1_1TrackedObjectsDisplay.html#a43d6bc75c78526b9eb3be82e47677a8a',1,'awviz_plugin::TrackedObjectsDisplay::TrackedObjectsDisplay()']]],
-  ['transformation_5fmanager_2ecpp_15',['transformation_manager.cpp',['../transformation__manager_8cpp.html',1,'']]],
-  ['transformation_5fmanager_2ehpp_16',['transformation_manager.hpp',['../transformation__manager_8hpp.html',1,'']]],
-  ['transformationmanager_17',['TransformationManager',['../classawviz__common_1_1TransformationManager.html',1,'awviz_common::TransformationManager'],['../classawviz__common_1_1TransformationManager.html#a020014d90526532548343787a22a0e21',1,'awviz_common::TransformationManager::TransformationManager()']]],
-  ['turbobytes_18',['TurboBytes',['../namespaceawviz__plugin.html#a2cf8df8ec51a8b578b906d239f809f41',1,'awviz_plugin']]],
-  ['type_19',['type',['../classawviz__common_1_1RosTopicProperty.html#a011f9a410b246a3e1c974018962cab3e',1,'awviz_common::RosTopicProperty::type()'],['../structawviz__common_1_1PluginInfo.html#a12b8bc4defde0b5e22f9c96c2afbfca7',1,'awviz_common::PluginInfo::type()']]],
-  ['type_5fattribute_20',['TYPE_ATTRIBUTE',['../classawviz__common_1_1DisplayFactory.html#a583a0a53657293019eb8168413062a53',1,'awviz_common::DisplayFactory']]]
+  ['set_5fentity_5froots_0',['set_entity_roots',['../classawviz__common_1_1RosTopicProperty.html#a983be5613a0aec79881a8395d2353e8f',1,'awviz_common::RosTopicProperty']]],
+  ['set_5fproperty_1',['set_property',['../classawviz__common_1_1Display.html#ad78889fbe3e20f9f535831d75120880b',1,'awviz_common::Display::set_property()'],['../classawviz__common_1_1RosTopicDisplay.html#a3dde0bed95dfd1c37c8c9636b5ec9707',1,'awviz_common::RosTopicDisplay::set_property()']]],
+  ['set_5ftopic_2',['set_topic',['../classawviz__common_1_1RosTopicProperty.html#ad03680595ad6e4515f84cb56a6bd2745',1,'awviz_common::RosTopicProperty']]],
+  ['set_5ftype_3',['set_type',['../classawviz__common_1_1RosTopicProperty.html#aae251854c066ee557d41212b94188d0b',1,'awviz_common::RosTopicProperty']]],
+  ['start_4',['start',['../classawviz__common_1_1Display.html#a33a9266fe8006b765e092acb9cb4a1c3',1,'awviz_common::Display::start()'],['../classawviz__common_1_1RosTopicDisplay.html#ad1d2bcce0dc594911624a1d384261842',1,'awviz_common::RosTopicDisplay::start()']]],
+  ['stream_5f_5',['stream_',['../classawviz__common_1_1Display.html#ac9433f0d3e4d925158c72a134b512735',1,'awviz_common::Display']]],
+  ['subscribe_6',['subscribe',['../classawviz__common_1_1RosTopicDisplay.html#a26a2bf5e3a7b469dd4d0caf10c0658ee',1,'awviz_common::RosTopicDisplay']]],
+  ['subscription_5f_7',['subscription_',['../classawviz__common_1_1RosTopicDisplay.html#a4064f8995bef6670db836a6fd48e21cd',1,'awviz_common::RosTopicDisplay']]]
 ];

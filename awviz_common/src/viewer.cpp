@@ -17,11 +17,11 @@
 namespace awviz_common
 {
 ViewerApp::ViewerApp()
+: node_(std::make_shared<rclcpp::Node>("awviz")),
+  stream_(std::make_shared<rerun::RecordingStream>("awviz")),
+  manager_(std::make_unique<VisualizationManager>(node_, stream_))
 {
-  node_ = std::make_shared<rclcpp::Node>("awviz");
-  stream_ = std::make_shared<rerun::RecordingStream>("awviz");
   stream_->spawn().exit_on_failure();
-  manager_ = std::make_unique<VisualizationManager>(node_, stream_);
 }
 
 ViewerApp::~ViewerApp()

@@ -42,17 +42,16 @@ namespace awviz_common
 {
 TransformationManager::TransformationManager(
   rclcpp::Node::SharedPtr node, std::shared_ptr<rerun::RecordingStream> stream)
-: node_(node), stream_(stream)
+: node_(node),
+  stream_(stream),
+  tf_buffer_(std::make_shared<tf2_ros::Buffer>(node_->get_clock())),
+  tf_listener_(std::make_shared<tf2_ros::TransformListener>(*tf_buffer_)),
+  tf_tree_(std::make_unique<TfTree>()),
+  entities_(std::make_shared<std::unordered_map<std::string, std::string>>())
 {
-  tf_buffer_ = std::make_shared<tf2_ros::Buffer>(node_->get_clock());
-  tf_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf_buffer_);
-
   // NOTE: Invoke callback every 100 [ms]
   timer_ = node_->create_wall_timer(
     std::chrono::milliseconds(100), std::bind(&TransformationManager::timer_callback, this));
-
-  tf_tree_ = std::make_unique<TfTree>();
-  entities_ = std::make_shared<std::unordered_map<std::string, std::string>>();
 }
 
 void TransformationManager::timer_callback()

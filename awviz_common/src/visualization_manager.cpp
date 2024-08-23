@@ -20,14 +20,14 @@ namespace awviz_common
 {
 VisualizationManager::VisualizationManager(
   rclcpp::Node::SharedPtr node, const std::shared_ptr<rerun::RecordingStream> & stream)
-: node_(node), stream_(stream)
+: node_(node),
+  stream_(stream),
+  display_factory_(std::make_unique<DisplayFactory>()),
+  tf_manager_(std::make_unique<TransformationManager>(node, stream))
 {
   using std::chrono_literals::operator""ms;
 
   stream_->log_static(TF_ROOT, rerun::ViewCoordinates::RIGHT_HAND_Z_UP);
-
-  display_factory_ = std::make_unique<DisplayFactory>();
-  tf_manager_ = std::make_unique<TransformationManager>(node, stream);
 
   parallel_callback_group_ = node_->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
   callback_timer_ = node_->create_wall_timer(

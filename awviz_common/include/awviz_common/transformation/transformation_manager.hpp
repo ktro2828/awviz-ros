@@ -84,8 +84,8 @@ private:
 private:
   rclcpp::Node::SharedPtr node_;                             //!< Node shared pointer.
   std::shared_ptr<rerun::RecordingStream> stream_;           //!< RecordingStream shared pointer.
-  std::shared_ptr<tf2_ros::TransformListener> tf_listener_;  //!< TransformListener shared pointer.
   std::shared_ptr<tf2_ros::Buffer> tf_buffer_;               //!< Buffer shared pointer.
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener_;  //!< TransformListener shared pointer.
   rclcpp::TimerBase::SharedPtr timer_;                       //!< TimerBase shared pointer.
   std::unique_ptr<TfTree> tf_tree_;                          //!< TfTree unique pointer.
   std::shared_ptr<std::unordered_map<std::string, std::string>>

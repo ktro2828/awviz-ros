@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>awviz_plugin</name>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <description>Several built-in plugins for awviz to cover the basic functionality.</description>
   <maintainer email="kotaro.uetake@tier4.jp">ktro2828</maintainer>
   <license>Apache-2.0</license>

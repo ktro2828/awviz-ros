@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(awviz_plugin VERSION 0.0.2)
+project(awviz_plugin VERSION 0.0.3)
 
 # -------- default to C++17 --------
 if(NOT CMAKE_CXX_STANDARD)

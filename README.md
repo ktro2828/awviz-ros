@@ -15,9 +15,10 @@ AWViz-ROS features a ROS viewer for [Autoware](https://autoware.org) powered by 
 git clone git@github.com:ktro2828/awviz-ros && cd awviz-ros
 
 # import external dependencies
-mkdir src && vcs import src < autoware.repos
+rosdep update
+rosdep install -y --from-paths . --ignore-src --rosdistro $ROS_DISTRO
 
-# build awviz
+# build awviz packages
 colon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 source install/setup.bash
 ```

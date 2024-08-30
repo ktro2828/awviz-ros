@@ -40,5 +40,4 @@ jobs:
         with:
           package-name: ${{ steps.list_packages.outputs.packages }}
           target-ros2-distro: ${{ matrix.rosdistro }}
-          vcs-repo-file-url: autoware.repos
           import-token: ${{ secrets.GITHUB_TOKEN }}

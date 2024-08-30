@@ -56,9 +56,6 @@ COLCON_IGNORE
 # VSCode
 .vscode
 
-# Clang
-compile_flags.txt
-
 .cache
 html
 latex

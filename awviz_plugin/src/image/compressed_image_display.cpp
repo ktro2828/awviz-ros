@@ -14,7 +14,7 @@
 
 #include "awviz_plugin/image/compressed_image_display.hpp"
 
-#include "awviz_plugin/image/collection_adapter.hpp"
+#include "awviz_plugin/collection_adapter.hpp"
 
 #include <opencv2/opencv.hpp>
 

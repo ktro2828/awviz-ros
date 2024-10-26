@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef AWVIZ_PLUGIN__IMAGE__COLLECTION_ADAPTER_HPP_
-#define AWVIZ_PLUGIN__IMAGE__COLLECTION_ADAPTER_HPP_
+#ifndef AWVIZ_PLUGIN__COLLECTION_ADAPTER_HPP_
+#define AWVIZ_PLUGIN__COLLECTION_ADAPTER_HPP_
 
+#include <eigen3/Eigen/Core>
 #include <opencv2/opencv.hpp>
 #include <rerun.hpp>
 #include <rerun/collection.hpp>
 
+#include <cstring>
 #include <utility>
 #include <vector>
 
@@ -30,20 +32,67 @@ namespace rerun
 template <typename TElement>
 struct CollectionAdapter<TElement, cv::Mat>
 {
-  /// Borrow for non-temporary.
+  /**
+   * @brief Borrow for non-temporary.
+   *
+   * @param img OpenCV matrix.
+   * @return Collection<TElement>
+   */
   Collection<TElement> operator()(const cv::Mat & img)
   {
     return Collection<TElement>::borrow(
       reinterpret_cast<TElement *>(img.data), img.total() * img.channels());
   }
 
-  // Do a full copy for temporaries (otherwise the data might be deleted when the temporary is
-  // destroyed).
+  /**
+   * @brief Do a full copy for temporaries (otherwise the data might be deleted when the temporary
+   * is destroyed).
+   *
+   * @param img OpenCV matrix.
+   * @return Collection<TElement>
+   */
   Collection<TElement> operator()(cv::Mat && img)
   {
     std::vector<TElement> img_vec(img.total() * img.channels());
     img_vec.assign(img.data, img.data + img.total() * img.channels());
     return Collection<TElement>::take_ownership(std::move(img_vec));
+  }
+};
+
+/**
+ * @brief An adaptor to be able to borrow an Eigen matrix into Rerun 3D position without copying.
+ */
+template <>
+struct CollectionAdapter<rerun::Position3D, std::vector<Eigen::Vector3f>>
+{
+  // Sanity check that this is binary compatible.
+  static_assert(
+    sizeof(rerun::Position3D) ==
+    sizeof(Eigen::Matrix3Xf::Scalar) * Eigen::Matrix3Xf::RowsAtCompileTime);
+
+  /**
+   * @brief Borrow for non-temporary.
+   *
+   * @param container Eigen 3D float vector.
+   * @return Collection<rerun::Position3D>
+   */
+  Collection<rerun::Position3D> operator()(const std::vector<Eigen::Vector3f> & container)
+  {
+    return Collection<rerun::Position3D>::borrow(container.data(), container.size());
+  }
+
+  /**
+   * @brief Do a full copy for temporaries (otherwise the data might be deleted when the temporary
+   * is destroyed).
+   *
+   * @param container Eigen 3D float vector.
+   * @return Collection<rerun::Position3D>
+   */
+  Collection<rerun::Position3D> operator()(std::vector<Eigen::Vector3f> && container)
+  {
+    std::vector<rerun::Position3D> positions(container.size());
+    memcpy(positions.data(), container.data(), container.size() * sizeof(Eigen::Vector3f));
+    return Collection<rerun::Position3D>::take_ownership(std::move(positions));
   }
 };
 }  // namespace rerun
@@ -64,4 +113,4 @@ inline rerun::Collection<rerun::TensorDimension> tensor_shape(const cv::Mat & im
 }
 }  // namespace awviz_plugin
 
-#endif  // AWVIZ_PLUGIN__IMAGE__IMAGE_COMPRESSED_IMAGE_DISPLAY_HPP_
+#endif

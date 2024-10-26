@@ -23,7 +23,7 @@ ament_auto_find_build_dependencies()
 
 # -------- fetch contents --------
 include(FetchContent)
-FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.18.0/rerun_cpp_sdk.zip)
+FetchContent_Declare(rerun_sdk URL https://github.com/rerun-io/rerun/releases/download/0.19.0/rerun_cpp_sdk.zip)
 FetchContent_MakeAvailable(rerun_sdk)
 # Ensure rerun_sdk is compiled with -fPIC
 set_target_properties(rerun_sdk PROPERTIES POSITION_INDEPENDENT_CODE ON)

@@ -15,11 +15,66 @@
 #include "awviz_plugin/autoware_perception/predicted_objects_display.hpp"
 
 #include <rerun.hpp>
+#include <rerun/archetypes/line_strips3d.hpp>
+
+#include <geometry_msgs/msg/pose.hpp>
+
+#include <tf2/LinearMath/Matrix3x3.h>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2/LinearMath/Vector3.h>
+#include <tf2/convert.h>
 
 #include <vector>
 
 namespace awviz_plugin
 {
+namespace
+{
+/**
+ * @brief Transform pose from `init_pose` origin coordinate to world coordinate.
+ *
+ * @param origin Pose origin.
+ * @param pose Pose which is with respect to `origin` origin coordinate.
+ * @return rerun::Vec3D
+ */
+rerun::Vec3D do_transform(
+  const geometry_msgs::msg::Pose & origin, const geometry_msgs::msg::Pose & pose)
+{
+  tf2::Quaternion oq;
+  oq.setValue(
+    origin.orientation.x, origin.orientation.y, origin.orientation.z, origin.orientation.w);
+
+  tf2::Vector3 op, pp;
+  op.setValue(origin.position.x, origin.position.y, origin.position.z);
+  pp.setValue(pose.position.x, pose.position.y, pose.position.z);
+
+  tf2::Matrix3x3 rotation(oq);
+
+  auto ret = rotation * pp + op;
+  return {static_cast<float>(ret.x()), static_cast<float>(ret.y()), static_cast<float>(ret.z())};
+}
+
+/**
+ * @brief Convert predicted paths to the sequence of waypoints.
+ *
+ * @param origin Pose origin.
+ * @param path Sequence of predicted poses.
+ * @return std::vector<rerun::Vec3D>
+ */
+std::vector<rerun::Vec3D> to_waypoints(
+  const geometry_msgs::msg::Pose & origin,
+  const autoware_perception_msgs::msg::PredictedPath & path)
+{
+  std::vector<rerun::Vec3D> waypoints;
+  for (const auto & pose : path.path) {
+    // waypoints.emplace_back(do_transform(origin, pose));
+    waypoints.emplace_back(rerun::Vec3D(pose.position.x, pose.position.y, pose.position.z));
+  }
+  return waypoints;
+}
+
+}  // namespace
+
 PredictedObjectsDisplay::PredictedObjectsDisplay()
 : awviz_common::RosTopicDisplay<autoware_perception_msgs::msg::PredictedObjects>()
 {
@@ -37,36 +92,21 @@ void PredictedObjectsDisplay::log_message(
     return;
   }
 
-  std::vector<rerun::Position3D> centers;
-  std::vector<rerun::HalfSize3D> sizes;
-  std::vector<rerun::Quaternion> quaternions;
+  std::vector<rerun::LineStrip3D> linestrips;
   std::vector<rerun::components::ClassId> class_ids;
-  std::vector<rerun::LineStrip3D> paths;
   for (const auto & object : msg->objects) {
-    const auto & init_pose = object.kinematics.initial_pose_with_covariance.pose;
-    const auto & dimensions = object.shape.dimensions;
-    centers.emplace_back(init_pose.position.x, init_pose.position.y, init_pose.position.z);
-    sizes.emplace_back(dimensions.x, dimensions.y, dimensions.z);
-    quaternions.emplace_back(rerun::Quaternion::from_wxyz(
-      init_pose.orientation.w, init_pose.orientation.x, init_pose.orientation.y,
-      init_pose.orientation.z));
-    class_ids.emplace_back(static_cast<uint16_t>(object.classification.front().label));
+    const auto & origin = object.kinematics.initial_pose_with_covariance.pose;
+    const auto class_id = static_cast<uint16_t>(object.classification.front().label);
 
     for (const auto & path : object.kinematics.predicted_paths) {
-      std::vector<rerun::Vec3D> waypoints;
-      for (const auto & point : path.path) {
-        waypoints.emplace_back(point.position.x, point.position.y, point.position.z);
-      }
-      paths.emplace_back(rerun::LineStrip3D(waypoints));
+      const auto waypoints = to_waypoints(origin, path);
+      linestrips.emplace_back(rerun::LineStrip3D(waypoints));
+
+      class_ids.emplace_back(class_id);
     }
   }
 
-  stream_->log(
-    entity_path.value(),
-    rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
-      .with_quaternions(quaternions)
-      .with_class_ids(class_ids),
-    rerun::LineStrips3D(paths));
+  stream_->log(entity_path.value(), rerun::LineStrips3D(linestrips).with_class_ids(class_ids));
 }
 }  // namespace awviz_plugin
 

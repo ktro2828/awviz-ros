@@ -35,9 +35,6 @@ public:
   PredictedObjectsDisplay();
 
 protected:
-  /**
-   * @todo Add support of colorizing each predicted path mode.
-   */
   void log_message(autoware_perception_msgs::msg::PredictedObjects::ConstSharedPtr msg) override;
 };
 }  // namespace awviz_plugin

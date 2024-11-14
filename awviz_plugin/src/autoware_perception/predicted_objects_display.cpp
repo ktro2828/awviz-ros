@@ -14,6 +14,8 @@
 
 #include "awviz_plugin/autoware_perception/predicted_objects_display.hpp"
 
+#include <rerun.hpp>
+
 #include <vector>
 
 namespace awviz_plugin
@@ -37,7 +39,7 @@ void PredictedObjectsDisplay::log_message(
 
   std::vector<rerun::Position3D> centers;
   std::vector<rerun::HalfSize3D> sizes;
-  std::vector<rerun::Rotation3D> rotations;
+  std::vector<rerun::Quaternion> quaternions;
   std::vector<rerun::components::ClassId> class_ids;
   std::vector<rerun::LineStrip3D> paths;
   for (const auto & object : msg->objects) {
@@ -45,7 +47,7 @@ void PredictedObjectsDisplay::log_message(
     const auto & dimensions = object.shape.dimensions;
     centers.emplace_back(init_pose.position.x, init_pose.position.y, init_pose.position.z);
     sizes.emplace_back(dimensions.x, dimensions.y, dimensions.z);
-    rotations.emplace_back(rerun::Quaternion::from_wxyz(
+    quaternions.emplace_back(rerun::Quaternion::from_wxyz(
       init_pose.orientation.w, init_pose.orientation.x, init_pose.orientation.y,
       init_pose.orientation.z));
     class_ids.emplace_back(static_cast<uint16_t>(object.classification.front().label));
@@ -62,7 +64,7 @@ void PredictedObjectsDisplay::log_message(
   stream_->log(
     entity_path.value(),
     rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
-      .with_rotations(rotations)
+      .with_quaternions(quaternions)
       .with_class_ids(class_ids),
     rerun::LineStrips3D(paths));
 }

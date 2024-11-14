@@ -15,11 +15,39 @@
 #include "awviz_plugin/autoware_perception/predicted_objects_display.hpp"
 
 #include <rerun.hpp>
+#include <rerun/archetypes/line_strips3d.hpp>
+
+#include <geometry_msgs/msg/pose.hpp>
+#include <geometry_msgs/msg/transform_stamped.hpp>
+
+#include <tf2/convert.h>
 
 #include <vector>
 
 namespace awviz_plugin
 {
+namespace
+{
+rerun::Vec3D do_transform(
+  const geometry_msgs::msg::Pose & init_pose, const geometry_msgs::msg::Pose & pose)
+{
+  geometry_msgs::msg::TransformStamped transform;
+
+  transform.transform.translation.x = init_pose.position.x;
+  transform.transform.translation.y = init_pose.position.y;
+  transform.transform.translation.z = init_pose.position.z;
+  transform.transform.rotation.x = init_pose.orientation.x;
+  transform.transform.rotation.y = init_pose.orientation.y;
+  transform.transform.rotation.z = init_pose.orientation.z;
+  transform.transform.rotation.w = init_pose.orientation.w;
+
+  geometry_msgs::msg::Pose pose_out;
+  tf2::doTransform(pose, pose_out, transform);
+  return rerun::Vec3D(pose_out.position.x, pose_out.position.y, pose_out.position.z);
+}
+
+}  // namespace
+
 PredictedObjectsDisplay::PredictedObjectsDisplay()
 : awviz_common::RosTopicDisplay<autoware_perception_msgs::msg::PredictedObjects>()
 {
@@ -37,36 +65,25 @@ void PredictedObjectsDisplay::log_message(
     return;
   }
 
-  std::vector<rerun::Position3D> centers;
-  std::vector<rerun::HalfSize3D> sizes;
-  std::vector<rerun::Quaternion> quaternions;
-  std::vector<rerun::components::ClassId> class_ids;
   std::vector<rerun::LineStrip3D> paths;
+  std::vector<rerun::components::ClassId> class_ids;
   for (const auto & object : msg->objects) {
     const auto & init_pose = object.kinematics.initial_pose_with_covariance.pose;
-    const auto & dimensions = object.shape.dimensions;
-    centers.emplace_back(init_pose.position.x, init_pose.position.y, init_pose.position.z);
-    sizes.emplace_back(dimensions.x, dimensions.y, dimensions.z);
-    quaternions.emplace_back(rerun::Quaternion::from_wxyz(
-      init_pose.orientation.w, init_pose.orientation.x, init_pose.orientation.y,
-      init_pose.orientation.z));
-    class_ids.emplace_back(static_cast<uint16_t>(object.classification.front().label));
+
+    const auto class_id = static_cast<uint16_t>(object.classification.front().label);
 
     for (const auto & path : object.kinematics.predicted_paths) {
       std::vector<rerun::Vec3D> waypoints;
-      for (const auto & point : path.path) {
-        waypoints.emplace_back(point.position.x, point.position.y, point.position.z);
+      for (const auto & pose : path.path) {
+        const auto & point = do_transform(init_pose, pose);
+        waypoints.emplace_back(point);
       }
       paths.emplace_back(rerun::LineStrip3D(waypoints));
+      class_ids.emplace_back(class_id);
     }
   }
 
-  stream_->log(
-    entity_path.value(),
-    rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
-      .with_quaternions(quaternions)
-      .with_class_ids(class_ids),
-    rerun::LineStrips3D(paths));
+  stream_->log(entity_path.value(), rerun::LineStrips3D(paths));
 }
 }  // namespace awviz_plugin
 

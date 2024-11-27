@@ -1,4 +1,4 @@
-PROJECT_NAME = AWViz-ROS C++ API Reference
+PROJECT_NAME = AWViz-ROS
 
 DOXYFILE_ENCODING = UTF-8
 
@@ -9,6 +9,26 @@ OUTPUT_LANGUAGE        = English
 RECURSIVE              = YES
 SKIP_FUNCTION_MACROS   = NO
 XML_OUTPUT             = build
+
+# This tag implements a quasi-intelligent brief description abbreviator that is
+# used to form the text in various listings. Each string in this list, if found
+# as the leading text of the brief description, will be stripped from the text
+# and the result, after processing the whole list, is used as the annotated
+# text. Otherwise, the brief description is used as-is. If left blank, the
+# following values are used ($name is automatically replaced with the name of
+# the entity):The $name class, The $name widget, The $name file, is, provides,
+# specifies, contains, represents, a, an and the.
+ABBREVIATE_BRIEF       = "The $name class" \
+                         "The $name widget" \
+                         "The $name file" \
+                         is \
+                         provides \
+                         specifies \
+                         contains \
+                         represents \
+                         a \
+                         an \
+                         the
 
 FILE_PATTERNS += *.hpp
 FILE_PATTERNS += *.cpp
@@ -23,15 +43,37 @@ EXTRACT_LOCAL_METHODS  = YES
 GENERATE_HTML          = YES
 GENERATE_LATEX         = NO
 GENERATE_XML           = NO
-HTML_EXTRA_STYLESHEET  = docs/assets/CustomDoxygen.css
+
+GENERATE_TREEVIEW      = YES # optional. Also works without treeview
+DISABLE_INDEX = NO
+FULL_SIDEBAR = NO
+HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css
+HTML_COLORSTYLE        = LIGHT # required with Doxygen >= 1.9.5
+
+HTML_HEADER            = docs/assets/header.html
+HTML_EXTRA_STYLESHEET  = docs/assets/doxygen-awesome.css \
+						 docs/assets/doxygen-awesome-sidebar-only.css \
+                         docs/assets/doxygen-awesome-sidebar-only-darkmode-toggle.css \
+                         docs/assets/custom.css \
+						 docs/assets/custom-alternative.css
+
+HTML_EXTRA_FILES       = docs/assets/doxygen-awesome-darkmode-toggle.js \
+                         docs/assets/doxygen-awesome-fragment-copy-button.js \
+                         docs/assets/doxygen-awesome-paragraph-link.js \
+                         docs/assets/toggle-alternative-theme.js \
+                         docs/assets/doxygen-awesome-interactive-toc.js \
+                         docs/assets/doxygen-awesome-tabs.js
 
 INPUT += docs
+INPUT += awviz
 INPUT += awviz_common
 INPUT += awviz_plugin
 
 IMAGE_PATH += docs
+IMAGE_PATH += awviz
 IMAGE_PATH += awviz_common
 IMAGE_PATH += awviz_plugin
 
+EXAMPLE_PATH += awviz
 EXAMPLE_PATH += awviz_common
 EXAMPLE_PATH += awviz_plugin

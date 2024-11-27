@@ -1,4 +1,4 @@
-# AWViz-ROS {#mainpage}
+# Getting Started {#mainpage}
 
 AWViz-ROS features a ROS viewer for [Autoware](https://autoware.org) powered by [Rerun](https://rerun.io).
 

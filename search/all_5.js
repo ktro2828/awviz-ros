@@ -7,5 +7,6 @@ var searchData=
   ['get_5fmessage_5ftypes_4',['get_message_types',['../classawviz__common_1_1DisplayFactory.html#a3a7253e666134a13621a5162ea328b58',1,'awviz_common::DisplayFactory']]],
   ['get_5fparent_5',['get_parent',['../classawviz__common_1_1TfTree.html#a425c7304b46fac6663bf396ac9abcb14',1,'awviz_common::TfTree']]],
   ['get_5fplugin_5finfo_6',['get_plugin_info',['../classawviz__common_1_1PluginFactory.html#a792e69ef53a09ebbe7544d70b4ec525e',1,'awviz_common::PluginFactory']]],
-  ['get_5fplugin_5fmanifest_5fpath_7',['get_plugin_manifest_path',['../classawviz__common_1_1PluginFactory.html#af47e4727edd944ed51b6ebd80cae5292',1,'awviz_common::PluginFactory']]]
+  ['get_5fplugin_5fmanifest_5fpath_7',['get_plugin_manifest_path',['../classawviz__common_1_1PluginFactory.html#af47e4727edd944ed51b6ebd80cae5292',1,'awviz_common::PluginFactory']]],
+  ['getting_20started_8',['Getting Started',['../index.html',1,'']]]
 ];

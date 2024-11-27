@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['awviz_2dros_0',['AWViz-ROS',['../index.html',1,'']]]
+  ['contributing_20guidelines_0',['Contributing Guidelines',['../md_docs_CONTRIBUTING.html',1,'']]]
 ];

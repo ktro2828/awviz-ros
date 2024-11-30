@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['set_5fentity_5froots_0',['set_entity_roots',['../classawviz__common_1_1RosTopicProperty.html#a983be5613a0aec79881a8395d2353e8f',1,'awviz_common::RosTopicProperty']]],
-  ['set_5fproperty_1',['set_property',['../classawviz__common_1_1Display.html#ad78889fbe3e20f9f535831d75120880b',1,'awviz_common::Display::set_property()'],['../classawviz__common_1_1RosTopicDisplay.html#a3dde0bed95dfd1c37c8c9636b5ec9707',1,'awviz_common::RosTopicDisplay::set_property()']]],
-  ['set_5ftopic_2',['set_topic',['../classawviz__common_1_1RosTopicProperty.html#ad03680595ad6e4515f84cb56a6bd2745',1,'awviz_common::RosTopicProperty']]],
-  ['set_5ftype_3',['set_type',['../classawviz__common_1_1RosTopicProperty.html#aae251854c066ee557d41212b94188d0b',1,'awviz_common::RosTopicProperty']]],
-  ['start_4',['start',['../classawviz__common_1_1Display.html#a33a9266fe8006b765e092acb9cb4a1c3',1,'awviz_common::Display::start()'],['../classawviz__common_1_1RosTopicDisplay.html#ad1d2bcce0dc594911624a1d384261842',1,'awviz_common::RosTopicDisplay::start() override']]],
-  ['subscribe_5',['subscribe',['../classawviz__common_1_1RosTopicDisplay.html#a26a2bf5e3a7b469dd4d0caf10c0658ee',1,'awviz_common::RosTopicDisplay']]]
+  ['rostopicdisplay_0',['RosTopicDisplay',['../classawviz__common_1_1RosTopicDisplay.html#a69c6d74e3bab8d8becc7980b2d25c2ab',1,'awviz_common::RosTopicDisplay']]],
+  ['rostopicproperty_1',['RosTopicProperty',['../classawviz__common_1_1RosTopicProperty.html#a45ee07c1a8303d158ce1f89e37801793',1,'awviz_common::RosTopicProperty::RosTopicProperty()=default'],['../classawviz__common_1_1RosTopicProperty.html#a44808d9f8473a65396658d9c40bd3218',1,'awviz_common::RosTopicProperty::RosTopicProperty(const std::string &amp;type, const std::string &amp;topic, const std::shared_ptr&lt; std::unordered_map&lt; std::string, std::string &gt; &gt; entity_roots)']]],
+  ['run_2',['run',['../classawviz__common_1_1ViewerApp.html#a4f007c050da2e91a75a439f4cb05079b',1,'awviz_common::ViewerApp']]]
 ];

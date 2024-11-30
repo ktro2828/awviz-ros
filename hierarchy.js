@@ -14,6 +14,9 @@ var hierarchy =
       [ "awviz_common::RosTopicDisplay< sensor_msgs::msg::Image >", "classawviz__common_1_1RosTopicDisplay.html", [
         [ "awviz_plugin::ImageDisplay", "classawviz__plugin_1_1ImageDisplay.html", null ]
       ] ],
+      [ "awviz_common::RosTopicDisplay< sensor_msgs::msg::NavSatFix >", "classawviz__common_1_1RosTopicDisplay.html", [
+        [ "awviz_plugin::NavSatFixDisplay", "classawviz__plugin_1_1NavSatFixDisplay.html", null ]
+      ] ],
       [ "awviz_common::RosTopicDisplay< sensor_msgs::msg::PointCloud2 >", "classawviz__common_1_1RosTopicDisplay.html", [
         [ "awviz_plugin::PointCloud2Display", "classawviz__plugin_1_1PointCloud2Display.html", null ]
       ] ],

@@ -18,6 +18,7 @@ var annotated_dup =
       [ "CompressedImageDisplay", "classawviz__plugin_1_1CompressedImageDisplay.html", "classawviz__plugin_1_1CompressedImageDisplay" ],
       [ "DetectedObjectsDisplay", "classawviz__plugin_1_1DetectedObjectsDisplay.html", "classawviz__plugin_1_1DetectedObjectsDisplay" ],
       [ "ImageDisplay", "classawviz__plugin_1_1ImageDisplay.html", "classawviz__plugin_1_1ImageDisplay" ],
+      [ "NavSatFixDisplay", "classawviz__plugin_1_1NavSatFixDisplay.html", "classawviz__plugin_1_1NavSatFixDisplay" ],
       [ "PointCloud2Display", "classawviz__plugin_1_1PointCloud2Display.html", "classawviz__plugin_1_1PointCloud2Display" ],
       [ "TrackedObjectsDisplay", "classawviz__plugin_1_1TrackedObjectsDisplay.html", "classawviz__plugin_1_1TrackedObjectsDisplay" ]
     ] ],

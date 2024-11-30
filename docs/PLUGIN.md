@@ -41,70 +41,71 @@ float32 data
 
 #### 1. Package Configuration
 
-Then create your ROS packages named as `my_custom_display`.  
+Then create your ROS packages named `my_custom_plugin`.  
 The package structure is as follows:
 
 ```bash
-my_custom_display
+my_custom_plugin
 ├── CMakeLists.txt
 ├── include
-│   └── my_custom_display
-│       └── foo.hpp
+│   └── my_custom_plugin
+│       └── foo_display.hpp
 ├── package.xml
 ├── plugin_description.xml
 └── src
-    └── foo.cpp
+    └── foo_display.cpp
 ```
 
 #### 2. Plugin Implementation
 
-Edit `include/my_custom_display/foo.hpp` and declare the inheritance of `awviz_common::RosTopicDisplay`:
+Edit `include/my_custom_plugin/foo_display.hpp` and declare the inheritance of `awviz_common::RosTopicDisplay`:
 
 ```cpp
-#ifndef MY_CUSTOM_DISPLAY__FOO_HPP_
-#define MY_CUSTOM_DISPLAY__FOO_HPP_
+#ifndef MY_CUSTOM_PLUGIN__FOO_DISPLAY_HPP_
+#define MY_CUSTOM_PLUGIN__FOO_DISPLAY_HPP_
 
 #include <awviz_common/display.hpp>
+#include <my_custom_msgs/msg/foo.hpp>
 
-namespace my_custom_display
+namespace my_custom_plugin
 {
-    class Foo : public awviz_common::RosTopicDisplay<my_custom_msgs::msg::Foo>
+    class FooDisplay : public awviz_common::RosTopicDisplay<my_custom_msgs::msg::Foo>
     {
     public:
         // Construct object.
-        Foo();
+        FooDisplay();
 
     protected:
         // Callback to log subscribed message to the recording stream.
         void log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg) override;
     };
-}  // namespace my_custom_display
+}  // namespace my_custom_plugin
 
-#endif  // MY_CUSTOM_DISPLAY__FOO_HPP_
+#endif  // MY_CUSTOM_PLUGIN__FOO_DISPLAY_HPP_
 ```
 
-Edit `src/foo.cpp` and write implementations:
+Edit `src/foo_display.cpp` and write implementations:
 
 ```cpp
-#include "my_custom_display/foo.hpp"
+#include "my_custom_plugin/foo_display.hpp"
 
-namespace my_custom_display
+namespace my_custom_plugin
 {
-Foo::Foo() : awviz_common::RosTopicDisplay<my_custom_msgs::msg::Foo>()
+FooDisplay::FooDisplay() : awviz_common::RosTopicDisplay<my_custom_msgs::msg::Foo>()
 {
 }
 
-void Foo::log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg)
+void FooDisplay::log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg)
 {
     stream_->set_time_seconds(
         TIMELINE_NAME, rclcpp::Time(msg->stamp.sec, msg->stamp.nanosec).seconds());
 
     stream_->log(property_.entity(), rerun::Scalar(msg->data));
 }
-}  // namespace my_custom_display
+}  // namespace my_custom_plugin
 
 #include <pluginlib/class_list_macros.hpp>
-PLUGINLIB_EXPORT_CLASS(my_custom_display::Foo, awviz_common::Display);
+PLUGINLIB_EXPORT_CLASS(my_custom_plugin::FooDisplay, awviz_common::Display);
 ```
 
 #### 3. Plugin Declaration XML
@@ -112,11 +113,11 @@ PLUGINLIB_EXPORT_CLASS(my_custom_display::Foo, awviz_common::Display);
 Edit `plugin_description.xml` with the following code:
 
 ```xml
-<library path="my_custom_display">
-    <class name="my_custom_display/Foo" type="my_custom_display::Foo"
+<library path="my_custom_plugin">
+    <class name="my_custom_plugin/FooDisplay" type="my_custom_display::FooDisplay"
         base_class_type="awviz_common::Display">
         <description>Some description of the plugin.</description>
-        <message_type>my_custom_msgs/msg/Foo</message_type>
+        <message_type>my_custom_msgs/msg/FooDisplay</message_type>
     </class>
 </library>
 ```
@@ -126,7 +127,7 @@ XML tag and attribute represent followings:
 - `library`: The Name of the library.
 - `class`: A plugin declaration that we want to export.
   - `name`: There used to be a name attribute, but it is no longer required.
-  - `type`: The fully qualified type of the plugin. Now, that is `my_custom_display::Foo`.
+  - `type`: The fully qualified type of the plugin. Now, that is `my_custom_plugin::FooDisplay`.
   - `base_class_type`: The fully qualified base class type for the plugin. Use `awviz_common::Display`.
   - `description`: A description of the plugin and what it does.
   - `message_type`: A ROS message type that the plugin displays. Now, that is `my_custom_msgs/msg/Foo`.
@@ -137,7 +138,7 @@ Edit `CMakeLists.txt` to export the plugin and its description:
 
 ```cmake
 cmake_minimum_required(VERSION 3.14)
-project(my_custom_display)
+project(my_custom_plugin)
 
 # -------- find dependencies --------
 find_package(ament_cmake_auto REQUIRED)

@@ -23,6 +23,13 @@
         <message_type>sensor_msgs/msg/PointCloud2</message_type>
     </class>
 
+    <!-- NavSatFix -->
+    <class name="awviz_plugin/NavSatFixDisplay" type="awviz_plugin::NavSatFixDisplay"
+        base_class_type="awviz_common::Display">
+        <description>Display from sensor_msgs/msg/NavSatFix message.</description>
+        <message_type>sensor_msgs/msg/NavSatFix</message_type>
+    </class>
+
     <!-- Autoware -->
     <!-- Perception -->
     <class name="awviz_plugin/DetectedObjectsDisplay" type="awviz_plugin::DetectedObjectsDisplay"

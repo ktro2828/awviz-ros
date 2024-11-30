@@ -15,6 +15,7 @@ Even if there are ROS messages that are not supported by built-in plugins, we ca
 |               | `CompressedImage` | `CompressedImageDisplay` |
 |               | `Image`           | `ImageDisplay`           |
 |               | `PointCloud2`     | `PointCloud2Display`     |
+|               | `NavSatFix`       | `NavSatFixDisplay`       |
 
 ### Autoware Messages
 

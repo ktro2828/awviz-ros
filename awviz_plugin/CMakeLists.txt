@@ -37,6 +37,9 @@ ament_target_dependencies(
   rclcpp
   cv_bridge
   sensor_msgs
+  lanelet2_core
+  autoware_lanelet2_extension
+  autoware_map_msgs
   autoware_perception_msgs
 )
 

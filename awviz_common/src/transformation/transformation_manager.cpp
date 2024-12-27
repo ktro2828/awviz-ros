@@ -18,7 +18,11 @@
 
 #include <yaml-cpp/yaml.h>
 
+#include <algorithm>
 #include <chrono>
+#include <cmath>
+#include <mutex>
+#include <string>
 
 namespace
 {
@@ -76,6 +80,8 @@ void TransformationManager::update_tree()
   try {
     YAML::Node frames = YAML::Load(yaml);
     for (YAML::const_iterator itr = frames.begin(); itr != frames.end(); ++itr) {
+      std::lock_guard lock(entities_mtx_);
+
       const auto id = itr->first.as<std::string>();
       const auto parent = itr->second["parent"].as<std::string>();
 
@@ -90,6 +96,7 @@ void TransformationManager::update_tree()
 
 void TransformationManager::update_entity(const TfFrame & frame)
 {
+  std::scoped_lock lock(tf_tree_mtx_, entities_mtx_);
   if (!tf_tree_->can_link_to(frame, TF_ROOT)) {
     return;
   }
@@ -99,6 +106,7 @@ void TransformationManager::update_entity(const TfFrame & frame)
 
 void TransformationManager::log_transform(const TfFrame & frame)
 {
+  std::lock_guard lock(entities_mtx_);
   // Root frame is skipped to log transformation
   if (frame.is_root() || entities_->count(frame.id()) == 0) {
     return;

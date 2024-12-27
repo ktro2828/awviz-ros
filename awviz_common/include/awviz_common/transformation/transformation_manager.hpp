@@ -24,6 +24,7 @@
 #include <tf2_ros/transform_listener.h>
 
 #include <memory>
+#include <mutex>
 #include <optional>
 #include <string>
 #include <unordered_map>
@@ -50,8 +51,9 @@ public:
    *
    * @return Shared pointer of the entity paths map.
    */
-  const std::shared_ptr<std::unordered_map<std::string, std::string>> entities() const
+  const std::shared_ptr<std::unordered_map<std::string, std::string>> entities()
   {
+    std::lock_guard lock(entities_mtx_);
     return entities_;
   }
 
@@ -91,6 +93,9 @@ private:
   std::shared_ptr<std::unordered_map<std::string, std::string>>
     entities_;  //!< Map stores a entity path of a corresponding frame ID.
   std::unordered_map<std::string, double> last_log_stamps_;  //!< Map stores last log timestamps.
+
+  std::mutex tf_tree_mtx_;   //!< Mutex of tf_tree_;
+  std::mutex entities_mtx_;  //!< Mutex of entities_;
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_

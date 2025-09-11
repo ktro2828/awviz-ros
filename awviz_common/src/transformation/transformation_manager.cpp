@@ -83,12 +83,10 @@ void TransformationManager::update_tree()
     for (YAML::const_iterator itr = frames.begin(); itr != frames.end(); ++itr) {
       std::lock_guard lock(entities_mtx_);
 
-      const auto id = itr->first.as<std::string>();
-      const auto parent = itr->second["parent"].as<std::string>();
+      auto id = itr->first.as<std::string>();
+      auto parent = itr->second["parent"].as<std::string>();
 
-      const TfFrame frame(id, parent);
-
-      tf_tree_->emplace(frame);
+      tf_tree_->emplace(std::move(id), std::move(parent));
     }
   } catch (const YAML::Exception & ex) {
     RCLCPP_ERROR_STREAM(node_->get_logger(), "Failed to parse YAML: " << ex.what());
@@ -101,8 +99,7 @@ void TransformationManager::update_entity(const TfFrame & frame)
   if (!tf_tree_->can_link_to(frame, TF_ROOT)) {
     return;
   }
-  const auto entity = tf_tree_->entity_path(frame);
-  entities_->emplace(frame.id(), entity);
+  entities_->emplace(frame.id(), tf_tree_->entity_path(frame));
 }
 
 void TransformationManager::log_transform(const TfFrame & frame)

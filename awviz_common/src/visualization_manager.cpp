@@ -15,13 +15,14 @@
 #include "awviz_common/visualization_manager.hpp"
 
 #include <chrono>
+#include <utility>
 
 namespace awviz_common
 {
 VisualizationManager::VisualizationManager(
   rclcpp::Node::SharedPtr node, const std::shared_ptr<rerun::RecordingStream> & stream)
-: node_(node),
-  stream_(stream),
+: node_(std::move(node)),
+  stream_(std::move(stream)),
   display_factory_(std::make_unique<DisplayFactory>()),
   tf_manager_(std::make_unique<TransformationManager>(node, stream))
 {

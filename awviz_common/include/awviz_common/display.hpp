@@ -25,6 +25,7 @@
 #include <memory>
 #include <string>
 #include <unordered_map>
+#include <utility>
 
 namespace awviz_common
 {
@@ -106,8 +107,8 @@ public:
   void initialize(
     rclcpp::Node::SharedPtr node, std::shared_ptr<rerun::RecordingStream> stream) override
   {
-    node_ = node;
-    stream_ = stream;
+    node_ = std::move(node);
+    stream_ = std::move(stream);
     is_initialized_ = true;
   };
 

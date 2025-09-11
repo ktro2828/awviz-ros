@@ -46,8 +46,8 @@ namespace awviz_common
 {
 TransformationManager::TransformationManager(
   rclcpp::Node::SharedPtr node, std::shared_ptr<rerun::RecordingStream> stream)
-: node_(node),
-  stream_(stream),
+: node_(std::move(node)),
+  stream_(std::move(stream)),
   tf_buffer_(std::make_shared<tf2_ros::Buffer>(node_->get_clock())),
   tf_listener_(std::make_shared<tf2_ros::TransformListener>(*tf_buffer_)),
   tf_tree_(std::make_unique<TfTree>()),

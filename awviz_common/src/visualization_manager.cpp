@@ -24,7 +24,7 @@ VisualizationManager::VisualizationManager(
 : node_(std::move(node)),
   stream_(std::move(stream)),
   display_factory_(std::make_unique<DisplayFactory>()),
-  tf_manager_(std::make_unique<TransformationManager>(node, stream))
+  tf_manager_(std::make_unique<TransformationManager>(node_, stream_))
 {
   using std::chrono_literals::operator""ms;
 

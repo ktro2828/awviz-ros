@@ -21,6 +21,7 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 namespace awviz_common
@@ -109,12 +110,28 @@ public:
    */
   void emplace(const TfFrame & frame) { frames_.emplace(frame.id(), frame); }
 
-  // /**
-  //  * @brief Add a new tf frame to the tree with the empty string parent.
-  //  *
-  //  * @param id Frame ID. If it has been already registered, skip adding.
-  //  */
-  // void emplace(const std::string & id) { frames_.emplace(id, id); }
+  /**
+   * @brief Add a new tf frame to the tree.
+   *
+   * @param id Frame ID. If it has been already registered, skip adding.
+   * @param parent Parent frame ID.
+   */
+  void emplace(const std::string & id, const std::string & parent)
+  {
+    frames_.emplace(id, TfFrame(id, parent));
+  }
+
+  /**
+   * @brief Add a new tf frame to the tree.
+   *
+   * @param id Frame ID. If it has been already registered, skip adding.
+   * @param parent Parent frame ID.
+   */
+  void emplace(std::string && id, std::string && parent)
+  {
+    auto key = id;
+    frames_.emplace(std::move(key), TfFrame(std::move(id), std::move(parent)));
+  }
 
   /**
    * @brief Return map of all frames.

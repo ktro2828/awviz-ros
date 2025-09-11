@@ -26,9 +26,8 @@ VisualizationManager::VisualizationManager(
   display_factory_(std::make_unique<DisplayFactory>()),
   tf_manager_(std::make_unique<TransformationManager>(node_, stream_))
 {
-  stream_->log_static(TF_ROOT, rerun::ViewCoordinates::RIGHT_HAND_Z_UP);
-
   using std::chrono_literals::operator""ms;
+  stream_->log_static(TF_ROOT, rerun::ViewCoordinates::RIGHT_HAND_Z_UP);
   parallel_callback_group_ = node_->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
   callback_timer_ = rclcpp::create_timer(
     node_, node_->get_clock(), 100ms, [&]() { create_subscriptions(); }, parallel_callback_group_);

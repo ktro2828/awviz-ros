@@ -54,8 +54,9 @@ TransformationManager::TransformationManager(
   entities_(std::make_shared<std::unordered_map<std::string, std::string>>())
 {
   // NOTE: Invoke callback every 100 [ms]
-  timer_ = node_->create_wall_timer(
-    std::chrono::milliseconds(100), std::bind(&TransformationManager::timer_callback, this));
+  using std::chrono_literals::operator""ms;
+  timer_ = rclcpp::create_timer(
+    node_, node_->get_clock(), 100ms, std::bind(&TransformationManager::timer_callback, this));
 }
 
 void TransformationManager::timer_callback()

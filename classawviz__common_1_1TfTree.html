@@ -228,6 +228,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a198b8b584be6f83480b00c926ad8485c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a198b8b584be6f83480b00c926ad8485c">emplace</a> (const <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp;frame)</td></tr>
 <tr class="memdesc:a198b8b584be6f83480b00c926ad8485c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new tf frame to the tree.  <br /></td></tr>
 <tr class="separator:a198b8b584be6f83480b00c926ad8485c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc64ecf77b5195754cc060bb3334332f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#adc64ecf77b5195754cc060bb3334332f">emplace</a> (const std::string &amp;id, const std::string &amp;parent)</td></tr>
+<tr class="memdesc:adc64ecf77b5195754cc060bb3334332f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new tf frame to the tree.  <br /></td></tr>
+<tr class="separator:adc64ecf77b5195754cc060bb3334332f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d36cb0971211ac49ab0a57e4bca9409"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a1d36cb0971211ac49ab0a57e4bca9409">emplace</a> (std::string &amp;&amp;id, std::string &amp;&amp;parent)</td></tr>
+<tr class="memdesc:a1d36cb0971211ac49ab0a57e4bca9409"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a new tf frame to the tree.  <br /></td></tr>
+<tr class="separator:a1d36cb0971211ac49ab0a57e4bca9409"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64b3ae21ccc152091e94115808d27aa6"><td class="memItemLeft" align="right" valign="top">const std::unordered_map&lt; std::string, <a class="el" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1TfTree.html#a64b3ae21ccc152091e94115808d27aa6">get_frames</a> () const</td></tr>
 <tr class="memdesc:a64b3ae21ccc152091e94115808d27aa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return map of all frames.  <br /></td></tr>
 <tr class="separator:a64b3ae21ccc152091e94115808d27aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -395,8 +401,53 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="adc64ecf77b5195754cc060bb3334332f" name="adc64ecf77b5195754cc060bb3334332f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc64ecf77b5195754cc060bb3334332f">&#9670;&#160;</a></span>emplace() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void awviz_common::TfTree::emplace </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a new tf frame to the tree. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Frame ID. If it has been already registered, skip adding. </td></tr>
+    <tr><td class="paramname">parent</td><td>Parent frame ID. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a198b8b584be6f83480b00c926ad8485c" name="a198b8b584be6f83480b00c926ad8485c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a198b8b584be6f83480b00c926ad8485c">&#9670;&#160;</a></span>emplace()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a198b8b584be6f83480b00c926ad8485c">&#9670;&#160;</a></span>emplace() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,6 +474,51 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">frame</td><td>A new tf frame. If it has been already registered, skip adding. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1d36cb0971211ac49ab0a57e4bca9409" name="a1d36cb0971211ac49ab0a57e4bca9409"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d36cb0971211ac49ab0a57e4bca9409">&#9670;&#160;</a></span>emplace() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void awviz_common::TfTree::emplace </td>
+          <td>(</td>
+          <td class="paramtype">std::string &amp;&amp;&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&amp;&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Add a new tf frame to the tree. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>Frame ID. If it has been already registered, skip adding. </td></tr>
+    <tr><td class="paramname">parent</td><td>Parent frame ID. </td></tr>
   </table>
   </dd>
 </dl>

@@ -25,15 +25,6 @@
 
 namespace awviz_common
 {
-/**
- * @brief A request object to spawn a display instance.
- */
-struct DisplaySpawnRequest
-{
-  std::string topic;
-  std::string message_type;
-  std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots;
-};
 
 /**
  * @brief Interface for creating display instances from topic metadata.
@@ -44,19 +35,20 @@ public:
   virtual ~IDisplaySpawner() = default;
 
   /**
-   * @brief Spawn a display instance for the given request.
-   * @param request Display spawn request.
+   * @brief Spawn a display instance for the given topic and message type.
+   * @param topic Topic name.
+   * @param topic_type ROS message type name.
    * @return A display instance if a plugin is available, otherwise nullptr.
    */
-  virtual std::shared_ptr<Display> spawn(const DisplaySpawnRequest & request) = 0;
+  virtual std::shared_ptr<Display> spawn(
+    const std::string & topic, const std::string & topic_type) = 0;
 
   /**
    * @brief Resolve a plugin lookup name for the given message type.
-   * @param message_type ROS message type name.
+   * @param topic_type ROS message type name.
    * @return Lookup name if a plugin is registered, otherwise std::nullopt.
    */
-  virtual std::optional<std::string> resolve_lookup_name(
-    const std::string & message_type) const = 0;
+  virtual std::optional<std::string> resolve_lookup_name(const std::string & topic_type) const = 0;
 };
 
 /**
@@ -69,9 +61,10 @@ public:
     rclcpp::Node::SharedPtr node, std::shared_ptr<rerun::RecordingStream> stream,
     std::shared_ptr<std::unordered_map<std::string, std::string>> entity_roots);
 
-  std::shared_ptr<Display> spawn(const DisplaySpawnRequest & request) override;
+  std::shared_ptr<Display> spawn(
+    const std::string & topic, const std::string & topic_type) override;
 
-  std::optional<std::string> resolve_lookup_name(const std::string & message_type) const override;
+  std::optional<std::string> resolve_lookup_name(const std::string & topic_type) const override;
 
 private:
   rclcpp::Node::SharedPtr node_;

@@ -53,8 +53,7 @@ void VisualizationManager::create_subscriptions()
     }
 
     const auto & topic_type = topic_types.front();
-    auto display =
-      display_spawner_->spawn(DisplaySpawnRequest{topic_name, topic_type, tf_manager_->entities()});
+    auto display = display_spawner_->spawn(topic_name, topic_type);
 
     display_registry_.set(topic_name, std::move(display));
   }

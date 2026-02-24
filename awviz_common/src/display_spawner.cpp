@@ -28,9 +28,10 @@ DisplaySpawner::DisplaySpawner(
 {
 }
 
-std::shared_ptr<Display> DisplaySpawner::spawn(const DisplaySpawnRequest & request)
+std::shared_ptr<Display> DisplaySpawner::spawn(
+  const std::string & topic, const std::string & topic_type)
 {
-  const auto lookup_name = resolve_lookup_name(request.message_type);
+  const auto lookup_name = resolve_lookup_name(topic_type);
   if (!lookup_name) {
     return nullptr;
   }
@@ -41,14 +42,13 @@ std::shared_ptr<Display> DisplaySpawner::spawn(const DisplaySpawnRequest & reque
   }
 
   display->initialize(node_, stream_);
-  display->set_property(request.topic, request.entity_roots ? request.entity_roots : entity_roots_);
+  display->set_property(topic, entity_roots_);
   display->start();
   return display;
 }
 
-std::optional<std::string> DisplaySpawner::resolve_lookup_name(
-  const std::string & message_type) const
+std::optional<std::string> DisplaySpawner::resolve_lookup_name(const std::string & topic_type) const
 {
-  return factory_.get_class_lookup_name(message_type);
+  return factory_.get_class_lookup_name(topic_type);
 }
 }  // namespace awviz_common

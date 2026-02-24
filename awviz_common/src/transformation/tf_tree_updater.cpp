@@ -34,11 +34,11 @@ void TfTreeUpdater::update(TfTree & tree)
   const auto yaml = tf_buffer_->allFramesAsYAML();
   try {
     YAML::Node frames = YAML::Load(yaml);
+
+    std::lock_guard<std::mutex> lock(*tf_tree_mtx_);
     for (YAML::const_iterator itr = frames.begin(); itr != frames.end(); ++itr) {
       const auto id = itr->first.as<std::string>();
       const auto parent = itr->second["parent"].as<std::string>();
-
-      std::lock_guard<std::mutex> lock(*tf_tree_mtx_);
       tree.emplace(id, parent);
     }
   } catch (const YAML::Exception & ex) {

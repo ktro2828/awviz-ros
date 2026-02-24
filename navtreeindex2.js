@@ -1,7 +1,5 @@
 var NAVTREEINDEX2 =
 {
-"structrerun_1_1CollectionAdapter_3_01TElement_00_01cv_1_1Mat_01_4.html#a0c66b6fc1ed8d8fbb416703c91882167":[5,0,2,1,0],
-"structrerun_1_1CollectionAdapter_3_01TElement_00_01cv_1_1Mat_01_4.html#a0c66b6fc1ed8d8fbb416703c91882167":[4,0,3,1,0],
 "structrerun_1_1CollectionAdapter_3_01rerun_1_1Position3D_00_01std_1_1vector_3_01Eigen_1_1Vector3f_01_4_01_4.html":[5,0,2,0],
 "structrerun_1_1CollectionAdapter_3_01rerun_1_1Position3D_00_01std_1_1vector_3_01Eigen_1_1Vector3f_01_4_01_4.html":[4,0,3,0],
 "structrerun_1_1CollectionAdapter_3_01rerun_1_1Position3D_00_01std_1_1vector_3_01Eigen_1_1Vector3f_01_4_01_4.html#a8b81ef973a9a04cb31fb070de8b6f510":[5,0,2,0,1],

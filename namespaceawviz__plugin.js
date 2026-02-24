@@ -21,6 +21,5 @@ var namespaceawviz__plugin =
     [ "convert_road_lanelets", "namespaceawviz__plugin.html#afd44ce76e53b867e8bb799b7befa6e76", null ],
     [ "convert_stop_lines", "namespaceawviz__plugin.html#a9787faa53fcd1154e89dd086a9e6c1a5", null ],
     [ "has_attribute", "namespaceawviz__plugin.html#ad620319ba607c320bcd1ff089b2ce81c", null ],
-    [ "tensor_shape", "namespaceawviz__plugin.html#ad5f7fc49eced56639be61f0f25cb9066", null ],
     [ "TurboBytes", "namespaceawviz__plugin.html#a2cf8df8ec51a8b578b906d239f809f41", null ]
 ];

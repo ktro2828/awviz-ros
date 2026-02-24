@@ -10,7 +10,7 @@ A display instance follows a simple lifecycle. Implementations should assume the
 2. **Initialized**: `initialize(node, stream)` is called. You may store the node/stream.
 3. **Configured**: `set_property(topic, entity_roots)` is called. Topic/entity settings are ready.
 4. **Running**: `start()` is called. Subscriptions should be created here.
-5. **Stopped**: `end()` is called. Subscriptions should be released.
+5. **Stopped (back to Configured)**: `end()` is called. Subscriptions should be released, but the display remains configured and may be started again.
 
 ### Key Rules
 

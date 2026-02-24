@@ -40,10 +40,12 @@ Even if there are ROS messages that are not supported by built-in plugins, we ca
 
 ### Autoware Messages
 
-| ROS Package                | Message Type      | Plugin Type              |
-| :------------------------- | :---------------- | :----------------------- |
-| `autoware_perception_msgs` | `DetectedObjects` | `DetectedObjectsDisplay` |
-|                            | `TrackedObjects`  | `TrackedObjectsDisplay`  |
+| ROS Package                | Message Type       | Plugin Type               |
+| :------------------------- | :----------------- | :------------------------ |
+| `autoware_map_msgs`        | `LaneletMapBin`    | `LaneletDisplay`          |
+| `autoware_perception_msgs` | `DetectedObjects`  | `DetectedObjectsDisplay`  |
+|                            | `TrackedObjects`   | `TrackedObjectsDisplay`   |
+|                            | `PredictedObjects` | `PredictedObjectsDisplay` |
 
 ## Custom Plugin Definition
 

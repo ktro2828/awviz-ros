@@ -1,0 +1,468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="generator" content="Doxygen 1.9.6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- BEGIN opengraph metadata -->
+    <meta property="og:title" content="Doxygen Awesome" />
+    <meta
+      property="og:image"
+      content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452"
+    />
+    <meta
+      property="og:description"
+      content="Custom CSS theme for doxygen html-documentation with lots of customization parameters."
+    />
+    <meta
+      property="og:url"
+      content="https://jothepro.github.io/doxygen-awesome-css/"
+    />
+    <!-- END opengraph metadata -->
+    <!-- BEGIN twitter metadata -->
+    <meta
+      name="twitter:image:src"
+      content="https://repository-images.githubusercontent.com/348492097/4f16df80-88fb-11eb-9d31-4015ff22c452"
+    />
+    <meta name="twitter:title" content="Doxygen Awesome" />
+    <meta
+      name="twitter:description"
+      content="Custom CSS theme for doxygen html-documentation with lots of customization parameters."
+    />
+    <!-- END twitter metadata -->
+    <title>AWViz-ROS: awviz_common::DisplayRegistry Class Reference</title>
+    <link href="tabs.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/svg+xml" href="logo.drawio.svg" />
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="dynsections.js"></script>
+    <script
+      type="text/javascript"
+      src="doxygen-awesome-darkmode-toggle.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="doxygen-awesome-fragment-copy-button.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="doxygen-awesome-paragraph-link.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="doxygen-awesome-interactive-toc.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="doxygen-awesome-tabs.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="toggle-alternative-theme.js"
+    ></script>
+    <script type="text/javascript">
+      DoxygenAwesomeFragmentCopyButton.init();
+      DoxygenAwesomeDarkModeToggle.init();
+      DoxygenAwesomeParagraphLink.init();
+      DoxygenAwesomeInteractiveToc.init();
+      DoxygenAwesomeTabs.init();
+    </script>
+    <link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+ <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+    <link href="doxygen.css" rel="stylesheet" type="text/css" />
+    <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen-awesome-sidebar-only-darkmode-toggle.css" rel="stylesheet" type="text/css"/>
+<link href="custom.css" rel="stylesheet" type="text/css"/>
+<link href="custom-alternative.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <!-- https://tholman.com/github-corners/ -->
+    <a
+      href="https://github.com/ktro2828/awviz-ros"
+      class="github-corner"
+      title="View source on GitHub"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <svg
+        viewBox="0 0 250 250"
+        width="40"
+        height="40"
+        style="position: absolute; top: 0; border: 0; right: 0; z-index: 99"
+        aria-hidden="true"
+      >
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path
+          d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+          fill="currentColor"
+          style="transform-origin: 130px 106px"
+          class="octo-arm"
+        ></path>
+        <path
+          d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+          fill="currentColor"
+          class="octo-body"
+        ></path></svg></a
+    ><style>
+      .github-corner:hover .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+      }
+      @keyframes octocat-wave {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        20%,
+        60% {
+          transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+          transform: rotate(10deg);
+        }
+      }
+      @media (max-width: 500px) {
+        .github-corner:hover .octo-arm {
+          animation: none;
+        }
+        .github-corner .octo-arm {
+          animation: octocat-wave 560ms ease-in-out;
+        }
+      }
+    </style>
+    <div id="top">
+      <!-- do not remove this div, it is closed by doxygen! -->
+      <div id="titlearea">
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr style="height: 56px">
+              <td id="projectalign" style="padding-left: 0.5em">
+                <div id="projectname">
+                  AWViz-ROS
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end header part -->
+    </div>
+  </body>
+</html>
+<!-- Generated by Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classawviz__common_1_1DisplayRegistry.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Loading...</div>
+<div class="SRStatus" id="Searching">Searching...</div>
+<div class="SRStatus" id="NoMatches">No Matches</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="classawviz__common_1_1DisplayRegistry-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">awviz_common::DisplayRegistry Class Reference</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Registry to manage displays by topic name.  
+ <a href="classawviz__common_1_1DisplayRegistry.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="display__registry_8hpp_source.html">display_registry.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:af09bd51417aa866c7d8ff01f6361e4d2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#af09bd51417aa866c7d8ff01f6361e4d2">DisplayMap</a> = std::map&lt; std::string, std::shared_ptr&lt; <a class="el" href="classawviz__common_1_1Display.html">Display</a> &gt; &gt;</td></tr>
+<tr class="separator:af09bd51417aa866c7d8ff01f6361e4d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a304bc66fcb9170758b943e37ff3db4c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#a304bc66fcb9170758b943e37ff3db4c4">DisplayRegistry</a> ()=default</td></tr>
+<tr class="separator:a304bc66fcb9170758b943e37ff3db4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68caad8727603cdb771ed41b62d0d7e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#a68caad8727603cdb771ed41b62d0d7e1">~DisplayRegistry</a> ()=default</td></tr>
+<tr class="separator:a68caad8727603cdb771ed41b62d0d7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a900f342fd654e68fe6e5575b4d13c702"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#a900f342fd654e68fe6e5575b4d13c702">contains</a> (const std::string &amp;topic) const</td></tr>
+<tr class="memdesc:a900f342fd654e68fe6e5575b4d13c702"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a topic is already registered.  <br /></td></tr>
+<tr class="separator:a900f342fd654e68fe6e5575b4d13c702"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ff8cb0712de8ff0804aec49f8acf584"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="classawviz__common_1_1Display.html">Display</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#a5ff8cb0712de8ff0804aec49f8acf584">get</a> (const std::string &amp;topic) const</td></tr>
+<tr class="memdesc:a5ff8cb0712de8ff0804aec49f8acf584"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a display for a topic.  <br /></td></tr>
+<tr class="separator:a5ff8cb0712de8ff0804aec49f8acf584"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13235b8e73c1f9c789aef4de98672d22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#a13235b8e73c1f9c789aef4de98672d22">set</a> (const std::string &amp;topic, std::shared_ptr&lt; <a class="el" href="classawviz__common_1_1Display.html">Display</a> &gt; display)</td></tr>
+<tr class="memdesc:a13235b8e73c1f9c789aef4de98672d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register or replace a display for a topic.  <br /></td></tr>
+<tr class="separator:a13235b8e73c1f9c789aef4de98672d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a391c6db0377652e396d9f5dd9089cf4a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classawviz__common_1_1DisplayRegistry.html#af09bd51417aa866c7d8ff01f6361e4d2">DisplayMap</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#a391c6db0377652e396d9f5dd9089cf4a">all</a> () const</td></tr>
+<tr class="memdesc:a391c6db0377652e396d9f5dd9089cf4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the full registry map.  <br /></td></tr>
+<tr class="separator:a391c6db0377652e396d9f5dd9089cf4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630d1e20b4b3bf06bf96c963f23a7a73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1DisplayRegistry.html#a630d1e20b4b3bf06bf96c963f23a7a73">clear</a> ()</td></tr>
+<tr class="memdesc:a630d1e20b4b3bf06bf96c963f23a7a73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop all displays and clear the registry.  <br /></td></tr>
+<tr class="separator:a630d1e20b4b3bf06bf96c963f23a7a73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Registry to manage displays by topic name. </p>
+<p>This class owns display instances and provides lookup helpers. </p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="af09bd51417aa866c7d8ff01f6361e4d2" name="af09bd51417aa866c7d8ff01f6361e4d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af09bd51417aa866c7d8ff01f6361e4d2">&#9670;&#160;</a></span>DisplayMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classawviz__common_1_1DisplayRegistry.html#af09bd51417aa866c7d8ff01f6361e4d2">awviz_common::DisplayRegistry::DisplayMap</a> =  std::map&lt;std::string, std::shared_ptr&lt;<a class="el" href="classawviz__common_1_1Display.html">Display</a>&gt; &gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a304bc66fcb9170758b943e37ff3db4c4" name="a304bc66fcb9170758b943e37ff3db4c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a304bc66fcb9170758b943e37ff3db4c4">&#9670;&#160;</a></span>DisplayRegistry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">awviz_common::DisplayRegistry::DisplayRegistry </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a68caad8727603cdb771ed41b62d0d7e1" name="a68caad8727603cdb771ed41b62d0d7e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68caad8727603cdb771ed41b62d0d7e1">&#9670;&#160;</a></span>~DisplayRegistry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">awviz_common::DisplayRegistry::~DisplayRegistry </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a391c6db0377652e396d9f5dd9089cf4a" name="a391c6db0377652e396d9f5dd9089cf4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a391c6db0377652e396d9f5dd9089cf4a">&#9670;&#160;</a></span>all()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classawviz__common_1_1DisplayRegistry.html#af09bd51417aa866c7d8ff01f6361e4d2">DisplayRegistry::DisplayMap</a> &amp; awviz_common::DisplayRegistry::all </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return the full registry map. </p>
+<dl class="section return"><dt>Returns</dt><dd>Map of topic name to display. </dd></dl>
+
+</div>
+</div>
+<a id="a630d1e20b4b3bf06bf96c963f23a7a73" name="a630d1e20b4b3bf06bf96c963f23a7a73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630d1e20b4b3bf06bf96c963f23a7a73">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void awviz_common::DisplayRegistry::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Stop all displays and clear the registry. </p>
+
+</div>
+</div>
+<a id="a900f342fd654e68fe6e5575b4d13c702" name="a900f342fd654e68fe6e5575b4d13c702"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a900f342fd654e68fe6e5575b4d13c702">&#9670;&#160;</a></span>contains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool awviz_common::DisplayRegistry::contains </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>topic</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if a topic is already registered. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>Topic name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the topic exists. </dd></dl>
+
+</div>
+</div>
+<a id="a5ff8cb0712de8ff0804aec49f8acf584" name="a5ff8cb0712de8ff0804aec49f8acf584"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ff8cb0712de8ff0804aec49f8acf584">&#9670;&#160;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="classawviz__common_1_1Display.html">Display</a> &gt; awviz_common::DisplayRegistry::get </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>topic</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a display for a topic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>Topic name. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Shared pointer to display, or nullptr if not found. </dd></dl>
+
+</div>
+</div>
+<a id="a13235b8e73c1f9c789aef4de98672d22" name="a13235b8e73c1f9c789aef4de98672d22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13235b8e73c1f9c789aef4de98672d22">&#9670;&#160;</a></span>set()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void awviz_common::DisplayRegistry::set </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>topic</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classawviz__common_1_1Display.html">Display</a> &gt;&#160;</td>
+          <td class="paramname"><em>display</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Register or replace a display for a topic. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">topic</td><td>Topic name. </td></tr>
+    <tr><td class="paramname">display</td><td><a class="el" href="classawviz__common_1_1Display.html" title="Intermediate class for display items.">Display</a> instance. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>awviz_common/include/awviz_common/<a class="el" href="display__registry_8hpp_source.html">display_registry.hpp</a></li>
+<li>awviz_common/src/<a class="el" href="display__registry_8cpp.html">display_registry.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespaceawviz__common.html">awviz_common</a></li><li class="navelem"><a class="el" href="classawviz__common_1_1DisplayRegistry.html">DisplayRegistry</a></li>
+    <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

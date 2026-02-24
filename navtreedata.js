@@ -72,7 +72,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Variables", "functions_vars.html", null ],
+        [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -88,7 +89,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"display_8hpp.html#a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0"
+"classawviz__plugin_1_1TrackedObjectsDisplay.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

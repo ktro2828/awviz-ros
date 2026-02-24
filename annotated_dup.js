@@ -3,12 +3,17 @@ var annotated_dup =
     [ "awviz_common", "namespaceawviz__common.html", [
       [ "Display", "classawviz__common_1_1Display.html", "classawviz__common_1_1Display" ],
       [ "DisplayFactory", "classawviz__common_1_1DisplayFactory.html", "classawviz__common_1_1DisplayFactory" ],
+      [ "DisplayRegistry", "classawviz__common_1_1DisplayRegistry.html", "classawviz__common_1_1DisplayRegistry" ],
+      [ "DisplaySpawner", "classawviz__common_1_1DisplaySpawner.html", "classawviz__common_1_1DisplaySpawner" ],
+      [ "IDisplaySpawner", "classawviz__common_1_1IDisplaySpawner.html", "classawviz__common_1_1IDisplaySpawner" ],
+      [ "ITopicScanner", "classawviz__common_1_1ITopicScanner.html", "classawviz__common_1_1ITopicScanner" ],
       [ "PluginFactory", "classawviz__common_1_1PluginFactory.html", "classawviz__common_1_1PluginFactory" ],
       [ "PluginInfo", "structawviz__common_1_1PluginInfo.html", "structawviz__common_1_1PluginInfo" ],
       [ "RosTopicDisplay", "classawviz__common_1_1RosTopicDisplay.html", "classawviz__common_1_1RosTopicDisplay" ],
       [ "RosTopicProperty", "classawviz__common_1_1RosTopicProperty.html", "classawviz__common_1_1RosTopicProperty" ],
       [ "TfFrame", "classawviz__common_1_1TfFrame.html", "classawviz__common_1_1TfFrame" ],
       [ "TfTree", "classawviz__common_1_1TfTree.html", "classawviz__common_1_1TfTree" ],
+      [ "TopicScanner", "classawviz__common_1_1TopicScanner.html", "classawviz__common_1_1TopicScanner" ],
       [ "TransformationManager", "classawviz__common_1_1TransformationManager.html", "classawviz__common_1_1TransformationManager" ],
       [ "ViewerApp", "classawviz__common_1_1ViewerApp.html", "classawviz__common_1_1ViewerApp" ],
       [ "VisualizationManager", "classawviz__common_1_1VisualizationManager.html", "classawviz__common_1_1VisualizationManager" ]

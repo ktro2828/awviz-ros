@@ -8,6 +8,13 @@ var searchData=
   ['display_2ehpp_5',['display.hpp',['../display_8hpp.html',1,'']]],
   ['display_5ffactory_2ecpp_6',['display_factory.cpp',['../display__factory_8cpp.html',1,'']]],
   ['display_5ffactory_2ehpp_7',['display_factory.hpp',['../display__factory_8hpp.html',1,'']]],
-  ['displayfactory_8',['DisplayFactory',['../classawviz__common_1_1DisplayFactory.html',1,'awviz_common::DisplayFactory'],['../classawviz__common_1_1DisplayFactory.html#abd5e0f4f6cdca7896de71c24b83ad619',1,'awviz_common::DisplayFactory::DisplayFactory()']]],
-  ['displaystate_9',['DisplayState',['../namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f',1,'awviz_common']]]
+  ['display_5fregistry_2ecpp_8',['display_registry.cpp',['../display__registry_8cpp.html',1,'']]],
+  ['display_5fregistry_2ehpp_9',['display_registry.hpp',['../display__registry_8hpp.html',1,'']]],
+  ['display_5fspawner_2ecpp_10',['display_spawner.cpp',['../display__spawner_8cpp.html',1,'']]],
+  ['display_5fspawner_2ehpp_11',['display_spawner.hpp',['../display__spawner_8hpp.html',1,'']]],
+  ['displayfactory_12',['DisplayFactory',['../classawviz__common_1_1DisplayFactory.html',1,'awviz_common::DisplayFactory'],['../classawviz__common_1_1DisplayFactory.html#abd5e0f4f6cdca7896de71c24b83ad619',1,'awviz_common::DisplayFactory::DisplayFactory()']]],
+  ['displaymap_13',['DisplayMap',['../classawviz__common_1_1DisplayRegistry.html#af09bd51417aa866c7d8ff01f6361e4d2',1,'awviz_common::DisplayRegistry']]],
+  ['displayregistry_14',['DisplayRegistry',['../classawviz__common_1_1DisplayRegistry.html',1,'awviz_common::DisplayRegistry'],['../classawviz__common_1_1DisplayRegistry.html#a304bc66fcb9170758b943e37ff3db4c4',1,'awviz_common::DisplayRegistry::DisplayRegistry()']]],
+  ['displayspawner_15',['DisplaySpawner',['../classawviz__common_1_1DisplaySpawner.html',1,'awviz_common::DisplaySpawner'],['../classawviz__common_1_1DisplaySpawner.html#a1ec135d6c9ad2d97021ad888eb86ff8a',1,'awviz_common::DisplaySpawner::DisplaySpawner()']]],
+  ['displaystate_16',['DisplayState',['../namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f',1,'awviz_common']]]
 ];

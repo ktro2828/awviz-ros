@@ -47,7 +47,8 @@ enum class DisplayState : uint8_t {
  * - Initialized: initialize(node, stream) is called.
  * - Configured: set_property(topic, entity_roots) is called.
  * - Running: start() is called and subscriptions should be active.
- * - Stopped: end() is called and subscriptions should be released.
+ * - After end(): end() is called, subscriptions should be released, and the display returns to the
+ *   Configured phase (ready to be started again).
  */
 class Display
 {

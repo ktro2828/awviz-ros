@@ -97,20 +97,4 @@ struct CollectionAdapter<rerun::Position3D, std::vector<Eigen::Vector3f>>
 };
 }  // namespace rerun
 
-namespace awviz_plugin
-{
-/**
- * @brief Return image tensor shape as `rerun::Collection`.
- *
- * @param img Input image.
- * @return Tensor shape as collection.
- */
-inline rerun::Collection<rerun::TensorDimension> tensor_shape(const cv::Mat & img)
-{
-  return {
-    static_cast<size_t>(img.rows), static_cast<size_t>(img.cols),
-    static_cast<size_t>(img.channels())};
-}
-}  // namespace awviz_plugin
-
 #endif

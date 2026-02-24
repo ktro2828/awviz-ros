@@ -40,7 +40,7 @@ void PointCloud2Display::log_message(sensor_msgs::msg::PointCloud2::ConstSharedP
 
   const auto entity_path = resolve_entity_path(msg->header.frame_id);
   if (!entity_path) {
-    warn_missing_entity(msg->header.frame_id);
+    log_warning_for_missing_entity(msg->header.frame_id);
     return;
   }
 
@@ -48,19 +48,19 @@ void PointCloud2Display::log_message(sensor_msgs::msg::PointCloud2::ConstSharedP
   for (const auto & field : msg->fields) {
     if (field.name == "x") {
       if (!isValidDataType(field.datatype)) {
-        stream_->log(entity_path.value(), rerun::TextLog("Only FLOAT32 x field supported"));
+        log_warning_text("Only FLOAT32 x field supported");
         return;
       }
       has_x = true;
     } else if (field.name == "y") {
       if (!isValidDataType(field.datatype)) {
-        stream_->log(entity_path.value(), rerun::TextLog("Only FLOAT32 y field supported"));
+        log_warning_text("Only FLOAT32 y field supported");
         return;
       }
       has_y = true;
     } else if (field.name == "z") {
       if (!isValidDataType(field.datatype)) {
-        stream_->log(entity_path.value(), rerun::TextLog("Only FLOAT32 z field supported"));
+        log_warning_text("Only FLOAT32 z field supported");
         return;
       }
       has_z = true;
@@ -68,8 +68,7 @@ void PointCloud2Display::log_message(sensor_msgs::msg::PointCloud2::ConstSharedP
   }
 
   if (!has_x || !has_y || !has_z) {
-    stream_->log(
-      entity_path.value(), rerun::TextLog("Currently only PointCloud2 with x/y/z are supported"));
+    log_warning_text("Currently only PointCloud2 with x/y/z are supported");
     return;
   }
 

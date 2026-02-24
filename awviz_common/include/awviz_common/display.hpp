@@ -208,7 +208,7 @@ protected:
    * @brief Log a standard warning for missing entity paths.
    * @param frame_id Frame ID that failed to resolve.
    */
-  void warn_missing_entity(const std::string & frame_id) const
+  void log_warning_for_missing_entity(const std::string & frame_id) const
   {
     if (!stream_) {
       return;
@@ -228,7 +228,11 @@ protected:
     stream_->log(topic, rerun::TextLog(message));
   }
 
-  void log_warning(const std::string & message) const
+  /**
+   * @brief Log a standard warning for missing entity paths.
+   * @param message Warning message.
+   */
+  void log_warning_text(const std::string & message) const
   {
     if (!stream_) {
       return;

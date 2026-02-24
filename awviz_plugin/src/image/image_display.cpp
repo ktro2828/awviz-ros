@@ -32,7 +32,7 @@ void ImageDisplay::log_message(sensor_msgs::msg::Image::ConstSharedPtr msg)
 
   const auto entity_path = resolve_entity_path(msg->header.frame_id, false);
   if (!entity_path) {
-    warn_missing_entity(msg->header.frame_id);
+    log_warning_for_missing_entity(msg->header.frame_id);
     return;
   }
 
@@ -43,7 +43,7 @@ void ImageDisplay::log_message(sensor_msgs::msg::Image::ConstSharedPtr msg)
     stream_->log(
       entity_path.value(), rerun::Image::from_rgb24(rgb, rerun::WidthHeight(rgb.cols, rgb.rows)));
   } catch (const cv_bridge::Exception & e) {
-    log_warning(e.what());
+    log_warning_text(e.what());
   }
 }
 }  // namespace awviz_plugin

@@ -31,7 +31,7 @@ void CameraInfoDisplay::log_message(sensor_msgs::msg::CameraInfo::ConstSharedPtr
 
   const auto entity_path = resolve_entity_path(msg->header.frame_id, false);
   if (!entity_path) {
-    warn_missing_entity(msg->header.frame_id);
+    log_warning_for_missing_entity(msg->header.frame_id);
     return;
   }
 

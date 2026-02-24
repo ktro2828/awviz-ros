@@ -41,6 +41,6 @@ void EntityPathResolver::update_entity(const TfFrame & frame)
   if (!tf_tree_ || !tf_tree_->can_link_to(frame, TF_ROOT)) {
     return;
   }
-  entities_->emplace(frame.id(), tf_tree_->entity_path(frame));
+  entities_->insert_or_assign(frame.id(), tf_tree_->entity_path(frame));
 }
 }  // namespace awviz_common

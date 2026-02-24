@@ -92,9 +92,9 @@ void TransformLogger::log_transform(const TfFrame & frame)
     last_log_stamps_[frame.id()] = timestamp;
   } catch (const tf2::TransformException & ex) {
     RCLCPP_ERROR_STREAM(
-      node_->get_logger(),
-      "Failed to lookup transform: [source] " << frame.id() << ", [target] " << frame.parent()
-                                             << ", error: " << ex.what());
+      node_->get_logger(), "Failed to lookup transform: [source] " << frame.id() << ", [target] "
+                                                                   << frame.parent()
+                                                                   << ", error: " << ex.what());
   }
 }
 }  // namespace awviz_common

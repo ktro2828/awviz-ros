@@ -15,16 +15,15 @@
 #ifndef AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_
 #define AWVIZ_COMMON__VISUALIZATION_MANAGER_HPP_
 
-#include "awviz_common/display.hpp"
-#include "awviz_common/display_factory.hpp"
+#include "awviz_common/display_registry.hpp"
+#include "awviz_common/display_spawner.hpp"
+#include "awviz_common/topic_scanner.hpp"
 #include "awviz_common/transformation/transformation_manager.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
 
-#include <map>
 #include <memory>
-#include <string>
 
 namespace awviz_common
 {
@@ -49,13 +48,12 @@ public:
   ~VisualizationManager();
 
 private:
-  rclcpp::Node::SharedPtr node_;                          //!< Node shared pointer.
-  const std::shared_ptr<rerun::RecordingStream> stream_;  //!< RecordingStream shared pointer.
-  std::unique_ptr<DisplayFactory> display_factory_;       //!< Factory to load display class.
-  std::map<std::string, std::shared_ptr<Display>>
-    display_group_;  //!< Buffer storing created displays, which key is topic name and value is its
-                     //!< shared pointer.
+  rclcpp::Node::SharedPtr node_;                              //!< Node shared pointer.
+  const std::shared_ptr<rerun::RecordingStream> stream_;      //!< RecordingStream shared pointer.
   std::unique_ptr<TransformationManager> tf_manager_;         //!< Transformation manager.
+  std::unique_ptr<ITopicScanner> topic_scanner_;              //!< Topic discovery helper.
+  std::unique_ptr<DisplaySpawner> display_spawner_;           //!< Display creation helper.
+  DisplayRegistry display_registry_;                          //!< Registry of active displays.
   rclcpp::CallbackGroup::SharedPtr parallel_callback_group_;  //!< Parallel callback group.
   rclcpp::TimerBase::SharedPtr callback_timer_;               //!< Timer callback.
 

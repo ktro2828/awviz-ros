@@ -28,8 +28,7 @@ DetectedObjectsDisplay::DetectedObjectsDisplay()
 void DetectedObjectsDisplay::log_message(
   autoware_perception_msgs::msg::DetectedObjects::ConstSharedPtr msg)
 {
-  stream_->set_time_seconds(
-    TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
+  log_timestamp(rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec));
 
   std::vector<rerun::Position3D> centers;
   std::vector<rerun::HalfSize3D> sizes;
@@ -46,15 +45,16 @@ void DetectedObjectsDisplay::log_message(
     class_ids.emplace_back(static_cast<uint16_t>(object.classification.front().label));
   }
 
-  const auto entity_path = property_.entity(msg->header.frame_id);
+  const auto entity_path = resolve_entity_path(msg->header.frame_id);
   if (!entity_path) {
-    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
-  } else {
-    stream_->log(
-      entity_path.value(), rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
-                             .with_quaternions(quaternions)
-                             .with_class_ids(class_ids));
+    warn_missing_entity(msg->header.frame_id);
+    return;
   }
+
+  stream_->log(
+    entity_path.value(), rerun::Boxes3D::from_centers_and_half_sizes(centers, sizes)
+                           .with_quaternions(quaternions)
+                           .with_class_ids(class_ids));
 }
 }  // namespace awviz_plugin
 

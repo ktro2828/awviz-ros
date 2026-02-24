@@ -118,9 +118,8 @@ FooDisplay::FooDisplay() : awviz_common::RosTopicDisplay<my_custom_msgs::msg::Fo
 
 void FooDisplay::log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg)
 {
-    stream_->set_time_seconds(
-        TIMELINE_NAME, rclcpp::Time(msg->stamp.sec, msg->stamp.nanosec).seconds());
-
+    log_timestamp(rclcpp::Time(msg->stamp.sec, msg->stamp.nanosec));
+    const auto entity_path = resolve_entity_path(msg->header.frame_id);
     stream_->log(property_.entity(), rerun::Scalar(msg->data));
 }
 }  // namespace my_custom_plugin

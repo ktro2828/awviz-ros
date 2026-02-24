@@ -229,6 +229,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a0c66b6fc1ed8d8fbb416703c91882167"><td class="mdescLeft">&#160;</td><td class="mdescRight">Borrow for non-temporary.  <br /></td></tr>
 <tr class="separator:a0c66b6fc1ed8d8fbb416703c91882167"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01e2d40533c749b1f53337421583c7e7"><td class="memItemLeft" align="right" valign="top">Collection&lt; TElement &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrerun_1_1CollectionAdapter_3_01TElement_00_01cv_1_1Mat_01_4.html#a01e2d40533c749b1f53337421583c7e7">operator()</a> (cv::Mat &amp;&amp;img)</td></tr>
+<tr class="memdesc:a01e2d40533c749b1f53337421583c7e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do a full copy for temporaries (otherwise the data might be deleted when the temporary is destroyed).  <br /></td></tr>
 <tr class="separator:a01e2d40533c749b1f53337421583c7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -262,6 +263,13 @@ template&lt;typename TElement &gt; </div>
 </div><div class="memdoc">
 
 <p>Borrow for non-temporary. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>OpenCV matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Collection&lt;TElement&gt; </dd></dl>
 
 </div>
 </div>
@@ -291,10 +299,19 @@ template&lt;typename TElement &gt; </div>
 </table>
 </div><div class="memdoc">
 
+<p>Do a full copy for temporaries (otherwise the data might be deleted when the temporary is destroyed). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>OpenCV matrix. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Collection&lt;TElement&gt; </dd></dl>
+
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>awviz_plugin/include/awviz_plugin/image/<a class="el" href="collection__adapter_8hpp_source.html">collection_adapter.hpp</a></li>
+<li>awviz_plugin/include/awviz_plugin/<a class="el" href="collection__adapter_8hpp_source.html">collection_adapter.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

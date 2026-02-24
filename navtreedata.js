@@ -90,7 +90,7 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "classawviz__common_1_1VisualizationManager.html#aa2d279ead31ad1e4fe143bc143a3d257",
-"visualization__manager_8hpp.html"
+"tf__tree__updater_8hpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

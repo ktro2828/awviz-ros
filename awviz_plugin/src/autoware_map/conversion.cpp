@@ -12,8 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "autoware_lanelet2_extension/utility/query.hpp"
 #include "awviz_plugin/autoware_map/conversion.hpp"
+
+#include "autoware_lanelet2_extension/utility/query.hpp"
 
 namespace awviz_plugin
 {

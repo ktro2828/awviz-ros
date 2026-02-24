@@ -89,7 +89,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classawviz__plugin_1_1CameraInfoDisplay.html#aeba0766e4d8ca3a590ae4ae4a55f2510"
+"classawviz__common_1_1VisualizationManager.html#aa2d279ead31ad1e4fe143bc143a3d257",
+"visualization__manager_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

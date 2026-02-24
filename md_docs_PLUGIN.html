@@ -313,7 +313,7 @@ Example</h2>
 <div class="line">}  <span class="comment">// namespace my_custom_plugin</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#endif  </span><span class="comment">// MY_CUSTOM_PLUGIN__FOO_DISPLAY_HPP_</span></div>
-<div class="ttc" id="aclassawviz__common_1_1RosTopicDisplay_html"><div class="ttname"><a href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a></div><div class="ttdoc">Inherited plugin class to display ROS topics.</div><div class="ttdef"><b>Definition:</b> display.hpp:108</div></div>
+<div class="ttc" id="aclassawviz__common_1_1RosTopicDisplay_html"><div class="ttname"><a href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a></div><div class="ttdoc">Inherited plugin class to display ROS topics.</div><div class="ttdef"><b>Definition:</b> display.hpp:109</div></div>
 <div class="ttc" id="adisplay_8hpp_html"><div class="ttname"><a href="display_8hpp.html">display.hpp</a></div></div>
 </div><!-- fragment --><p>Edit <code>src/foo_display.cpp</code> and write implementations:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;my_custom_plugin/foo_display.hpp&quot;</span></div>
@@ -326,18 +326,17 @@ Example</h2>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> FooDisplay::log_message(my_custom_msgs::msg::Foo::ConstSharedPtr msg)</div>
 <div class="line">{</div>
-<div class="line">    stream_-&gt;set_time_seconds(</div>
-<div class="line">        TIMELINE_NAME, rclcpp::Time(msg-&gt;stamp.sec, msg-&gt;stamp.nanosec).seconds());</div>
-<div class="line"> </div>
+<div class="line">    log_timestamp(rclcpp::Time(msg-&gt;stamp.sec, msg-&gt;stamp.nanosec));</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> entity_path = resolve_entity_path(msg-&gt;header.frame_id);</div>
 <div class="line">    stream_-&gt;log(property_.entity(), rerun::Scalar(msg-&gt;data));</div>
 <div class="line">}</div>
 <div class="line">}  <span class="comment">// namespace my_custom_plugin</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;pluginlib/class_list_macros.hpp&gt;</span></div>
 <div class="line"><a class="code hl_function" href="detected__objects__display_8cpp.html#a0b4503fb865eb6b4ef6e622d69e5f93a">PLUGINLIB_EXPORT_CLASS</a>(my_custom_plugin::FooDisplay, <a class="code hl_class" href="classawviz__common_1_1Display.html">awviz_common::Display</a>);</div>
-<div class="ttc" id="aclassawviz__common_1_1Display_html"><div class="ttname"><a href="classawviz__common_1_1Display.html">awviz_common::Display</a></div><div class="ttdoc">Intermediate class for display items.</div><div class="ttdef"><b>Definition:</b> display.hpp:54</div></div>
+<div class="ttc" id="aclassawviz__common_1_1Display_html"><div class="ttname"><a href="classawviz__common_1_1Display.html">awviz_common::Display</a></div><div class="ttdoc">Intermediate class for display items.</div><div class="ttdef"><b>Definition:</b> display.hpp:55</div></div>
 <div class="ttc" id="adetected__objects__display_8cpp_html_a0b4503fb865eb6b4ef6e622d69e5f93a"><div class="ttname"><a href="detected__objects__display_8cpp.html#a0b4503fb865eb6b4ef6e622d69e5f93a">PLUGINLIB_EXPORT_CLASS</a></div><div class="ttdeci">PLUGINLIB_EXPORT_CLASS(awviz_plugin::DetectedObjectsDisplay, awviz_common::Display)</div></div>
-<div class="ttc" id="anamespaceawviz__common_html"><div class="ttname"><a href="namespaceawviz__common.html">awviz_common</a></div><div class="ttdef"><b>Definition:</b> display.hpp:31</div></div>
+<div class="ttc" id="anamespaceawviz__common_html"><div class="ttname"><a href="namespaceawviz__common.html">awviz_common</a></div><div class="ttdef"><b>Definition:</b> display.hpp:32</div></div>
 </div><!-- fragment --><h3><a class="anchor" id="autotoc_md26"></a>
 3. Plugin Declaration XML</h3>
 <p>Edit <code>plugin_description.xml</code> with the following code:</p>

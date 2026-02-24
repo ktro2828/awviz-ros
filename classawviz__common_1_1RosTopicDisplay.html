@@ -281,6 +281,15 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
+<tr class="memitem:acdbad3e5cf635deda8aaee4abc0a3a4b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#acdbad3e5cf635deda8aaee4abc0a3a4b">log_timestamp</a> (const rclcpp::Time &amp;stamp)</td></tr>
+<tr class="memdesc:acdbad3e5cf635deda8aaee4abc0a3a4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the timeline time for this message.  <br /></td></tr>
+<tr class="separator:acdbad3e5cf635deda8aaee4abc0a3a4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5284b79894ee32f43e5488aecf67c547"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a5284b79894ee32f43e5488aecf67c547">resolve_entity_path</a> (const std::string &amp;frame_id, bool include_topic=true) const</td></tr>
+<tr class="memdesc:a5284b79894ee32f43e5488aecf67c547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolve an entity path from the given frame ID.  <br /></td></tr>
+<tr class="separator:a5284b79894ee32f43e5488aecf67c547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dbe62a72c082c2f670de5e49ceb71c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a5dbe62a72c082c2f670de5e49ceb71c0">warn_missing_entity</a> (const std::string &amp;frame_id) const</td></tr>
+<tr class="memdesc:a5dbe62a72c082c2f670de5e49ceb71c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a standard warning for missing entity paths.  <br /></td></tr>
+<tr class="separator:a5dbe62a72c082c2f670de5e49ceb71c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a2bf5e3a7b469dd4d0caf10c0658ee"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a26a2bf5e3a7b469dd4d0caf10c0658ee">subscribe</a> ()</td></tr>
 <tr class="memdesc:a26a2bf5e3a7b469dd4d0caf10c0658ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to subscribing the specified topic.  <br /></td></tr>
 <tr class="separator:a26a2bf5e3a7b469dd4d0caf10c0658ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -533,6 +542,90 @@ template&lt;typename MsgType &gt; </div>
 
 </div>
 </div>
+<a id="acdbad3e5cf635deda8aaee4abc0a3a4b" name="acdbad3e5cf635deda8aaee4abc0a3a4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdbad3e5cf635deda8aaee4abc0a3a4b">&#9670;&#160;</a></span>log_timestamp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MsgType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a>&lt; MsgType &gt;::log_timestamp </td>
+          <td>(</td>
+          <td class="paramtype">const rclcpp::Time &amp;&#160;</td>
+          <td class="paramname"><em>stamp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the timeline time for this message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stamp</td><td>Message timestamp. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5284b79894ee32f43e5488aecf67c547" name="a5284b79894ee32f43e5488aecf67c547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5284b79894ee32f43e5488aecf67c547">&#9670;&#160;</a></span>resolve_entity_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MsgType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; <a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a>&lt; MsgType &gt;::resolve_entity_path </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>frame_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>include_topic</em> = <code>true</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Resolve an entity path from the given frame ID. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame_id</td><td>Frame ID to resolve. </td></tr>
+    <tr><td class="paramname">include_topic</td><td>If true, append the topic name to the entity root. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Resolved entity path or std::nullopt if not found. </dd></dl>
+
+</div>
+</div>
 <a id="a3dde0bed95dfd1c37c8c9636b5ec9707" name="a3dde0bed95dfd1c37c8c9636b5ec9707"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3dde0bed95dfd1c37c8c9636b5ec9707">&#9670;&#160;</a></span>set_property()</h2>
 
@@ -669,6 +762,42 @@ template&lt;typename MsgType &gt; </div>
 </div><div class="memdoc">
 
 <p>End to subscribing the topic. </p>
+
+</div>
+</div>
+<a id="a5dbe62a72c082c2f670de5e49ceb71c0" name="a5dbe62a72c082c2f670de5e49ceb71c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dbe62a72c082c2f670de5e49ceb71c0">&#9670;&#160;</a></span>warn_missing_entity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MsgType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a>&lt; MsgType &gt;::warn_missing_entity </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>frame_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Log a standard warning for missing entity paths. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame_id</td><td>Frame ID that failed to resolve. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

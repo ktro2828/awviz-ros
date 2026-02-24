@@ -17,11 +17,6 @@
 #include <rerun.hpp>
 #include <rerun/archetypes/line_strips3d.hpp>
 
-#include <tf2/LinearMath/Matrix3x3.h>
-#include <tf2/LinearMath/Quaternion.h>
-#include <tf2/LinearMath/Vector3.h>
-#include <tf2/convert.h>
-
 #include <vector>
 
 namespace awviz_plugin
@@ -32,13 +27,15 @@ namespace
  * @brief Convert predicted paths to the sequence of waypoints.
  *
  * @param path Sequence of predicted poses.
- * @return std::vector<rerun::Vec3D>
+ * @return std::vector<rerun::Position3D>
  */
-std::vector<rerun::Vec3D> to_waypoints(const autoware_perception_msgs::msg::PredictedPath & path)
+std::vector<rerun::Position3D> to_waypoints(
+  const autoware_perception_msgs::msg::PredictedPath & path)
 {
-  std::vector<rerun::Vec3D> waypoints;
+  std::vector<rerun::Position3D> waypoints;
+  waypoints.reserve(path.path.size());
   for (const auto & pose : path.path) {
-    waypoints.emplace_back(rerun::Vec3D(pose.position.x, pose.position.y, pose.position.z));
+    waypoints.emplace_back(rerun::Position3D(pose.position.x, pose.position.y, pose.position.z));
   }
   return waypoints;
 }
@@ -53,21 +50,28 @@ PredictedObjectsDisplay::PredictedObjectsDisplay()
 void PredictedObjectsDisplay::log_message(
   autoware_perception_msgs::msg::PredictedObjects::ConstSharedPtr msg)
 {
-  stream_->set_time_seconds(
-    TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
+  log_timestamp(rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec));
 
-  const auto entity_path = property_.entity(msg->header.frame_id);
+  const auto entity_path = resolve_entity_path(msg->header.frame_id);
   if (!entity_path) {
-    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+    warn_missing_entity(msg->header.frame_id);
     return;
   }
 
   std::vector<rerun::LineStrip3D> linestrips;
   std::vector<rerun::components::ClassId> class_ids;
   for (const auto & object : msg->objects) {
-    const auto class_id = static_cast<uint16_t>(object.classification.front().label);
+    const uint16_t class_id = object.classification.empty()
+                                ? 0U
+                                : static_cast<uint16_t>(object.classification.front().label);
     for (const auto & path : object.kinematics.predicted_paths) {
+      if (path.path.empty()) {
+        continue;
+      }
       const auto waypoints = to_waypoints(path);
+      if (waypoints.empty()) {
+        continue;
+      }
       linestrips.emplace_back(rerun::LineStrip3D(waypoints));
       class_ids.emplace_back(class_id);
     }

@@ -287,9 +287,12 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a5284b79894ee32f43e5488aecf67c547"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a5284b79894ee32f43e5488aecf67c547">resolve_entity_path</a> (const std::string &amp;frame_id, bool include_topic=true) const</td></tr>
 <tr class="memdesc:a5284b79894ee32f43e5488aecf67c547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resolve an entity path from the given frame ID.  <br /></td></tr>
 <tr class="separator:a5284b79894ee32f43e5488aecf67c547"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dbe62a72c082c2f670de5e49ceb71c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a5dbe62a72c082c2f670de5e49ceb71c0">warn_missing_entity</a> (const std::string &amp;frame_id) const</td></tr>
-<tr class="memdesc:a5dbe62a72c082c2f670de5e49ceb71c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a standard warning for missing entity paths.  <br /></td></tr>
-<tr class="separator:a5dbe62a72c082c2f670de5e49ceb71c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4db210590bcf97a8591739420721b8ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a4db210590bcf97a8591739420721b8ab">log_warning_for_missing_entity</a> (const std::string &amp;frame_id) const</td></tr>
+<tr class="memdesc:a4db210590bcf97a8591739420721b8ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a standard warning for missing entity paths.  <br /></td></tr>
+<tr class="separator:a4db210590bcf97a8591739420721b8ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f85d6f12b60956114154b8f889cf68b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a1f85d6f12b60956114154b8f889cf68b">log_warning_text</a> (const std::string &amp;message) const</td></tr>
+<tr class="memdesc:a1f85d6f12b60956114154b8f889cf68b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a standard warning for missing entity paths.  <br /></td></tr>
+<tr class="separator:a1f85d6f12b60956114154b8f889cf68b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a2bf5e3a7b469dd4d0caf10c0658ee"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1RosTopicDisplay.html#a26a2bf5e3a7b469dd4d0caf10c0658ee">subscribe</a> ()</td></tr>
 <tr class="memdesc:a26a2bf5e3a7b469dd4d0caf10c0658ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start to subscribing the specified topic.  <br /></td></tr>
 <tr class="separator:a26a2bf5e3a7b469dd4d0caf10c0658ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -578,6 +581,78 @@ template&lt;typename MsgType &gt; </div>
 
 </div>
 </div>
+<a id="a4db210590bcf97a8591739420721b8ab" name="a4db210590bcf97a8591739420721b8ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4db210590bcf97a8591739420721b8ab">&#9670;&#160;</a></span>log_warning_for_missing_entity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MsgType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a>&lt; MsgType &gt;::log_warning_for_missing_entity </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>frame_id</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Log a standard warning for missing entity paths. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">frame_id</td><td>Frame ID that failed to resolve. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1f85d6f12b60956114154b8f889cf68b" name="a1f85d6f12b60956114154b8f889cf68b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f85d6f12b60956114154b8f889cf68b">&#9670;&#160;</a></span>log_warning_text()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename MsgType &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a>&lt; MsgType &gt;::log_warning_text </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Log a standard warning for missing entity paths. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>Warning message. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a5284b79894ee32f43e5488aecf67c547" name="a5284b79894ee32f43e5488aecf67c547"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5284b79894ee32f43e5488aecf67c547">&#9670;&#160;</a></span>resolve_entity_path()</h2>
 
@@ -762,42 +837,6 @@ template&lt;typename MsgType &gt; </div>
 </div><div class="memdoc">
 
 <p>End to subscribing the topic. </p>
-
-</div>
-</div>
-<a id="a5dbe62a72c082c2f670de5e49ceb71c0" name="a5dbe62a72c082c2f670de5e49ceb71c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dbe62a72c082c2f670de5e49ceb71c0">&#9670;&#160;</a></span>warn_missing_entity()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename MsgType &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classawviz__common_1_1RosTopicDisplay.html">awviz_common::RosTopicDisplay</a>&lt; MsgType &gt;::warn_missing_entity </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>frame_id</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Log a standard warning for missing entity paths. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">frame_id</td><td>Frame ID that failed to resolve. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>

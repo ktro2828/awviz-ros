@@ -2,6 +2,27 @@
 
 Display plugins are responsible for subscribing to ROS messages and logging them in the recording stream.
 
+## Display Lifecycle (Plugin Developers)
+
+A display instance follows a simple lifecycle. Implementations should assume the following order:
+
+1. **Created**: Constructor runs. Do not access ROS or Rerun resources here.
+2. **Initialized**: `initialize(node, stream)` is called. You may store the node/stream.
+3. **Configured**: `set_property(topic, entity_roots)` is called. Topic/entity settings are ready.
+4. **Running**: `start()` is called. Subscriptions should be created here.
+5. **Stopped**: `end()` is called. Subscriptions should be released.
+
+### Key Rules
+
+- `start()` is only called after `initialize()` and `set_property()` have completed.
+- `log_message()` is invoked only while running.
+- `end()` should be safe to call even if no subscription exists.
+
+### Recommended Pattern
+
+- Keep heavy initialization out of the constructor.
+- Validate entity paths inside `log_message()` and log a warning if missing.
+
 ## ROS Message Support
 
 `awviz_plugin` exports built-in display plugins.

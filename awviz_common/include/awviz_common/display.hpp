@@ -41,6 +41,13 @@ enum class DisplayState : uint8_t {
 
 /**
  * @brief Intermediate class for display items.
+ *
+ * Lifecycle expectations:
+ * - Created: constructor runs (do not access ROS/Rerun resources here).
+ * - Initialized: initialize(node, stream) is called.
+ * - Configured: set_property(topic, entity_roots) is called.
+ * - Running: start() is called and subscriptions should be active.
+ * - Stopped: end() is called and subscriptions should be released.
  */
 class Display
 {

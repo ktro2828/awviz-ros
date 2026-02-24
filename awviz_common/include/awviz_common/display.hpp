@@ -85,7 +85,8 @@ public:
 
   /**
    * @brief Return true if the initialization is completed.
-   * @return bool Return the value of the private member named `is_initialized_`.
+   * @return bool True if the display state is not `DisplayState::kCreated`
+   *   (i.e., after initialize() has been successfully called).
    */
   virtual bool is_initialized() const { return state_ != DisplayState::kCreated; }
 

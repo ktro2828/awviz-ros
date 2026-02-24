@@ -33,7 +33,8 @@ var annotated_dup =
       [ "NavSatFixDisplay", "classawviz__plugin_1_1NavSatFixDisplay.html", "classawviz__plugin_1_1NavSatFixDisplay" ],
       [ "PointCloud2Display", "classawviz__plugin_1_1PointCloud2Display.html", "classawviz__plugin_1_1PointCloud2Display" ],
       [ "PredictedObjectsDisplay", "classawviz__plugin_1_1PredictedObjectsDisplay.html", "classawviz__plugin_1_1PredictedObjectsDisplay" ],
-      [ "TrackedObjectsDisplay", "classawviz__plugin_1_1TrackedObjectsDisplay.html", "classawviz__plugin_1_1TrackedObjectsDisplay" ]
+      [ "TrackedObjectsDisplay", "classawviz__plugin_1_1TrackedObjectsDisplay.html", "classawviz__plugin_1_1TrackedObjectsDisplay" ],
+      [ "TrajectoryDisplay", "classawviz__plugin_1_1TrajectoryDisplay.html", "classawviz__plugin_1_1TrajectoryDisplay" ]
     ] ],
     [ "rerun", "namespacererun.html", [
       [ "CollectionAdapter< rerun::Position3D, std::vector< Eigen::Vector3f > >", "structrerun_1_1CollectionAdapter_3_01rerun_1_1Position3D_00_01std_1_1vector_3_01Eigen_1_1Vector3f_01_4_01_4.html", "structrerun_1_1CollectionAdapter_3_01rerun_1_1Position3D_00_01std_1_1vector_3_01Eigen_1_1Vector3f_01_4_01_4" ],

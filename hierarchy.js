@@ -30,6 +30,9 @@ var hierarchy =
       [ "awviz_common::RosTopicDisplay< autoware_perception_msgs::msg::TrackedObjects >", "classawviz__common_1_1RosTopicDisplay.html", [
         [ "awviz_plugin::TrackedObjectsDisplay", "classawviz__plugin_1_1TrackedObjectsDisplay.html", null ]
       ] ],
+      [ "awviz_common::RosTopicDisplay< autoware_planning_msgs::msg::Trajectory >", "classawviz__common_1_1RosTopicDisplay.html", [
+        [ "awviz_plugin::TrajectoryDisplay", "classawviz__plugin_1_1TrajectoryDisplay.html", null ]
+      ] ],
       [ "awviz_common::RosTopicDisplay< MsgType >", "classawviz__common_1_1RosTopicDisplay.html", null ]
     ] ],
     [ "awviz_common::DisplayRegistry", "classawviz__common_1_1DisplayRegistry.html", null ],

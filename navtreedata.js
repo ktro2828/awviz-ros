@@ -90,7 +90,7 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "classawviz__common_1_1VisualizationManager.html#a45b2314e77cdc07a6425491947a4e520",
-"structrerun_1_1CollectionAdapter_3_01TElement_00_01cv_1_1Mat_01_4.html#a0c66b6fc1ed8d8fbb416703c91882167"
+"structawviz__common_1_1PluginInfo.html#a6ea39948275ed6cfb2a8bf12e4475e06"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

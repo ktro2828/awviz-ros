@@ -8,5 +8,6 @@ var searchData=
   ['display_2ehpp_5',['display.hpp',['../display_8hpp.html',1,'']]],
   ['display_5ffactory_2ecpp_6',['display_factory.cpp',['../display__factory_8cpp.html',1,'']]],
   ['display_5ffactory_2ehpp_7',['display_factory.hpp',['../display__factory_8hpp.html',1,'']]],
-  ['displayfactory_8',['DisplayFactory',['../classawviz__common_1_1DisplayFactory.html',1,'awviz_common::DisplayFactory'],['../classawviz__common_1_1DisplayFactory.html#abd5e0f4f6cdca7896de71c24b83ad619',1,'awviz_common::DisplayFactory::DisplayFactory()']]]
+  ['displayfactory_8',['DisplayFactory',['../classawviz__common_1_1DisplayFactory.html',1,'awviz_common::DisplayFactory'],['../classawviz__common_1_1DisplayFactory.html#abd5e0f4f6cdca7896de71c24b83ad619',1,'awviz_common::DisplayFactory::DisplayFactory()']]],
+  ['displaystate_9',['DisplayState',['../namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f',1,'awviz_common']]]
 ];

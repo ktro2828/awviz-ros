@@ -213,6 +213,7 @@ $(document).ready(function(){initNavTree('classawviz__common_1_1Display.html',''
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classawviz__common_1_1Display-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">awviz_common::Display Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
@@ -262,6 +263,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7a35799c33b402fa746f11f02215120d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the initialization is completed.  <br /></td></tr>
 <tr class="separator:a7a35799c33b402fa746f11f02215120d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a2cc63c8b909e9e61baeb723650bbd338"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a2cc63c8b909e9e61baeb723650bbd338">set_state</a> (<a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">DisplayState</a> <a class="el" href="classawviz__common_1_1Display.html#ac92a006d1c423ef6baa0f6dfffff161a">state</a>)</td></tr>
+<tr class="separator:a2cc63c8b909e9e61baeb723650bbd338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac92a006d1c423ef6baa0f6dfffff161a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">DisplayState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#ac92a006d1c423ef6baa0f6dfffff161a">state</a> () const</td></tr>
+<tr class="separator:ac92a006d1c423ef6baa0f6dfffff161a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a8c2f6069bdb554a2df1df9c395fb2823"><td class="memItemLeft" align="right" valign="top">rclcpp::Node::SharedPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a8c2f6069bdb554a2df1df9c395fb2823">node_</a></td></tr>
@@ -270,12 +278,19 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ac9433f0d3e4d925158c72a134b512735"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; rerun::RecordingStream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#ac9433f0d3e4d925158c72a134b512735">stream_</a></td></tr>
 <tr class="memdesc:ac9433f0d3e4d925158c72a134b512735"><td class="mdescLeft">&#160;</td><td class="mdescRight">RecordingStream shared pointer.  <br /></td></tr>
 <tr class="separator:ac9433f0d3e4d925158c72a134b512735"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98839a2263581963ed4e80ef359b6ce7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#a98839a2263581963ed4e80ef359b6ce7">is_initialized_</a></td></tr>
-<tr class="memdesc:a98839a2263581963ed4e80ef359b6ce7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the object has been initialized.  <br /></td></tr>
-<tr class="separator:a98839a2263581963ed4e80ef359b6ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6c0b90907b68b1b2d11250fda2c8269"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">DisplayState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__common_1_1Display.html#af6c0b90907b68b1b2d11250fda2c8269">state_</a> {<a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0">DisplayState::kCreated</a>}</td></tr>
+<tr class="memdesc:af6c0b90907b68b1b2d11250fda2c8269"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lifecycle state of the display.  <br /></td></tr>
+<tr class="separator:af6c0b90907b68b1b2d11250fda2c8269"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Intermediate class for display items. </p>
+<p>Lifecycle expectations:</p><ul>
+<li>Created: constructor runs (do not access ROS/Rerun resources here).</li>
+<li>Initialized: initialize(node, stream) is called.</li>
+<li>Configured: set_property(topic, entity_roots) is called.</li>
+<li>Running: <a class="el" href="classawviz__common_1_1Display.html#a33a9266fe8006b765e092acb9cb4a1c3" title="Start to display.">start()</a> is called and subscriptions should be active.</li>
+<li>After <a class="el" href="classawviz__common_1_1Display.html#a593a232df77047ca16a8b164dbbd0899" title="End to display.">end()</a>: <a class="el" href="classawviz__common_1_1Display.html#a593a232df77047ca16a8b164dbbd0899" title="End to display.">end()</a> is called, subscriptions should be released, and the display returns to the Configured phase (ready to be started again). </li>
+</ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="afcfff0d417c21e7cd389edcdfe288d74" name="afcfff0d417c21e7cd389edcdfe288d74"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afcfff0d417c21e7cd389edcdfe288d74">&#9670;&#160;</a></span>Display()</h2>
@@ -428,7 +443,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Return true if the initialization is completed. </p>
-<dl class="section return"><dt>Returns</dt><dd>bool Return the value of the private member named <code>is_initialized_</code>. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if the display state is not <code><a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0">DisplayState::kCreated</a></code> (i.e., after <a class="el" href="classawviz__common_1_1Display.html#a7d17157dfb51ba0a7bf3760fd4551568" title="Initialize attributes.">initialize()</a> has been successfully called). </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; MsgType &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::CameraInfo &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::CompressedImage &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; autoware_perception_msgs::msg::DetectedObjects &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::NavSatFix &gt;</a>, <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; sensor_msgs::msg::PointCloud2 &gt;</a>, and <a class="el" href="classawviz__common_1_1RosTopicDisplay.html#ab15877d5676b8236d200aabef1ca49b0">awviz_common::RosTopicDisplay&lt; autoware_perception_msgs::msg::TrackedObjects &gt;</a>.</p>
 
@@ -481,6 +496,32 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a2cc63c8b909e9e61baeb723650bbd338" name="a2cc63c8b909e9e61baeb723650bbd338"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cc63c8b909e9e61baeb723650bbd338">&#9670;&#160;</a></span>set_state()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void awviz_common::Display::set_state </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">DisplayState</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a33a9266fe8006b765e092acb9cb4a1c3" name="a33a9266fe8006b765e092acb9cb4a1c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33a9266fe8006b765e092acb9cb4a1c3">&#9670;&#160;</a></span>start()</h2>
 
@@ -510,9 +551,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a98839a2263581963ed4e80ef359b6ce7" name="a98839a2263581963ed4e80ef359b6ce7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98839a2263581963ed4e80ef359b6ce7">&#9670;&#160;</a></span>is_initialized_</h2>
+<a id="ac92a006d1c423ef6baa0f6dfffff161a" name="ac92a006d1c423ef6baa0f6dfffff161a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac92a006d1c423ef6baa0f6dfffff161a">&#9670;&#160;</a></span>state()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -521,20 +561,22 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool awviz_common::Display::is_initialized_</td>
+          <td class="memname"><a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">DisplayState</a> awviz_common::Display::state </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Whether the object has been initialized. </p>
-
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
 <a id="a8c2f6069bdb554a2df1df9c395fb2823" name="a8c2f6069bdb554a2df1df9c395fb2823"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c2f6069bdb554a2df1df9c395fb2823">&#9670;&#160;</a></span>node_</h2>
 
@@ -556,6 +598,30 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Node shared pointer. </p>
+
+</div>
+</div>
+<a id="af6c0b90907b68b1b2d11250fda2c8269" name="af6c0b90907b68b1b2d11250fda2c8269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6c0b90907b68b1b2d11250fda2c8269">&#9670;&#160;</a></span>state_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">DisplayState</a> awviz_common::Display::state_ {<a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0">DisplayState::kCreated</a>}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lifecycle state of the display. </p>
 
 </div>
 </div>

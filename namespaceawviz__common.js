@@ -11,5 +11,11 @@ var namespaceawviz__common =
     [ "TransformationManager", "classawviz__common_1_1TransformationManager.html", "classawviz__common_1_1TransformationManager" ],
     [ "ViewerApp", "classawviz__common_1_1ViewerApp.html", "classawviz__common_1_1ViewerApp" ],
     [ "VisualizationManager", "classawviz__common_1_1VisualizationManager.html", "classawviz__common_1_1VisualizationManager" ],
+    [ "DisplayState", "namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f", [
+      [ "kCreated", "namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0", null ],
+      [ "kInitialized", "namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fab661416dbe99f1eddca1a5547a8bd720", null ],
+      [ "kConfigured", "namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fa7ebe83f8599de272f076e1cbcb0cbb4d", null ],
+      [ "kRunning", "namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fa2fc7fbf0d19294f85dd3880460dd3c0a", null ]
+    ] ],
     [ "TF_ROOT", "namespaceawviz__common.html#ab58be3ec6fbc4ac67ff656c4cd91071f", null ]
 ];

@@ -213,6 +213,7 @@ $(document).ready(function(){initNavTree('namespaceawviz__common.html',''); init
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">awviz_common Namespace Reference</div></div>
 </div><!--header-->
@@ -253,12 +254,53 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manager class to handle visualization processes.  <a href="classawviz__common_1_1VisualizationManager.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a1a0afbd654d117657d6e03d560aada9f"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">DisplayState</a> : uint8_t { <a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0">kCreated</a> = 0
+, <a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fab661416dbe99f1eddca1a5547a8bd720">kInitialized</a> = 1
+, <a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fa7ebe83f8599de272f076e1cbcb0cbb4d">kConfigured</a> = 2
+, <a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9fa2fc7fbf0d19294f85dd3880460dd3c0a">kRunning</a> = 3
+ }</td></tr>
+<tr class="memdesc:a1a0afbd654d117657d6e03d560aada9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lifecycle state of a Display instance.  <a href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">More...</a><br /></td></tr>
+<tr class="separator:a1a0afbd654d117657d6e03d560aada9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ab58be3ec6fbc4ac67ff656c4cd91071f"><td class="memItemLeft" align="right" valign="top">constexpr const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__common.html#ab58be3ec6fbc4ac67ff656c4cd91071f">TF_ROOT</a> = &quot;map&quot;</td></tr>
 <tr class="memdesc:ab58be3ec6fbc4ac67ff656c4cd91071f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Root transformation frame.  <br /></td></tr>
 <tr class="separator:ab58be3ec6fbc4ac67ff656c4cd91071f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a1a0afbd654d117657d6e03d560aada9f" name="a1a0afbd654d117657d6e03d560aada9f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a0afbd654d117657d6e03d560aada9f">&#9670;&#160;</a></span>DisplayState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespaceawviz__common.html#a1a0afbd654d117657d6e03d560aada9f">awviz_common::DisplayState</a> : uint8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Lifecycle state of a <a class="el" href="classawviz__common_1_1Display.html" title="Intermediate class for display items.">Display</a> instance. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0" name="a1a0afbd654d117657d6e03d560aada9fae75fb02c187cb6490fda53bb08795cc0"></a>kCreated&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1a0afbd654d117657d6e03d560aada9fab661416dbe99f1eddca1a5547a8bd720" name="a1a0afbd654d117657d6e03d560aada9fab661416dbe99f1eddca1a5547a8bd720"></a>kInitialized&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1a0afbd654d117657d6e03d560aada9fa7ebe83f8599de272f076e1cbcb0cbb4d" name="a1a0afbd654d117657d6e03d560aada9fa7ebe83f8599de272f076e1cbcb0cbb4d"></a>kConfigured&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a1a0afbd654d117657d6e03d560aada9fa2fc7fbf0d19294f85dd3880460dd3c0a" name="a1a0afbd654d117657d6e03d560aada9fa2fc7fbf0d19294f85dd3880460dd3c0a"></a>kRunning&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="ab58be3ec6fbc4ac67ff656c4cd91071f" name="ab58be3ec6fbc4ac67ff656c4cd91071f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab58be3ec6fbc4ac67ff656c4cd91071f">&#9670;&#160;</a></span>TF_ROOT</h2>

@@ -30,7 +30,25 @@
 namespace awviz_common
 {
 /**
+ * @brief Lifecycle state of a Display instance.
+ */
+enum class DisplayState : uint8_t {
+  kCreated = 0,
+  kInitialized = 1,
+  kConfigured = 2,
+  kRunning = 3,
+};
+
+/**
  * @brief Intermediate class for display items.
+ *
+ * Lifecycle expectations:
+ * - Created: constructor runs (do not access ROS/Rerun resources here).
+ * - Initialized: initialize(node, stream) is called.
+ * - Configured: set_property(topic, entity_roots) is called.
+ * - Running: start() is called and subscriptions should be active.
+ * - After end(): end() is called, subscriptions should be released, and the display returns to the
+ *   Configured phase (ready to be started again).
  */
 class Display
 {
@@ -68,14 +86,18 @@ public:
 
   /**
    * @brief Return true if the initialization is completed.
-   * @return bool Return the value of the private member named `is_initialized_`.
+   * @return bool True if the display state is not `DisplayState::kCreated`
+   *   (i.e., after initialize() has been successfully called).
    */
-  virtual bool is_initialized() const { return is_initialized_; }
+  virtual bool is_initialized() const { return state_ != DisplayState::kCreated; }
 
 protected:
+  void set_state(DisplayState state) { state_ = state; }
+  DisplayState state() const { return state_; }
+
   rclcpp::Node::SharedPtr node_;                    //!< Node shared pointer.
   std::shared_ptr<rerun::RecordingStream> stream_;  //!< RecordingStream shared pointer.
-  bool is_initialized_;                             //!< Whether the object has been initialized.
+  DisplayState state_{DisplayState::kCreated};      //!< Lifecycle state of the display.
 };
 
 /**
@@ -109,7 +131,7 @@ public:
   {
     node_ = std::move(node);
     stream_ = std::move(stream);
-    is_initialized_ = true;
+    set_state(DisplayState::kInitialized);
   };
 
   /**
@@ -123,19 +145,36 @@ public:
   {
     property_.set_topic(topic);
     property_.set_entity_roots(entity_roots);
+    set_state(DisplayState::kConfigured);
   }
 
   /**
    * @brief Start to display.
    */
-  void start() override { subscribe(); }
+  void start() override
+  {
+    // Only transition to running when the display is properly initialized/configured.
+    if (!is_initialized()) {
+      return;
+    }
+    subscribe();
+    set_state(DisplayState::kRunning);
+  }
 
   /**
    * @brief End to display.
    */
-  void end() override { unsubscribe(); }
+  void end() override
+  {
+    unsubscribe();
+    set_state(DisplayState::kConfigured);
+  }
 
-  bool is_initialized() const override { return is_initialized_ && property_.is_initialized(); }
+  bool is_initialized() const override
+  {
+    return (state() == DisplayState::kConfigured || state() == DisplayState::kRunning) &&
+           property_.is_initialized();
+  }
 
 protected:
   static constexpr const char * TIMELINE_NAME = "timestamp";  //!< Entity name of timeline record.

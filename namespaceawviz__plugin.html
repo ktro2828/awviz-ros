@@ -222,6 +222,8 @@ $(document).ready(function(){initNavTree('namespaceawviz__plugin.html',''); init
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
 Namespaces</h2></td></tr>
+<tr class="memitem:namespaceawviz__plugin_1_1anonymous__namespace_02lanelet__display_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin_1_1anonymous__namespace_02lanelet__display_8cpp_03.html">anonymous_namespace{lanelet_display.cpp}</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:namespaceawviz__plugin_1_1anonymous__namespace_02predicted__objects__display_8cpp_03"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin_1_1anonymous__namespace_02predicted__objects__display_8cpp_03.html">anonymous_namespace{predicted_objects_display.cpp}</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -238,6 +240,12 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__plugin_1_1ImageDisplay.html">ImageDisplay</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display plugin of <code>sensor_msgs::msg::Image</code>.  <a href="classawviz__plugin_1_1ImageDisplay.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__plugin_1_1LaneletDisplay.html">LaneletDisplay</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A display plugin for <code>autoware_map_msgs::msg::LaneletMapBin</code>.  <a href="classawviz__plugin_1_1LaneletDisplay.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A class stores a set of line strips, and creates a new <code>rerun::LineStrips3D</code> object.  <a href="classawviz__plugin_1_1LaneletLineStrips.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classawviz__plugin_1_1NavSatFixDisplay.html">NavSatFixDisplay</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display plugin of <code>sensor_msgs::msg::NavSatFix</code>.  <a href="classawviz__plugin_1_1NavSatFixDisplay.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -252,6 +260,24 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ad620319ba607c320bcd1ff089b2ce81c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin.html#ad620319ba607c320bcd1ff089b2ce81c">has_attribute</a> (const lanelet::ConstLineString3d &amp;linestring, const std::set&lt; std::string &gt; &amp;attributes)</td></tr>
+<tr class="memdesc:ad620319ba607c320bcd1ff089b2ce81c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the input linestring has same attribute in the specified set of attributes.  <br /></td></tr>
+<tr class="separator:ad620319ba607c320bcd1ff089b2ce81c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd44ce76e53b867e8bb799b7befa6e76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin.html#afd44ce76e53b867e8bb799b7befa6e76">convert_road_lanelets</a> (const lanelet::LaneletLayer &amp;layer, const lanelet::ConstLanelets &amp;lanelets)</td></tr>
+<tr class="memdesc:afd44ce76e53b867e8bb799b7befa6e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert road lanelets to line strips.  <br /></td></tr>
+<tr class="separator:afd44ce76e53b867e8bb799b7befa6e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c1c546d015b5dd538ea3a3e2f60af6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin.html#a1c1c546d015b5dd538ea3a3e2f60af6f">convert_road_boundaries</a> (const lanelet::ConstLanelets &amp;lanelets)</td></tr>
+<tr class="memdesc:a1c1c546d015b5dd538ea3a3e2f60af6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert road boundaries to line strips.  <br /></td></tr>
+<tr class="separator:a1c1c546d015b5dd538ea3a3e2f60af6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d8187c2acb283c251f14d3db2c9e55"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin.html#a81d8187c2acb283c251f14d3db2c9e55">convert_centerlines</a> (const lanelet::ConstLanelets &amp;lanelets)</td></tr>
+<tr class="memdesc:a81d8187c2acb283c251f14d3db2c9e55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert centerlines to line strips.  <br /></td></tr>
+<tr class="separator:a81d8187c2acb283c251f14d3db2c9e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9787faa53fcd1154e89dd086a9e6c1a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin.html#a9787faa53fcd1154e89dd086a9e6c1a5">convert_stop_lines</a> (const lanelet::LineStringLayer &amp;layer)</td></tr>
+<tr class="memdesc:a9787faa53fcd1154e89dd086a9e6c1a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert stop lines to line strips.  <br /></td></tr>
+<tr class="separator:a9787faa53fcd1154e89dd086a9e6c1a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e22882fda3b1a4209adf2f702c24202"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin.html#a9e22882fda3b1a4209adf2f702c24202">convert_crosswalks</a> (const lanelet::ConstLanelets &amp;lanelets)</td></tr>
+<tr class="memdesc:a9e22882fda3b1a4209adf2f702c24202"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert crosswalks to line strips.  <br /></td></tr>
+<tr class="separator:a9e22882fda3b1a4209adf2f702c24202"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5f7fc49eced56639be61f0f25cb9066"><td class="memItemLeft" align="right" valign="top">rerun::Collection&lt; rerun::TensorDimension &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceawviz__plugin.html#ad5f7fc49eced56639be61f0f25cb9066">tensor_shape</a> (const cv::Mat &amp;img)</td></tr>
 <tr class="memdesc:ad5f7fc49eced56639be61f0f25cb9066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return image tensor shape as <code>rerun::Collection</code>.  <br /></td></tr>
 <tr class="separator:ad5f7fc49eced56639be61f0f25cb9066"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -296,6 +322,190 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a81d8187c2acb283c251f14d3db2c9e55" name="a81d8187c2acb283c251f14d3db2c9e55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81d8187c2acb283c251f14d3db2c9e55">&#9670;&#160;</a></span>convert_centerlines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a> awviz_plugin::convert_centerlines </td>
+          <td>(</td>
+          <td class="paramtype">const lanelet::ConstLanelets &amp;&#160;</td>
+          <td class="paramname"><em>lanelets</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert centerlines to line strips. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanelets</td><td>Set of all lanelets associated with the vector map. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html" title="A class stores a set of line strips, and creates a new rerun::LineStrips3D object.">LaneletLineStrips</a> object. </dd></dl>
+
+</div>
+</div>
+<a id="a9e22882fda3b1a4209adf2f702c24202" name="a9e22882fda3b1a4209adf2f702c24202"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e22882fda3b1a4209adf2f702c24202">&#9670;&#160;</a></span>convert_crosswalks()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a> &gt; awviz_plugin::convert_crosswalks </td>
+          <td>(</td>
+          <td class="paramtype">const lanelet::ConstLanelets &amp;&#160;</td>
+          <td class="paramname"><em>lanelets</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert crosswalks to line strips. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanelets</td><td>Set of all lanelets associated with the vector map. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of <a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html" title="A class stores a set of line strips, and creates a new rerun::LineStrips3D object.">LaneletLineStrips</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a1c1c546d015b5dd538ea3a3e2f60af6f" name="a1c1c546d015b5dd538ea3a3e2f60af6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c1c546d015b5dd538ea3a3e2f60af6f">&#9670;&#160;</a></span>convert_road_boundaries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a> awviz_plugin::convert_road_boundaries </td>
+          <td>(</td>
+          <td class="paramtype">const lanelet::ConstLanelets &amp;&#160;</td>
+          <td class="paramname"><em>lanelets</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert road boundaries to line strips. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lanelets</td><td>Set of all lanelets associated with the vector map. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html" title="A class stores a set of line strips, and creates a new rerun::LineStrips3D object.">LaneletLineStrips</a> object. </dd></dl>
+
+</div>
+</div>
+<a id="afd44ce76e53b867e8bb799b7befa6e76" name="afd44ce76e53b867e8bb799b7befa6e76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd44ce76e53b867e8bb799b7befa6e76">&#9670;&#160;</a></span>convert_road_lanelets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a> awviz_plugin::convert_road_lanelets </td>
+          <td>(</td>
+          <td class="paramtype">const lanelet::LaneletLayer &amp;&#160;</td>
+          <td class="paramname"><em>layer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const lanelet::ConstLanelets &amp;&#160;</td>
+          <td class="paramname"><em>lanelets</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert road lanelets to line strips. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td>Lanelet layer. </td></tr>
+    <tr><td class="paramname">lanelets</td><td>Set of all lanelets associated with the vector map. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html" title="A class stores a set of line strips, and creates a new rerun::LineStrips3D object.">LaneletLineStrips</a> object. </dd></dl>
+
+</div>
+</div>
+<a id="a9787faa53fcd1154e89dd086a9e6c1a5" name="a9787faa53fcd1154e89dd086a9e6c1a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9787faa53fcd1154e89dd086a9e6c1a5">&#9670;&#160;</a></span>convert_stop_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html">LaneletLineStrips</a> awviz_plugin::convert_stop_lines </td>
+          <td>(</td>
+          <td class="paramtype">const lanelet::LineStringLayer &amp;&#160;</td>
+          <td class="paramname"><em>layer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert stop lines to line strips. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">layer</td><td>LineString layer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classawviz__plugin_1_1LaneletLineStrips.html" title="A class stores a set of line strips, and creates a new rerun::LineStrips3D object.">LaneletLineStrips</a> object. </dd></dl>
+
+</div>
+</div>
+<a id="ad620319ba607c320bcd1ff089b2ce81c" name="ad620319ba607c320bcd1ff089b2ce81c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad620319ba607c320bcd1ff089b2ce81c">&#9670;&#160;</a></span>has_attribute()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool awviz_plugin::has_attribute </td>
+          <td>(</td>
+          <td class="paramtype">const lanelet::ConstLineString3d &amp;&#160;</td>
+          <td class="paramname"><em>linestring</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::set&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>attributes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if the input linestring has same attribute in the specified set of attributes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">linestring</td><td>LineString object. </td></tr>
+    <tr><td class="paramname">attributes</td><td>Set of attributes. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return true if the linestring has. </dd></dl>
 
 </div>
 </div>

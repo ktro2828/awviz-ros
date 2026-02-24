@@ -15,6 +15,9 @@ var hierarchy =
       [ "awviz_common::RosTopicDisplay< sensor_msgs::msg::Image >", "classawviz__common_1_1RosTopicDisplay.html", [
         [ "awviz_plugin::ImageDisplay", "classawviz__plugin_1_1ImageDisplay.html", null ]
       ] ],
+      [ "awviz_common::RosTopicDisplay< autoware_map_msgs::msg::LaneletMapBin >", "classawviz__common_1_1RosTopicDisplay.html", [
+        [ "awviz_plugin::LaneletDisplay", "classawviz__plugin_1_1LaneletDisplay.html", null ]
+      ] ],
       [ "awviz_common::RosTopicDisplay< sensor_msgs::msg::NavSatFix >", "classawviz__common_1_1RosTopicDisplay.html", [
         [ "awviz_plugin::NavSatFixDisplay", "classawviz__plugin_1_1NavSatFixDisplay.html", null ]
       ] ],
@@ -43,6 +46,7 @@ var hierarchy =
     [ "awviz_common::ITransformLogger", "classawviz__common_1_1ITransformLogger.html", [
       [ "awviz_common::TransformLogger", "classawviz__common_1_1TransformLogger.html", null ]
     ] ],
+    [ "awviz_plugin::LaneletLineStrips", "classawviz__plugin_1_1LaneletLineStrips.html", null ],
     [ "awviz_common::PluginFactory< T >", "classawviz__common_1_1PluginFactory.html", null ],
     [ "awviz_common::PluginFactory< Display >", "classawviz__common_1_1PluginFactory.html", [
       [ "awviz_common::DisplayFactory", "classawviz__common_1_1DisplayFactory.html", null ]

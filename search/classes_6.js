@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['rostopicdisplay_0',['RosTopicDisplay',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20autoware_5fperception_5fmsgs_3a_3amsg_3a_3adetectedobjects_20_3e_1',['RosTopicDisplay&lt; autoware_perception_msgs::msg::DetectedObjects &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20autoware_5fperception_5fmsgs_3a_3amsg_3a_3apredictedobjects_20_3e_2',['RosTopicDisplay&lt; autoware_perception_msgs::msg::PredictedObjects &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20autoware_5fperception_5fmsgs_3a_3amsg_3a_3atrackedobjects_20_3e_3',['RosTopicDisplay&lt; autoware_perception_msgs::msg::TrackedObjects &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20sensor_5fmsgs_3a_3amsg_3a_3acamerainfo_20_3e_4',['RosTopicDisplay&lt; sensor_msgs::msg::CameraInfo &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20sensor_5fmsgs_3a_3amsg_3a_3acompressedimage_20_3e_5',['RosTopicDisplay&lt; sensor_msgs::msg::CompressedImage &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20sensor_5fmsgs_3a_3amsg_3a_3aimage_20_3e_6',['RosTopicDisplay&lt; sensor_msgs::msg::Image &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20sensor_5fmsgs_3a_3amsg_3a_3anavsatfix_20_3e_7',['RosTopicDisplay&lt; sensor_msgs::msg::NavSatFix &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicdisplay_3c_20sensor_5fmsgs_3a_3amsg_3a_3apointcloud2_20_3e_8',['RosTopicDisplay&lt; sensor_msgs::msg::PointCloud2 &gt;',['../classawviz__common_1_1RosTopicDisplay.html',1,'awviz_common']]],
-  ['rostopicproperty_9',['RosTopicProperty',['../classawviz__common_1_1RosTopicProperty.html',1,'awviz_common']]]
+  ['pluginfactory_0',['PluginFactory',['../classawviz__common_1_1PluginFactory.html',1,'awviz_common']]],
+  ['pluginfactory_3c_20display_20_3e_1',['PluginFactory&lt; Display &gt;',['../classawviz__common_1_1PluginFactory.html',1,'awviz_common']]],
+  ['plugininfo_2',['PluginInfo',['../structawviz__common_1_1PluginInfo.html',1,'awviz_common']]],
+  ['pointcloud2display_3',['PointCloud2Display',['../classawviz__plugin_1_1PointCloud2Display.html',1,'awviz_plugin']]],
+  ['predictedobjectsdisplay_4',['PredictedObjectsDisplay',['../classawviz__plugin_1_1PredictedObjectsDisplay.html',1,'awviz_plugin']]]
 ];

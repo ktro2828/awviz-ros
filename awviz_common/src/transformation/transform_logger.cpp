@@ -86,7 +86,7 @@ void TransformLogger::log_transform(const TfFrame & frame)
     if (frame.is_static()) {
       stream_->log_static(entity_path, from_msg(tf_stamped.transform));
     } else {
-      stream_->set_time_seconds("timestamp", timestamp);
+      stream_->set_time_duration_secs("timestamp", timestamp);
       stream_->log(entity_path, from_msg(tf_stamped.transform));
     }
     last_log_stamps_[frame.id()] = timestamp;

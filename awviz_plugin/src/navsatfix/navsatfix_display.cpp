@@ -26,8 +26,12 @@ void NavSatFixDisplay::log_message(sensor_msgs::msg::NavSatFix::ConstSharedPtr m
 {
   log_timestamp(rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec));
 
-  const auto entity_path = property_.entity();
-  stream_->log(entity_path, rerun::GeoPoints(rerun::LatLon(msg->latitude, msg->longitude)));
+  const auto entity_path = resolve_entity_path(msg->header.frame_id);
+  if (!entity_path) {
+    log_warning_for_missing_entity(msg->header.frame_id);
+    return;
+  }
+  stream_->log(entity_path.value(), rerun::GeoPoints(rerun::LatLon(msg->latitude, msg->longitude)));
 }
 }  // namespace awviz_plugin
 

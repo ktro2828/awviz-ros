@@ -18,6 +18,8 @@
 
 #include <opencv2/opencv.hpp>
 
+#include <cv_bridge/cv_bridge.h>
+
 #include <cstdint>
 #include <iostream>
 
@@ -34,24 +36,19 @@ void CompressedImageDisplay::log_message(sensor_msgs::msg::CompressedImage::Cons
 
   const auto entity_path = resolve_entity_path(msg->header.frame_id, false);
   if (!entity_path) {
-    warn_missing_entity(msg->header.frame_id);
+    log_warning_for_missing_entity(msg->header.frame_id);
     return;
   }
 
-  if (msg->format.find("jpeg")) {
-    auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
-    cv::cvtColor(img, img, cv::COLOR_BGR2RGB);
+  // NOTE: Depth image is not supported yet.
+  try {
+    const auto & rgb = cv_bridge::toCvCopy(msg, "rgb8")->image;
 
     stream_->log(
-      entity_path.value(), rerun::Image::from_rgb24(img, rerun::WidthHeight(img.cols, img.rows)));
-  } else {
-    auto img = cv::imdecode(cv::Mat(msg->data), cv::IMREAD_COLOR);
-    cv::Mat depth;
-    img.convertTo(depth, CV_32FC1);
-
-    stream_->log(
-      entity_path.value(),
-      rerun::DepthImage(depth.data, rerun::WidthHeight(depth.cols, depth.rows)).with_meter(1.0));
+      entity_path.value(), rerun::Image::from_rgb24(rgb, rerun::WidthHeight(rgb.cols, rgb.rows)));
+  } catch (const cv_bridge::Exception & e) {
+    log_warning_text(e.what());
+    return;
   }
 }
 }  // namespace awviz_plugin

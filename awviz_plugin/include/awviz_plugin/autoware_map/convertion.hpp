@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef AWVIZ_PLUGIN__AUTOWARE_MAP__CONVERTION_HPP_
-#define AWVIZ_PLUGIN__AUTOWARE_MAP__CONVERTION_HPP_
+#ifndef AWVIZ_PLUGIN__AUTOWARE_MAP__CONVERSION_HPP_
+#define AWVIZ_PLUGIN__AUTOWARE_MAP__CONVERSION_HPP_
 
 #include <rerun.hpp>
 
@@ -62,7 +62,7 @@ private:
 };
 
 /**
- * @brief Check if the input linestring has same attribute in the specfied set of attributes.
+ * @brief Check if the input linestring has same attribute in the specified set of attributes.
  *
  * @param linestring LineString object.
  * @param attributes Set of attributes.
@@ -84,7 +84,7 @@ LaneletLineStrips convert_road_lanelets(
 /**
  * @brief Convert road boundaries to line strips.
  *
- * @param all_lanelets Set of all lanelets associated with the vector map.
+ * @param lanelets Set of all lanelets associated with the vector map.
  * @return LaneletLineStrips object.
  */
 LaneletLineStrips convert_road_boundaries(const lanelet::ConstLanelets & lanelets);
@@ -114,4 +114,4 @@ LaneletLineStrips convert_stop_lines(const lanelet::LineStringLayer & layer);
 std::vector<LaneletLineStrips> convert_crosswalks(const lanelet::ConstLanelets & lanelets);
 }  // namespace awviz_plugin
 
-#endif
+#endif  // AWVIZ_PLUGIN__AUTOWARE_MAP__CONVERTION_HPP_

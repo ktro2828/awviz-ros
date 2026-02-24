@@ -15,7 +15,7 @@
 #ifndef AWVIZ_PLUGIN__AUTOWARE_MAP__LANELET_DISPLAY_HPP_
 #define AWVIZ_PLUGIN__AUTOWARE_MAP__LANELET_DISPLAY_HPP_
 
-#include "awviz_plugin/autoware_map/convertion.hpp"
+#include "awviz_plugin/autoware_map/conversion.hpp"
 
 #include <awviz_common/display.hpp>
 

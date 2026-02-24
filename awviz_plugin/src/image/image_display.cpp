@@ -36,7 +36,7 @@ void ImageDisplay::log_message(sensor_msgs::msg::Image::ConstSharedPtr msg)
     return;
   }
 
-  // TODO(ktro2828): Fix this
+  // TODO(ktro2828): Improve error handling by logging cv_bridge::Exception instead of silently ignoring it.
   try {
     if (msg->encoding == "16UC1") {
       auto img = cv_bridge::toCvCopy(msg)->image;

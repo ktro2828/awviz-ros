@@ -15,7 +15,10 @@
 #ifndef AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_
 #define AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_
 
+#include "awviz_common/transformation/entity_path_resolver.hpp"
 #include "awviz_common/transformation/tf_tree.hpp"
+#include "awviz_common/transformation/tf_tree_updater.hpp"
+#include "awviz_common/transformation/transform_logger.hpp"
 
 #include <rclcpp/rclcpp.hpp>
 #include <rerun.hpp>
@@ -25,10 +28,8 @@
 
 #include <memory>
 #include <mutex>
-#include <optional>
 #include <string>
 #include <unordered_map>
-
 namespace awviz_common
 {
 /**
@@ -53,8 +54,7 @@ public:
    */
   const std::shared_ptr<std::unordered_map<std::string, std::string>> entities()
   {
-    std::lock_guard lock(entities_mtx_);
-    return entities_;
+    return entity_path_resolver_->entities();
   }
 
 private:
@@ -70,32 +70,27 @@ private:
   void update_tree();
 
   /**
-   * @brief Update the entity path of the corresponding frame.
-   *
-   * @param frame `TfFrame` object.
+   * @brief Update entity paths for the current TF tree.
    */
-  void update_entity(const TfFrame & frame);
+  void update_entities();
 
   /**
-   * @brief Log a TfFrame object in the recording stream.
-   *
-   * @param frame `TfFrame` object.
+   * @brief Log transforms for the current TF tree.
    */
-  void log_transform(const TfFrame & frame);
+  void log_transforms();
 
 private:
-  rclcpp::Node::SharedPtr node_;                             //!< Node shared pointer.
-  std::shared_ptr<rerun::RecordingStream> stream_;           //!< RecordingStream shared pointer.
-  std::shared_ptr<tf2_ros::Buffer> tf_buffer_;               //!< Buffer shared pointer.
-  std::shared_ptr<tf2_ros::TransformListener> tf_listener_;  //!< TransformListener shared pointer.
-  rclcpp::TimerBase::SharedPtr timer_;                       //!< TimerBase shared pointer.
-  std::unique_ptr<TfTree> tf_tree_;                          //!< TfTree unique pointer.
-  std::shared_ptr<std::unordered_map<std::string, std::string>>
-    entities_;  //!< Map stores a entity path of a corresponding frame ID.
-  std::unordered_map<std::string, double> last_log_stamps_;  //!< Map stores last log timestamps.
-
-  std::mutex tf_tree_mtx_;   //!< Mutex of tf_tree_;
-  std::mutex entities_mtx_;  //!< Mutex of entities_;
+  rclcpp::Node::SharedPtr node_;                              //!< Node shared pointer.
+  std::shared_ptr<rerun::RecordingStream> stream_;            //!< RecordingStream shared pointer.
+  std::shared_ptr<tf2_ros::Buffer> tf_buffer_;                //!< Buffer shared pointer.
+  std::shared_ptr<tf2_ros::TransformListener> tf_listener_;   //!< TransformListener shared pointer.
+  rclcpp::TimerBase::SharedPtr timer_;                        //!< TimerBase shared pointer.
+  std::shared_ptr<TfTree> tf_tree_;                           //!< TfTree shared pointer.
+  std::shared_ptr<std::mutex> tf_tree_mtx_;                   //!< Mutex for TF tree updates.
+  std::shared_ptr<std::mutex> entities_mtx_;                  //!< Mutex for entity map access.
+  std::unique_ptr<ITfTreeUpdater> tf_tree_updater_;           //!< TF tree updater.
+  std::unique_ptr<EntityPathResolver> entity_path_resolver_;  //!< Entity path resolver.
+  std::unique_ptr<ITransformLogger> transform_logger_;        //!< Transform logger.
 };
 }  // namespace awviz_common
 #endif  // AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_

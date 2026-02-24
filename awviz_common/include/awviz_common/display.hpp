@@ -23,6 +23,7 @@
 #include <rosidl_runtime_cpp/traits.hpp>
 
 #include <memory>
+#include <optional>
 #include <string>
 #include <unordered_map>
 #include <utility>
@@ -178,6 +179,54 @@ public:
 
 protected:
   static constexpr const char * TIMELINE_NAME = "timestamp";  //!< Entity name of timeline record.
+
+  /**
+   * @brief Set the timeline time for this message.
+   * @param stamp Message timestamp.
+   */
+  void log_timestamp(const rclcpp::Time & stamp)
+  {
+    if (!stream_) {
+      return;
+    }
+    stream_->set_time_seconds(TIMELINE_NAME, stamp.seconds());
+  }
+
+  /**
+   * @brief Resolve an entity path from the given frame ID.
+   * @param frame_id Frame ID to resolve.
+   * @param include_topic If true, append the topic name to the entity root.
+   * @return Resolved entity path or std::nullopt if not found.
+   */
+  std::optional<std::string> resolve_entity_path(
+    const std::string & frame_id, bool include_topic = true) const
+  {
+    return include_topic ? property_.entity(frame_id) : property_.entity_without_topic(frame_id);
+  }
+
+  /**
+   * @brief Log a standard warning for missing entity paths.
+   * @param frame_id Frame ID that failed to resolve.
+   */
+  void warn_missing_entity(const std::string & frame_id) const
+  {
+    if (!stream_) {
+      return;
+    }
+
+    std::string message = "There is no corresponding entity path";
+
+    if (!frame_id.empty()) {
+      message += " for frame_id: " + frame_id;
+    }
+
+    const auto & topic = property_.topic();
+    if (!topic.empty()) {
+      message += " on topic: " + topic;
+    }
+
+    stream_->log(topic, rerun::TextLog(message));
+  }
 
   /**
    * @brief Start to subscribing the specified topic.

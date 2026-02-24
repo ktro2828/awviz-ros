@@ -26,12 +26,11 @@ TrackedObjectsDisplay::TrackedObjectsDisplay()
 void TrackedObjectsDisplay::log_message(
   autoware_perception_msgs::msg::TrackedObjects::ConstSharedPtr msg)
 {
-  stream_->set_time_seconds(
-    TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
+  log_timestamp(rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec));
 
-  const auto entity_path = property_.entity(msg->header.frame_id);
+  const auto entity_path = resolve_entity_path(msg->header.frame_id);
   if (!entity_path) {
-    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+    warn_missing_entity(msg->header.frame_id);
     return;
   }
 

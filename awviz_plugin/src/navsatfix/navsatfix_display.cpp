@@ -24,8 +24,7 @@ NavSatFixDisplay::NavSatFixDisplay() : awviz_common::RosTopicDisplay<sensor_msgs
 
 void NavSatFixDisplay::log_message(sensor_msgs::msg::NavSatFix::ConstSharedPtr msg)
 {
-  stream_->set_time_seconds(
-    TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
+  log_timestamp(rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec));
 
   const auto entity_path = property_.entity();
   stream_->log(entity_path, rerun::GeoPoints(rerun::LatLon(msg->latitude, msg->longitude)));

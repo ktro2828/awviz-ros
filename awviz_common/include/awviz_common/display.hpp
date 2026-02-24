@@ -153,6 +153,10 @@ public:
    */
   void start() override
   {
+    // Only transition to running when the display is properly initialized/configured.
+    if (!is_initialized()) {
+      return;
+    }
     subscribe();
     set_state(DisplayState::kRunning);
   }

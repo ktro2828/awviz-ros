@@ -189,7 +189,7 @@ protected:
     if (!stream_) {
       return;
     }
-    stream_->set_time_seconds(TIMELINE_NAME, stamp.seconds());
+    stream_->set_time_duration_secs(TIMELINE_NAME, stamp.seconds());
   }
 
   /**

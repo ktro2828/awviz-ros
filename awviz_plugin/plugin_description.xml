@@ -31,6 +31,13 @@
     </class>
 
     <!-- Autoware -->
+    <!-- Map -->
+    <class name="awviz_plugin/LaneletDisplay" type="awviz_plugin::LaneletDisplay"
+        base_class_type="awviz_common::Display">
+        <description>Display from autoware_map_msgs/msg/LaneletMapBin message.</description>
+        <message_type>autoware_map_msgs/msg/LaneletMapBin</message_type>
+    </class>
+
     <!-- Perception -->
     <class name="awviz_plugin/DetectedObjectsDisplay" type="awviz_plugin::DetectedObjectsDisplay"
         base_class_type="awviz_common::Display">

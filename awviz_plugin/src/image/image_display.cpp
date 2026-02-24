@@ -36,27 +36,14 @@ void ImageDisplay::log_message(sensor_msgs::msg::Image::ConstSharedPtr msg)
     return;
   }
 
-  // TODO(ktro2828): Improve error handling by logging cv_bridge::Exception instead of silently
-  // ignoring it.
+  // NOTE: Depth image is not supported yet.
   try {
-    if (msg->encoding == "16UC1") {
-      auto img = cv_bridge::toCvCopy(msg)->image;
-      stream_->log(
-        entity_path.value(),
-        rerun::DepthImage(img.data, rerun::WidthHeight(img.cols, img.rows)).with_meter(1000));
-    } else if (msg->encoding == "32FC1") {
-      auto img = cv_bridge::toCvCopy(msg)->image;
+    const auto & rgb = cv_bridge::toCvCopy(msg, "rgb8")->image;
 
-      stream_->log(
-        entity_path.value(),
-        rerun::DepthImage(img.data, rerun::WidthHeight(img.cols, img.rows)).with_meter(1.0));
-    } else {
-      auto img = cv_bridge::toCvCopy(msg, "rgb8")->image;
-
-      stream_->log(
-        entity_path.value(), rerun::Image::from_rgb24(img, rerun::WidthHeight(img.cols, img.rows)));
-    }
+    stream_->log(
+      entity_path.value(), rerun::Image::from_rgb24(rgb, rerun::WidthHeight(rgb.cols, rgb.rows)));
   } catch (const cv_bridge::Exception & e) {
+    log_warning(e.what());
   }
 }
 }  // namespace awviz_plugin

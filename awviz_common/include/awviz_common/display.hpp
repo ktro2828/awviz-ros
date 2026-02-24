@@ -228,6 +228,15 @@ protected:
     stream_->log(topic, rerun::TextLog(message));
   }
 
+  void log_warning(const std::string & message) const
+  {
+    if (!stream_) {
+      return;
+    }
+
+    stream_->log(property_.topic(), rerun::TextLog(message));
+  }
+
   /**
    * @brief Start to subscribing the specified topic.
    * @todo Currently, `rclcpp::SensorDataQoS` is used for QoS profile setting.

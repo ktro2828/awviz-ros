@@ -231,32 +231,32 @@ $(document).ready(function(){initNavTree('transformation__manager_8hpp_source.ht
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="tf__tree_8hpp.html">awviz_common/transformation/tf_tree.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;rclcpp/rclcpp.hpp&gt;</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &lt;rerun.hpp&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="entity__path__resolver_8hpp.html">awviz_common/transformation/entity_path_resolver.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="tf__tree_8hpp.html">awviz_common/transformation/tf_tree.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="tf__tree__updater_8hpp.html">awviz_common/transformation/tf_tree_updater.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="transform__logger_8hpp.html">awviz_common/transformation/transform_logger.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;tf2_ros/buffer.h&gt;</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;tf2_ros/transform_listener.h&gt;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &lt;rclcpp/rclcpp.hpp&gt;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;rerun.hpp&gt;</span></div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;optional&gt;</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceawviz__common.html">awviz_common</a></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classawviz__common_1_1TransformationManager.html">   37</a></span><span class="keyword">class </span><a class="code hl_class" href="classawviz__common_1_1TransformationManager.html">TransformationManager</a></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <a class="code hl_class" href="classawviz__common_1_1TransformationManager.html">TransformationManager</a>(</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    rclcpp::Node::SharedPtr node, std::shared_ptr&lt;rerun::RecordingStream&gt; stream);</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classawviz__common_1_1TransformationManager.html#a6651888daf10e4a578aa7ea6585a7d0d">   54</a></span>  <span class="keyword">const</span> std::shared_ptr&lt;std::unordered_map&lt;std::string, std::string&gt;&gt; <a class="code hl_function" href="classawviz__common_1_1TransformationManager.html#a6651888daf10e4a578aa7ea6585a7d0d">entities</a>()</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    std::lock_guard lock(entities_mtx_);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> entities_;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &lt;tf2_ros/buffer.h&gt;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &lt;tf2_ros/transform_listener.h&gt;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceawviz__common.html">awviz_common</a></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>{</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classawviz__common_1_1TransformationManager.html">   38</a></span><span class="keyword">class </span><a class="code hl_class" href="classawviz__common_1_1TransformationManager.html">TransformationManager</a></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>{</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <a class="code hl_class" href="classawviz__common_1_1TransformationManager.html">TransformationManager</a>(</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    rclcpp::Node::SharedPtr node, std::shared_ptr&lt;rerun::RecordingStream&gt; stream);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classawviz__common_1_1TransformationManager.html#a6651888daf10e4a578aa7ea6585a7d0d">   55</a></span>  <span class="keyword">const</span> std::shared_ptr&lt;std::unordered_map&lt;std::string, std::string&gt;&gt; <a class="code hl_function" href="classawviz__common_1_1TransformationManager.html#a6651888daf10e4a578aa7ea6585a7d0d">entities</a>()</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordflow">return</span> entity_path_resolver_-&gt;entities();</div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  }</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="keyword">private</span>:</div>
@@ -264,31 +264,32 @@ $(document).ready(function(){initNavTree('transformation__manager_8hpp_source.ht
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  <span class="keywordtype">void</span> update_tree();</div>
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>  <span class="keywordtype">void</span> update_entity(<span class="keyword">const</span> <a class="code hl_class" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp; frame);</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  <span class="keywordtype">void</span> log_transform(<span class="keyword">const</span> <a class="code hl_class" href="classawviz__common_1_1TfFrame.html">TfFrame</a> &amp; frame);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  rclcpp::Node::SharedPtr node_;                             </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  std::shared_ptr&lt;rerun::RecordingStream&gt; stream_;           </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  std::shared_ptr&lt;tf2_ros::Buffer&gt; tf_buffer_;               </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  std::shared_ptr&lt;tf2_ros::TransformListener&gt; tf_listener_;  </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  rclcpp::TimerBase::SharedPtr timer_;                       </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  std::unique_ptr&lt;TfTree&gt; tf_tree_;                          </div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  std::shared_ptr&lt;std::unordered_map&lt;std::string, std::string&gt;&gt;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    entities_;  </div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>  std::unordered_map&lt;std::string, double&gt; last_log_stamps_;  </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>  std::mutex tf_tree_mtx_;   </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>  std::mutex entities_mtx_;  </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>};</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}  <span class="comment">// namespace awviz_common</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_</span></div>
-<div class="ttc" id="aclassawviz__common_1_1TfFrame_html"><div class="ttname"><a href="classawviz__common_1_1TfFrame.html">awviz_common::TfFrame</a></div><div class="ttdoc">A class to represent a TF frame information.</div><div class="ttdef"><b>Definition:</b> tf_tree.hpp:36</div></div>
-<div class="ttc" id="aclassawviz__common_1_1TransformationManager_html"><div class="ttname"><a href="classawviz__common_1_1TransformationManager.html">awviz_common::TransformationManager</a></div><div class="ttdoc">A class to manage transform frames.</div><div class="ttdef"><b>Definition:</b> transformation_manager.hpp:38</div></div>
-<div class="ttc" id="aclassawviz__common_1_1TransformationManager_html_a6651888daf10e4a578aa7ea6585a7d0d"><div class="ttname"><a href="classawviz__common_1_1TransformationManager.html#a6651888daf10e4a578aa7ea6585a7d0d">awviz_common::TransformationManager::entities</a></div><div class="ttdeci">const std::shared_ptr&lt; std::unordered_map&lt; std::string, std::string &gt; &gt; entities()</div><div class="ttdoc">Return the entity paths.</div><div class="ttdef"><b>Definition:</b> transformation_manager.hpp:54</div></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>  <span class="keywordtype">void</span> update_entities();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>  <span class="keywordtype">void</span> log_transforms();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>  rclcpp::Node::SharedPtr node_;                              </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>  std::shared_ptr&lt;rerun::RecordingStream&gt; stream_;            </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>  std::shared_ptr&lt;tf2_ros::Buffer&gt; tf_buffer_;                </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>  std::shared_ptr&lt;tf2_ros::TransformListener&gt; tf_listener_;   </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>  rclcpp::TimerBase::SharedPtr timer_;                        </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>  std::shared_ptr&lt;TfTree&gt; tf_tree_;                           </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>  std::shared_ptr&lt;std::mutex&gt; tf_tree_mtx_;                   </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>  std::shared_ptr&lt;std::mutex&gt; entities_mtx_;                  </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>  std::unique_ptr&lt;ITfTreeUpdater&gt; tf_tree_updater_;           </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>  std::unique_ptr&lt;EntityPathResolver&gt; entity_path_resolver_;  </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>  std::unique_ptr&lt;ITransformLogger&gt; transform_logger_;        </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>};</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}  <span class="comment">// namespace awviz_common</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#endif  </span><span class="comment">// AWVIZ_COMMON__TRANSFORMATION_MANAGER_HPP_</span></div>
+<div class="ttc" id="aclassawviz__common_1_1TransformationManager_html"><div class="ttname"><a href="classawviz__common_1_1TransformationManager.html">awviz_common::TransformationManager</a></div><div class="ttdoc">A class to manage transform frames.</div><div class="ttdef"><b>Definition:</b> transformation_manager.hpp:39</div></div>
+<div class="ttc" id="aclassawviz__common_1_1TransformationManager_html_a6651888daf10e4a578aa7ea6585a7d0d"><div class="ttname"><a href="classawviz__common_1_1TransformationManager.html#a6651888daf10e4a578aa7ea6585a7d0d">awviz_common::TransformationManager::entities</a></div><div class="ttdeci">const std::shared_ptr&lt; std::unordered_map&lt; std::string, std::string &gt; &gt; entities()</div><div class="ttdoc">Return the entity paths.</div><div class="ttdef"><b>Definition:</b> transformation_manager.hpp:55</div></div>
+<div class="ttc" id="aentity__path__resolver_8hpp_html"><div class="ttname"><a href="entity__path__resolver_8hpp.html">entity_path_resolver.hpp</a></div></div>
 <div class="ttc" id="anamespaceawviz__common_html"><div class="ttname"><a href="namespaceawviz__common.html">awviz_common</a></div><div class="ttdef"><b>Definition:</b> display.hpp:31</div></div>
 <div class="ttc" id="atf__tree_8hpp_html"><div class="ttname"><a href="tf__tree_8hpp.html">tf_tree.hpp</a></div></div>
+<div class="ttc" id="atf__tree__updater_8hpp_html"><div class="ttname"><a href="tf__tree__updater_8hpp.html">tf_tree_updater.hpp</a></div></div>
+<div class="ttc" id="atransform__logger_8hpp_html"><div class="ttname"><a href="transform__logger_8hpp.html">transform_logger.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

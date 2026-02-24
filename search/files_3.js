@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['main_2emd_1',['MAIN.md',['../MAIN_8md.html',1,'']]]
+  ['image_5fdisplay_2ecpp_0',['image_display.cpp',['../image__display_8cpp.html',1,'']]],
+  ['image_5fdisplay_2ehpp_1',['image_display.hpp',['../image__display_8hpp.html',1,'']]]
 ];

@@ -26,11 +26,18 @@ var hierarchy =
       [ "awviz_common::RosTopicDisplay< MsgType >", "classawviz__common_1_1RosTopicDisplay.html", null ]
     ] ],
     [ "awviz_common::DisplayRegistry", "classawviz__common_1_1DisplayRegistry.html", null ],
+    [ "awviz_common::EntityPathResolver", "classawviz__common_1_1EntityPathResolver.html", null ],
     [ "awviz_common::IDisplaySpawner", "classawviz__common_1_1IDisplaySpawner.html", [
       [ "awviz_common::DisplaySpawner", "classawviz__common_1_1DisplaySpawner.html", null ]
     ] ],
+    [ "awviz_common::ITfTreeUpdater", "classawviz__common_1_1ITfTreeUpdater.html", [
+      [ "awviz_common::TfTreeUpdater", "classawviz__common_1_1TfTreeUpdater.html", null ]
+    ] ],
     [ "awviz_common::ITopicScanner", "classawviz__common_1_1ITopicScanner.html", [
       [ "awviz_common::TopicScanner", "classawviz__common_1_1TopicScanner.html", null ]
+    ] ],
+    [ "awviz_common::ITransformLogger", "classawviz__common_1_1ITransformLogger.html", [
+      [ "awviz_common::TransformLogger", "classawviz__common_1_1TransformLogger.html", null ]
     ] ],
     [ "awviz_common::PluginFactory< T >", "classawviz__common_1_1PluginFactory.html", null ],
     [ "awviz_common::PluginFactory< Display >", "classawviz__common_1_1PluginFactory.html", [

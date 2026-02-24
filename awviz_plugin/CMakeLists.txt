@@ -41,6 +41,7 @@ ament_target_dependencies(
   autoware_lanelet2_extension
   autoware_map_msgs
   autoware_perception_msgs
+  autoware_planning_msgs
 )
 
 # -------- export plugin description --------

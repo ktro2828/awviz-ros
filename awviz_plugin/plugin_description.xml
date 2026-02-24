@@ -1,57 +1,105 @@
 <library path="awviz_plugin">
     <!-- Image -->
-    <class name="awviz_plugin/CameraInfoDisplay" type="awviz_plugin::CameraInfoDisplay"
-        base_class_type="awviz_common::Display">
-        <description>Display from sensor_msgs/msg/CameraInfo message.</description>
+    <class
+        name="awviz_plugin/CameraInfoDisplay"
+        type="awviz_plugin::CameraInfoDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from sensor_msgs/msg/CameraInfo message.</description>
         <message_type>sensor_msgs/msg/CameraInfo</message_type>
     </class>
-    <class name="awviz_plugin/CompressedImageDisplay" type="awviz_plugin::CompressedImageDisplay"
-        base_class_type="awviz_common::Display">
-        <description>Display from sensor_msgs/msg/CompressedImage message.</description>
+    <class
+        name="awviz_plugin/CompressedImageDisplay"
+        type="awviz_plugin::CompressedImageDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from sensor_msgs/msg/CompressedImage message.</description>
         <message_type>sensor_msgs/msg/CompressedImage</message_type>
     </class>
-    <class name="awviz_plugin/ImageDisplay" type="awviz_plugin::ImageDisplay"
-        base_class_type="awviz_common::Display">
+    <class
+        name="awviz_plugin/ImageDisplay"
+        type="awviz_plugin::ImageDisplay"
+        base_class_type="awviz_common::Display"
+    >
         <description>Display from sensor_msgs/msg/Image message.</description>
         <message_type>sensor_msgs/msg/Image</message_type>
     </class>
 
     <!-- PointCloud -->
-    <class name="awviz_plugin/PointCloud2Display" type="awviz_plugin::PointCloud2Display"
-        base_class_type="awviz_common::Display">
-        <description>Display from sensor_msgs/msg/PointCloud2 message.</description>
+    <class
+        name="awviz_plugin/PointCloud2Display"
+        type="awviz_plugin::PointCloud2Display"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from sensor_msgs/msg/PointCloud2 message.</description>
         <message_type>sensor_msgs/msg/PointCloud2</message_type>
     </class>
 
     <!-- NavSatFix -->
-    <class name="awviz_plugin/NavSatFixDisplay" type="awviz_plugin::NavSatFixDisplay"
-        base_class_type="awviz_common::Display">
-        <description>Display from sensor_msgs/msg/NavSatFix message.</description>
+    <class
+        name="awviz_plugin/NavSatFixDisplay"
+        type="awviz_plugin::NavSatFixDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from sensor_msgs/msg/NavSatFix message.</description>
         <message_type>sensor_msgs/msg/NavSatFix</message_type>
     </class>
 
     <!-- Autoware -->
     <!-- Map -->
-    <class name="awviz_plugin/LaneletDisplay" type="awviz_plugin::LaneletDisplay"
-        base_class_type="awviz_common::Display">
-        <description>Display from autoware_map_msgs/msg/LaneletMapBin message.</description>
+    <class
+        name="awviz_plugin/LaneletDisplay"
+        type="awviz_plugin::LaneletDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from autoware_map_msgs/msg/LaneletMapBin message.</description>
         <message_type>autoware_map_msgs/msg/LaneletMapBin</message_type>
     </class>
 
     <!-- Perception -->
-    <class name="awviz_plugin/DetectedObjectsDisplay" type="awviz_plugin::DetectedObjectsDisplay"
-        base_class_type="awviz_common::Display">
-        <description>Display from autoware_perception_msgs/msg/DetectedObjects message.</description>
-        <message_type>autoware_perception_msgs/msg/DetectedObjects</message_type>
+    <class
+        name="awviz_plugin/DetectedObjectsDisplay"
+        type="awviz_plugin::DetectedObjectsDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from autoware_perception_msgs/msg/DetectedObjects message.</description>
+        <message_type
+        >autoware_perception_msgs/msg/DetectedObjects</message_type>
     </class>
-    <class name="awviz_plugin/TrackedObjectsDisplay" type="awviz_plugin::TrackedObjectsDisplay"
-        base_class_type="awviz_common::Display">
-        <description>Display from autoware_perception_msgs/msg/TrackedObjects message.</description>
+    <class
+        name="awviz_plugin/TrackedObjectsDisplay"
+        type="awviz_plugin::TrackedObjectsDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from autoware_perception_msgs/msg/TrackedObjects message.</description>
         <message_type>autoware_perception_msgs/msg/TrackedObjects</message_type>
     </class>
-    <class name="awviz_plugin/PredictedObjectsDisplay" type="awviz_plugin::PredictedObjectsDisplay"
-        base_class_type="awviz_common::Display">
-        <description>Display from autoware_perception_msgs/msg/PredictedObjects message.</description>
-        <message_type>autoware_perception_msgs/msg/PredictedObjects</message_type>
+    <class
+        name="awviz_plugin/PredictedObjectsDisplay"
+        type="awviz_plugin::PredictedObjectsDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from autoware_perception_msgs/msg/PredictedObjects message.</description>
+        <message_type
+        >autoware_perception_msgs/msg/PredictedObjects</message_type>
+    </class>
+
+    <!-- Planning -->
+    <class
+        name="awviz_plugin/TrajectoryDisplay"
+        type="awviz_plugin::TrajectoryDisplay"
+        base_class_type="awviz_common::Display"
+    >
+        <description
+        >Display from autoware_planning_msgs/msg/Trajectory message.</description>
+        <message_type>autoware_planning_msgs/msg/Trajectory</message_type>
     </class>
 </library>

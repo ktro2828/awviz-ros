@@ -213,11 +213,19 @@ protected:
     if (!stream_) {
       return;
     }
-    if (frame_id.empty()) {
-      stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
-      return;
+
+    std::string message = "There is no corresponding entity path";
+
+    if (!frame_id.empty()) {
+      message += " for frame_id: " + frame_id;
     }
-    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+
+    const auto & topic = property_.topic();
+    if (!topic.empty()) {
+      message += " on topic: " + topic;
+    }
+
+    stream_->log(topic, rerun::TextLog(message));
   }
 
   /**

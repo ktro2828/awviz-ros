@@ -25,7 +25,7 @@ ament_auto_find_build_dependencies()
 include(FetchContent)
 FetchContent_Declare(
   rerun_sdk
-  URL https://github.com/rerun-io/rerun/releases/download/0.20.0/rerun_cpp_sdk.zip
+  URL https://github.com/rerun-io/rerun/releases/download/0.27.3/rerun_cpp_sdk.zip
 )
 FetchContent_MakeAvailable(rerun_sdk)
 # Ensure rerun_sdk is compiled with -fPIC

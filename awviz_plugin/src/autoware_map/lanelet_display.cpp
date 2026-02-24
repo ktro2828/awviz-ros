@@ -17,31 +17,17 @@
 #include <autoware_lanelet2_extension/utility/message_conversion.hpp>
 #include <autoware_lanelet2_extension/utility/query.hpp>
 
-#include <set>
-
-namespace
-{
-/**
- * @brief Check if the input linestring has same attribute in the specfied set of attributes.
- *
- * @param linestring LineString object.
- * @param attributes Set of attributes.
- * @return Return true if the linestring has.
- */
-bool has_attribute(
-  const lanelet::ConstLineString3d & linestring, const std::set<std::string> & attributes)
-{
-  if (!linestring.hasAttribute(lanelet::AttributeName::Type)) {
-    return false;
-  } else {
-    const auto & attr = linestring.attribute(lanelet::AttributeName::Type);
-    return attributes.count(attr.value()) > 0;
-  }
-}
-}  // namespace
-
 namespace awviz_plugin
 {
+namespace
+{
+static const rerun::Color ROADLINE_COLOR(255, 215, 0);    // gold
+static const rerun::Color BOUNDARY_COLOR(255, 255, 255);  // white
+static const rerun::Color CENTERLINE_COLOR(0, 255, 255);  // cyan
+static const rerun::Color STOPLINE_COLOR(255, 0, 0);      // red
+static const rerun::Color CROSSWALK_COLOR(0, 255, 0);     // green
+}  // namespace
+
 LaneletDisplay::LaneletDisplay()
 : awviz_common::RosTopicDisplay<autoware_map_msgs::msg::LaneletMapBin>()
 {
@@ -49,12 +35,11 @@ LaneletDisplay::LaneletDisplay()
 
 void LaneletDisplay::log_message(autoware_map_msgs::msg::LaneletMapBin::ConstSharedPtr msg)
 {
-  stream_->set_time_seconds(
-    TIMELINE_NAME, rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec).seconds());
+  log_timestamp(rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec));
 
-  const auto entity_path = property_.entity(msg->header.frame_id);
+  const auto entity_path = resolve_entity_path(msg->header.frame_id);
   if (!entity_path) {
-    stream_->log(property_.topic(), rerun::TextLog("There is no corresponding entity path"));
+    warn_missing_entity(msg->header.frame_id);
     return;
   }
 
@@ -63,83 +48,51 @@ void LaneletDisplay::log_message(autoware_map_msgs::msg::LaneletMapBin::ConstSha
 
   const auto all_lanelets = lanelet::utils::query::laneletLayer(lanelet_map_);
 
-  std::vector<rerun::Mesh3D> all_meshes;
+  std::vector<rerun::LineStrip3D> all_strips;
+  std::vector<rerun::Color> all_colors;
+
+  const auto append_strips =
+    [&](const std::vector<rerun::LineStrip3D> & strips, const rerun::Color & color) {
+      if (strips.empty()) {
+        return;
+      }
+      all_strips.insert(all_strips.end(), strips.begin(), strips.end());
+      all_colors.insert(all_colors.end(), strips.size(), color);
+    };
+
   {
-    // 1. all road lanelets to a single mesh
-    const auto road_mesh = convert_road_lanelets(all_lanelets);
-    all_meshes.emplace_back(road_mesh.as_mesh());
+    // 1. all road lanelets to a set of line strips
+    const auto road_lines = convert_road_lanelets(lanelet_map_->laneletLayer, all_lanelets);
+    append_strips(road_lines.line_strips(), ROADLINE_COLOR);
   }
 
   {
-    // 1. all crosswalk lanelets to a set of mesh
-    const auto crosswalk_meshes = convert_crosswalks(all_lanelets);
-    for (const auto & mesh : crosswalk_meshes) {
-      all_meshes.emplace_back(mesh.as_mesh());
+    // 2. road boundaries
+    const auto boundary_lines = convert_road_boundaries(all_lanelets);
+    append_strips(boundary_lines.line_strips(), BOUNDARY_COLOR);
+  }
+
+  {
+    // 3. centerlines
+    const auto center_lines = convert_centerlines(all_lanelets);
+    append_strips(center_lines.line_strips(), CENTERLINE_COLOR);
+  }
+
+  {
+    // 4. stop lines
+    const auto stop_lines = convert_stop_lines(lanelet_map_->lineStringLayer);
+    append_strips(stop_lines.line_strips(), STOPLINE_COLOR);
+  }
+
+  {
+    // 5. all crosswalk lanelets to a set of line strips
+    const auto crosswalk_lines = convert_crosswalks(all_lanelets);
+    for (const auto & lines : crosswalk_lines) {
+      append_strips(lines.line_strips(), CROSSWALK_COLOR);
     }
   }
 
-  stream_->log(entity_path.value(), all_meshes);
-}
-
-LaneletMesh LaneletDisplay::convert_road_lanelets(const lanelet::ConstLanelets & all_lanelets) const
-{
-  static const std::set<std::string> attributes{"line_thin", "line_thick"};
-
-  LaneletMesh output;
-
-  const auto road_lanelets = lanelet::utils::query::roadLanelets(all_lanelets);
-  for (const auto & lanelet : road_lanelets) {
-    const auto left_bound = lanelet.leftBound();
-    const auto right_bound = lanelet.rightBound();
-
-    const auto left_candidates = lanelet_map_->laneletLayer.findUsages(left_bound);
-    for (const auto & candidate : left_candidates) {
-      if (candidate == lanelet) {
-        continue;  // exclude self lanelet
-      } else if (candidate.leftBound() != right_bound && candidate.rightBound() != left_bound) {
-        continue;  // exclude unshared lanelet
-      }
-
-      if (has_attribute(left_bound, attributes)) {
-        for (const auto & bound : left_bound) {
-          output.emplace_back(rerun::Position3D(bound.x(), bound.y(), bound.z()));
-        }
-      }
-    }
-
-    const auto right_candidates = lanelet_map_->laneletLayer.findUsages(right_bound);
-    for (const auto & candidate : right_candidates) {
-      if (candidate == lanelet) {
-        continue;  // exclude self lanelet
-      } else if (candidate.leftBound() != right_bound && candidate.rightBound() != left_bound) {
-        continue;  // exclude unshared lanelet
-      }
-
-      if (has_attribute(right_bound, attributes)) {
-        for (const auto & bound : right_bound) {
-          output.emplace_back(rerun::Position3D(bound.x(), bound.y(), bound.z()));
-        }
-      }
-    }
-  }
-  return output;
-}
-
-std::vector<LaneletMesh> LaneletDisplay::convert_crosswalks(
-  const lanelet::ConstLanelets & all_lanelets) const
-{
-  std::vector<LaneletMesh> output;
-
-  const auto crosswalks = lanelet::utils::query::crosswalkLanelets(all_lanelets);
-  for (const auto & lanelet : crosswalks) {
-    LaneletMesh current;
-    for (const auto & point : lanelet.polygon3d()) {
-      current.emplace_back(rerun::Position3D(point.x(), point.y(), point.z()));
-    }
-    output.emplace_back(current);
-  }
-
-  return output;
+  stream_->log(entity_path.value(), rerun::LineStrips3D(all_strips).with_colors(all_colors));
 }
 }  // namespace awviz_plugin
 

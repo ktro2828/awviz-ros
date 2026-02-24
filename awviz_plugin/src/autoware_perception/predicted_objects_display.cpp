@@ -69,9 +69,7 @@ void PredictedObjectsDisplay::log_message(
         continue;
       }
       const auto waypoints = to_waypoints(path);
-      if (waypoints.empty()) {
-        continue;
-      }
+
       linestrips.emplace_back(rerun::LineStrip3D(waypoints));
       class_ids.emplace_back(class_id);
     }

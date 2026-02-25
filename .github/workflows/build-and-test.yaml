@@ -49,12 +49,9 @@ jobs:
             ${{ runner.os }}-ccache-${{ matrix.rosdistro }}-
 
       - name: Build and test
-        uses: ros-tooling/action-ros-ci@0.3.1
-        env:
-          CCACHE_DIR: /root/.ccache
-          CMAKE_C_COMPILER_LAUNCHER: ccache
-          CMAKE_CXX_COMPILER_LAUNCHER: ccache
+        uses: ros-tooling/action-ros-ci@0.4.5
         with:
           package-name: ${{ steps.list_packages.outputs.packages }}
           target-ros2-distro: ${{ matrix.rosdistro }}
           import-token: ${{ secrets.GITHUB_TOKEN }}
+          extra-cmake-args: -DCCACHE_DIR=/root/.ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache

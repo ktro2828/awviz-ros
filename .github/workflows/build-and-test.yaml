@@ -35,9 +35,23 @@ jobs:
         with:
           required-ros-distributions: ${{ matrix.rosdistro }}
 
+      - name: Install ccache
+        run: |
+          apt-get update
+          apt-get install -y ccache
+
+      - name: Cache ccache
+        uses: actions/cache@v4
+        with:
+          path: /root/.ccache
+          key: ${{ runner.os }}-ccache-${{ matrix.rosdistro }}-${{ hashFiles('**/CMakeLists.txt', '**/package.xml', '**/colcon.*') }}
+          restore-keys: |
+            ${{ runner.os }}-ccache-${{ matrix.rosdistro }}-
+
       - name: Build and test
-        uses: ros-tooling/action-ros-ci@0.3.1
+        uses: ros-tooling/action-ros-ci@0.4.5
         with:
           package-name: ${{ steps.list_packages.outputs.packages }}
           target-ros2-distro: ${{ matrix.rosdistro }}
           import-token: ${{ secrets.GITHUB_TOKEN }}
+          extra-cmake-args: -DCCACHE_DIR=/root/.ccache -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache

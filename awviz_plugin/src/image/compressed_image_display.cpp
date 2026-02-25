@@ -44,6 +44,11 @@ void CompressedImageDisplay::log_message(sensor_msgs::msg::CompressedImage::Cons
   try {
     const auto & rgb = cv_bridge::toCvCopy(msg, "rgb8")->image;
 
+    if (rgb.empty() || rgb.cols == 0 || rgb.rows == 0) {
+      log_warning_text(property_.topic() + " decoded to an empty image");
+      return;
+    }
+
     stream_->log(
       entity_path.value(), rerun::Image::from_rgb24(rgb, rerun::WidthHeight(rgb.cols, rgb.rows)));
   } catch (const cv_bridge::Exception & e) {

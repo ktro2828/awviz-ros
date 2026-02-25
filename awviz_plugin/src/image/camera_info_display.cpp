@@ -27,6 +27,11 @@ CameraInfoDisplay::CameraInfoDisplay()
 
 void CameraInfoDisplay::log_message(sensor_msgs::msg::CameraInfo::ConstSharedPtr msg)
 {
+  if (msg->width == 0 || msg->height == 0) {
+    log_warning_text(property_.topic() + " has zero resolution");
+    return;
+  }
+
   log_timestamp(rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec));
 
   const auto entity_path = resolve_entity_path(msg->header.frame_id, false);

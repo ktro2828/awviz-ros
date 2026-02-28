@@ -30,22 +30,22 @@ Even if there are ROS messages that are not supported by built-in plugins, we ca
 
 ### ROS Built-in Messages
 
-| ROS Package   | Message Type      | Plugin Type              |
-| :------------ | :---------------- | :----------------------- |
-| `sensor_msgs` | `CameraInfo`      | `CameraInfoDisplay`      |
-|               | `CompressedImage` | `CompressedImageDisplay` |
-|               | `Image`           | `ImageDisplay`           |
-|               | `PointCloud2`     | `PointCloud2Display`     |
-|               | `NavSatFix`       | `NavSatFixDisplay`       |
+| ROS Package   | Message Type      | Plugin Type                            |
+| :------------ | :---------------- | :------------------------------------- |
+| `sensor_msgs` | `CameraInfo`      | `awviz_plugin::CameraInfoDisplay`      |
+|               | `CompressedImage` | `awviz_plugin::CompressedImageDisplay` |
+|               | `Image`           | `awviz_plugin::ImageDisplay`           |
+|               | `PointCloud2`     | `awviz_plugin::PointCloud2Display`     |
+|               | `NavSatFix`       | `awviz_plugin::NavSatFixDisplay`       |
 
 ### Autoware Messages
 
-| ROS Package                | Message Type       | Plugin Type               |
-| :------------------------- | :----------------- | :------------------------ |
-| `autoware_map_msgs`        | `LaneletMapBin`    | `LaneletDisplay`          |
-| `autoware_perception_msgs` | `DetectedObjects`  | `DetectedObjectsDisplay`  |
-|                            | `TrackedObjects`   | `TrackedObjectsDisplay`   |
-|                            | `PredictedObjects` | `PredictedObjectsDisplay` |
+| ROS Package                | Message Type       | Plugin Type                             |
+| :------------------------- | :----------------- | :-------------------------------------- |
+| `autoware_map_msgs`        | `LaneletMapBin`    | `awviz_plugin::LaneletDisplay`          |
+| `autoware_perception_msgs` | `DetectedObjects`  | `awviz_plugin::DetectedObjectsDisplay`  |
+|                            | `TrackedObjects`   | `awviz_plugin::TrackedObjectsDisplay`   |
+|                            | `PredictedObjects` | `awviz_plugin::PredictedObjectsDisplay` |
 
 ## Custom Plugin Definition
 
